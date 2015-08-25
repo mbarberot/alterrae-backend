@@ -13,12 +13,34 @@ Reason (vs PHP / Symfony backend)
 Tools
 -----
 
+### Dev
+
 * Java
 * Spark framework (light, easy and simple)
+* Guava
+
+### Deployment
+
+* Docker
 
 How to use
 ----------
 
-* Install Java 8 and Maven
-* Get sources (ie ``git clone``)
-* mvn compile && mvn exec:java
+### What you need
+
+* Java 8
+* Maven
+* Source code
+
+### Compile
+
+``make jar``
+
+### Run with Java
+
+``make run-jar``
+
+### Run with docker
+
+``make run-docker``
+
