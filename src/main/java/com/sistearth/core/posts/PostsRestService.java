@@ -1,7 +1,7 @@
-package com.sistearth.posts;
+package com.sistearth.core.posts;
 
-import com.sistearth.service.Service;
-import com.sistearth.service.ServiceException;
+import com.sistearth.api.service.Service;
+import com.sistearth.api.service.ServiceException;
 
 import static spark.Spark.get;
 

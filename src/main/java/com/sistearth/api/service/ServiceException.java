@@ -1,4 +1,4 @@
-package com.sistearth.service;
+package com.sistearth.api.service;
 
 public class ServiceException extends Exception {
     public ServiceException(String message) {
