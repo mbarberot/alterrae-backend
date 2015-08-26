@@ -1,8 +1,8 @@
-package com.sistearth.core.posts;
+package com.sistearth.core.services;
 
 import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
-import com.sistearth.core.posts.routes.PostsGetRoute;
+import com.sistearth.core.routes.PostsGetRoute;
 
 import static spark.Spark.get;
 

@@ -1,8 +1,8 @@
-package com.sistearth.core.index;
+package com.sistearth.core.services;
 
 import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
-import com.sistearth.core.index.routes.IndexGetRoute;
+import com.sistearth.core.routes.IndexGetRoute;
 
 import static spark.Spark.get;
 
