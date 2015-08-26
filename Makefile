@@ -1,6 +1,6 @@
 PROJECT = sistearth-backend
 
-all: jar build
+all: run-docker
 
 jar:
 	mvn clean install
