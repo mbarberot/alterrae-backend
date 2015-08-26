@@ -1,7 +1,7 @@
 package com.sistearth;
 
-import com.sistearth.core.index.IndexService;
-import com.sistearth.core.posts.PostsRestService;
+import com.sistearth.core.services.IndexService;
+import com.sistearth.core.services.PostsRestService;
 import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
 
