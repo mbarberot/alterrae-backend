@@ -8,8 +8,8 @@ jar:
 run-java: jar
 	java -jar target/$(PROJECT).jar
 
-docker:
+docker: jar
 	docker build -t $(PROJECT) .
 
 run-docker: docker
-	docker start -it -p 80:8080 --rm --name $(PROJECT) $(PROJECT)
+	docker run -it -p 80:8080 --rm --name $(PROJECT) $(PROJECT)
