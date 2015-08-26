@@ -12,4 +12,4 @@ docker: jar
 	docker build -t $(PROJECT) .
 
 run-docker: docker
-	docker run -it -p 80:8080 --rm --name $(PROJECT) $(PROJECT)
+	docker run -it -p 443:8080 --rm --name $(PROJECT) $(PROJECT)
