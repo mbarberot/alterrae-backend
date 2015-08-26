@@ -1,4 +1,4 @@
-package com.sistearth.core.index.route;
+package com.sistearth.core.index.routes;
 
 import com.sistearth.api.handler.Answer;
 import com.sistearth.api.handler.Handler;
