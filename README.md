@@ -32,6 +32,12 @@ How to use
 * Maven
 * Source code
 
+### Create keystore
+
+``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``
+Set keystore password : ``sistearth``
+Hit return to question ``Enter key password for <sistearth>``
+
 ### Compile
 
 ``make jar``
@@ -39,8 +45,9 @@ How to use
 ### Run with Java
 
 ``make run-jar``
+Then, go to https://localhost:8080
 
 ### Run with docker
 
 ``make run-docker``
-
+Then go to https://localhost

@@ -1,13 +1,12 @@
 package com.sistearth;
 
-import com.sistearth.core.services.IndexService;
-import com.sistearth.core.services.PostsRestService;
 import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
+import com.sistearth.core.services.IndexService;
+import com.sistearth.core.services.PostsRestService;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static spark.Spark.get;
 import static spark.SparkBase.port;
+import static spark.SparkBase.secure;
 
 public class App {
     public static void main(String[] args) {
@@ -20,6 +19,12 @@ public class App {
 
     private static void setConfig() {
         port(8080);
+        secure(
+                "/sistearth/ssl/keystore",
+                "sistearth",
+                null,
+                null
+        );
     }
 
     private static void setServices(Service... services) {
