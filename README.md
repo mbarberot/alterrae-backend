@@ -18,6 +18,9 @@ Tools
 * Java
 * Spark framework (light, easy and simple)
 * Guava
+* Jackson
+* Lombok
+* JUnit
 
 ### Deployment
 
@@ -40,7 +43,7 @@ How to use
 
 ``make run-jar``
 
-### Run with docker
+### Run with docker (= default goal)
 
 ``make run-docker``
 
