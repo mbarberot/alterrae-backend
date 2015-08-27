@@ -55,7 +55,6 @@ Hit return to question ``Enter key password for <sistearth>``
 Then, go to https://localhost:8080
 
 ### Run with docker
-
-``make run-docker``  
+  
 ``make``
 Then go to https://localhost

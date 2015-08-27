@@ -4,12 +4,11 @@ import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
 import com.sistearth.core.services.IndexService;
 import com.sistearth.core.services.PostsRestService;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
-import org.sql2o.Sql2o;
-import org.sql2o.Connection;
-
 import static spark.SparkBase.port;
 import static spark.SparkBase.secure;
 
