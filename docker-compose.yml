@@ -1,0 +1,15 @@
+backend:
+    build: .
+    ports:
+        - "443:8080"
+    links:
+        - database
+
+database:
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: sistearth
+        MYSQL_USER: sistearth
+        MYSQL_PASSWORD: sistearth
+        MYSQL_DATABASE: sistearth
+
