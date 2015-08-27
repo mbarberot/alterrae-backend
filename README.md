@@ -34,8 +34,8 @@ How to use
 
 ### Create keystore
 
-``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``
-Set keystore password : ``sistearth``
+``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
+Set keystore password : ``sistearth``  
 Hit return to question ``Enter key password for <sistearth>``
 
 ### Compile
