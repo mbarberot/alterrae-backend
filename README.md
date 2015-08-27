@@ -44,10 +44,10 @@ Hit return to question ``Enter key password for <sistearth>``
 
 ### Run with Java
 
-``make run-jar``
+``make run-jar``  
 Then, go to https://localhost:8080
 
 ### Run with docker
 
-``make run-docker``
+``make run-docker``  
 Then go to https://localhost
