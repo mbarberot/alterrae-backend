@@ -19,15 +19,12 @@ public class App {
     private static String DB_PASSWORD = "sistearth";
 
     public static void main(String[] args) {
+        Sql2o database = new Sql2o(DB_URL, DB_USER, DB_PASSWORD);
+
         setConfig();
-
-        Sql2o sql2o = new Sql2o(DB_URL, DB_USER, DB_PASSWORD);
-        try (Connection conn = sql2o.open()) {
-            System.out.println("DB OPEN");
-        }
-
         enableCORS();
         setServices(
+                database,
                 new IndexService(),
                 new PostsRestService()
         );
@@ -56,10 +53,10 @@ public class App {
         );
     }
 
-    private static void setServices(Service... services) {
+    private static void setServices(Sql2o database, Service... services) {
         for (Service service : services) {
             try {
-                service.registerRoutes();
+                service.registerRoutes(database);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
