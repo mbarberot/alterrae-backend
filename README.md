@@ -18,6 +18,7 @@ Tools
 * Java
 * Spark framework (light, easy and simple)
 * Guava
+* Sql2o
 * Jackson
 * Lombok
 * JUnit
@@ -25,6 +26,8 @@ Tools
 ### Deployment
 
 * Docker
+* docker-compose
+* MariaDB (+ official docker image)
 
 How to use
 ----------
@@ -33,17 +36,26 @@ How to use
 
 * Java 8
 * Maven
+* Docker & docker-compose
 * Source code
 
-### Compile
+### Create keystore
+
+``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
+Set keystore password : ``sistearth``  
+Hit return to question ``Enter key password for <sistearth>``
+
+### Build and run
 
 ``make jar``
 
 ### Run with Java
 
-``make run-jar``
+``make run-jar``  
+Then, go to https://localhost:8080
 
-### Run with docker (= default goal)
+### Run with docker
 
-``make run-docker``
-
+``make run-docker``  
+``make``
+Then go to https://localhost

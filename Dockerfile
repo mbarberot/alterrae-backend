@@ -4,6 +4,7 @@ RUN mkdir /sistearth
 WORKDIR /sistearth
 
 ADD target/sistearth-backend.jar /sistearth/sistearth-backend.jar
+ADD ssl /sistearth/ssl
 
 EXPOSE 8080
 
