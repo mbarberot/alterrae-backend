@@ -38,11 +38,21 @@ How to use
 
 ### Create keystore
 
-``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``
-Set keystore password : ``sistearth``
+``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
+Set keystore password : ``sistearth``  
 Hit return to question ``Enter key password for <sistearth>``
 
 ### Build and run
 
+``make jar``
+
+### Run with Java
+
+``make run-jar``  
+Then, go to https://localhost:8080
+
+### Run with docker
+
+``make run-docker``  
 ``make``
 Then go to https://localhost

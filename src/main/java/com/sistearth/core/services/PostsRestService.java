@@ -9,6 +9,6 @@ import static spark.Spark.get;
 public class PostsRestService implements Service {
     @Override
     public void registerRoutes() throws ServiceException {
-        get("/posts", new PostsGetRoute());
+        get("/api/posts", new PostsGetRoute());
     }
 }

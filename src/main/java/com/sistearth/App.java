@@ -5,6 +5,8 @@ import com.sistearth.api.service.ServiceException;
 import com.sistearth.core.services.IndexService;
 import com.sistearth.core.services.PostsRestService;
 
+import static spark.Spark.before;
+import static spark.Spark.options;
 import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 
@@ -25,10 +27,24 @@ public class App {
             System.out.println("DB OPEN");
         }
 
+        enableCORS();
         setServices(
                 new IndexService(),
                 new PostsRestService()
         );
+    }
+
+    private static void enableCORS() {
+        before("/api/*", (request, response) -> {
+            response.header("Access-Control-Allow-Origin", request.headers("origin"));
+            response.header("Access-Control-Allow-Headers", "Origin, x-requested-with, content-type, Accept, authorization");
+            response.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        });
+
+        options("/api/*", (request, response) -> {
+            response.status(200);
+            return "";
+        });
     }
 
     private static void setConfig() {
