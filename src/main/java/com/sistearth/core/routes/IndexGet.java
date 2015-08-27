@@ -6,14 +6,14 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-public class IndexGetRoute implements Route, Handler {
+public class IndexGet implements Route, Handler {
     @Override
     public Object handle(Request request, Response response) throws Exception {
-        return process().getBody();
+        return process(null).getBody(); // Todo replace null
     }
 
     @Override
-    public Answer process() {
+    public Answer process(String params) {
         return Answer.ok("Hello world !");
     }
 }
