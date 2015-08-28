@@ -3,7 +3,7 @@ package com.sistearth.core.routes;
 import com.sistearth.api.handler.Answer;
 import com.sistearth.api.handler.Handler;
 import com.sistearth.api.serializer.Serializer;
-import com.sistearth.core.database.PostModel;
+import com.sistearth.core.database.PostManager;
 import com.sistearth.core.models.Post;
 import com.sistearth.utils.TestUtils;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class PostsGetAllTest {
                 TestUtils.createPost("Donec a diam lectus", "Sed sit amet ipsum mauris")
         );
 
-        PostModel model = Mockito.mock(PostModel.class);
+        PostManager model = Mockito.mock(PostManager.class);
         Mockito.when(model.getAll()).thenReturn(posts);
 
         String json = new Serializer<Post>("posts").serialize(posts);

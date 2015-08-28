@@ -2,7 +2,7 @@ package com.sistearth.api.model;
 
 import java.util.List;
 
-public interface Model<T> {
+public interface ModelManager<T> {
     List<T> getAll() throws ModelException;
 
     T getById(int id) throws ModelException;

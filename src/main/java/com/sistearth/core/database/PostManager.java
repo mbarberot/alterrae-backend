@@ -1,6 +1,6 @@
 package com.sistearth.core.database;
 
-import com.sistearth.api.model.Model;
+import com.sistearth.api.model.ModelManager;
 import com.sistearth.api.model.ModelException;
 import com.sistearth.core.models.Post;
 import org.sql2o.Connection;
@@ -9,10 +9,10 @@ import org.sql2o.Sql2o;
 import java.util.Date;
 import java.util.List;
 
-public class PostModel implements Model<Post> {
+public class PostManager implements ModelManager<Post> {
     private Sql2o database;
 
-    public PostModel(Sql2o database) {
+    public PostManager(Sql2o database) {
         this.database = database;
     }
 
