@@ -5,17 +5,17 @@ import com.sistearth.api.handler.Handler;
 import com.sistearth.core.database.PostManager;
 import com.sistearth.core.models.Post;
 import com.sistearth.core.serializers.PostSerializer;
-import com.sistearth.utils.TestUtils;
-import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.sistearth.utils.TestUtils.createPost;
+import static org.junit.Assert.assertEquals;
 
-public class PostsGetSingleTest extends TestCase {
+public class PostsGetSingleTest {
     @Test
     public void testGet() throws Exception {
-        Post post = TestUtils.createPost("Lorem ipsum", "Dolor sit amet, consectetur adipiscing elit.");
+        Post post = createPost("Lorem ipsum", "Dolor sit amet, consectetur adipiscing elit.");
 
         PostManager model = Mockito.mock(PostManager.class);
         Mockito.when(model.getById(post.getId())).thenReturn(post);
