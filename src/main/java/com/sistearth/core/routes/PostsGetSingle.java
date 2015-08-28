@@ -2,9 +2,8 @@ package com.sistearth.core.routes;
 
 import com.sistearth.api.handler.Answer;
 import com.sistearth.api.handler.Handler;
-import com.sistearth.api.serializer.Serializer;
 import com.sistearth.core.database.PostManager;
-import com.sistearth.core.models.Post;
+import com.sistearth.core.serializers.PostSerializer;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -14,11 +13,11 @@ import static com.sistearth.api.handler.Answer.ok;
 
 public class PostsGetSingle implements Route, Handler {
     private PostManager model;
-    private Serializer<Post> serializer;
+    private PostSerializer serializer;
 
     public PostsGetSingle(PostManager model) {
         this.model = model;
-        this.serializer = new Serializer<>("posts");
+        this.serializer = new PostSerializer();
     }
 
     @Override

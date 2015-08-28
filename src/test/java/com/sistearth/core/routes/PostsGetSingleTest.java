@@ -2,9 +2,9 @@ package com.sistearth.core.routes;
 
 import com.sistearth.api.handler.Answer;
 import com.sistearth.api.handler.Handler;
-import com.sistearth.api.serializer.Serializer;
 import com.sistearth.core.database.PostManager;
 import com.sistearth.core.models.Post;
+import com.sistearth.core.serializers.PostSerializer;
 import com.sistearth.utils.TestUtils;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class PostsGetSingleTest extends TestCase {
         PostManager model = Mockito.mock(PostManager.class);
         Mockito.when(model.getById(post.getId())).thenReturn(post);
 
-        String json = new Serializer<Post>("posts").serialize(newArrayList(post));
+        String json = new PostSerializer().serialize(newArrayList(post));
 
         Handler handler = new PostsGetSingle(model);
         assertEquals(new Answer(200, json), handler.process("0"));
