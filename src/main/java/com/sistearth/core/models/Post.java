@@ -1,14 +1,20 @@
 package com.sistearth.core.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class Post implements Serializable {
+public class Post {
     private int id;
+
     private String title;
+
     private String body;
-    private Date created_at;
+
+    @JsonProperty("created_at")
+    private Date createdAt;
+
+    private User author;
 }

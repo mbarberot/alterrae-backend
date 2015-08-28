@@ -9,7 +9,7 @@ public class TestUtils {
         Post post = new Post();
         post.setBody(body);
         post.setTitle(title);
-        post.setCreated_at(new Date());
+        post.setCreatedAt(new Date());
         return post;
     }
 }
