@@ -12,6 +12,8 @@ import static spark.SparkBase.secure;
 
 public class App {
 
+    public static final String BASE_URL = "https://localhost:8080";
+
     public static void main(String[] args) {
         setConfig();
         enableCORS();

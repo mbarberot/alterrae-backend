@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class Post {
-    private int id;
+    private Integer id;
 
     private String title;
 
