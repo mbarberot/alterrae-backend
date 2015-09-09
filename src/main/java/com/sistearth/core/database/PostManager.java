@@ -18,9 +18,13 @@ public class PostManager implements ModelManager<Post> {
 
     @Override
     public List<Post> getAll() throws ModelException {
+        List<Post> posts;
         try (Connection conn = database.open()) {
-            return conn.createQuery("SELECT * FROM posts").executeAndFetch(Post.class);
+            posts = conn.createQuery("SELECT * FROM posts")
+                    .addColumnMapping("created_at", "createdAt")
+                    .executeAndFetch(Post.class);
         }
+        return posts;
     }
 
     @Override
@@ -28,6 +32,7 @@ public class PostManager implements ModelManager<Post> {
         try (Connection conn = database.open()) {
             List<Post> postsForId = conn.createQuery("SELECT * FROM posts WHERE id = :id")
                     .addParameter("id", id)
+                    .addColumnMapping("created_at", "createdAt")
                     .executeAndFetch(Post.class);
             if (postsForId.size() > 0) {
                 return postsForId.get(0);
@@ -55,6 +60,7 @@ public class PostManager implements ModelManager<Post> {
         try (Connection conn = database.open()) {
             List<Post> postsForId = conn.createQuery("SELECT * FROM posts WHERE id = :id")
                     .addParameter("id", id)
+                    .addColumnMapping("created_at", "createdAt")
                     .executeAndFetch(Post.class);
             return postsForId.size() > 0;
         }

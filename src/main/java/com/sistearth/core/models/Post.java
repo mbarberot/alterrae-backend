@@ -16,5 +16,5 @@ public class Post {
     @JsonProperty("created_at")
     private Date createdAt;
 
-    private User author;
+    private Integer author;
 }
