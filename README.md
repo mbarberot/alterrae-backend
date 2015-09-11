@@ -19,6 +19,9 @@ Tools
 * Spark framework (light, easy and simple)
 * Guava
 * Sql2o
+* Jackson
+* Lombok
+* JUnit
 
 ### Deployment
 
@@ -52,7 +55,27 @@ Hit return to question ``Enter key password for <sistearth>``
 Then, go to https://localhost:8080
 
 ### Run with docker
-
-``make run-docker``  
-``make``
+  
+``make``  
 Then go to https://localhost
+
+Useful tools
+------------
+
+### Sonar
+
+Source code analysis tool.
+
+  1. Run Sonarqube server with docker
+    * The first time : ``docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1``
+    * Nex time : ``docker start sonarqube``
+  2. Launch analysis with maven
+    * ``mvn sonar:sonar``
+  
+### Adminer
+
+PHPMyAdmin-like
+
+  1. Run with docker : ``docker run -d -p 8888:80 --link sistearthbackend_database_1:database clue/adminer``  
+  2. Go to http://localhost:8888
+  3. Login using db credential and host will be 'database'.
