@@ -4,6 +4,10 @@ import com.sistearth.core.models.User;
 import com.sistearth.tools.jsonapi.JSONApi;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 
+import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
+import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
+import static com.sistearth.tools.jsonapi.JSONApi.newDataDocument;
+
 public class JSONApiUserBuilder {
     private User user;
 
@@ -12,17 +16,17 @@ public class JSONApiUserBuilder {
     }
 
     public Object build() {
-        return JSONApi.newDataDocument()
+        return newDataDocument()
                 .data(buildData())
                 .build();
     }
 
     public JSONApiDataBuilder buildData() {
-        return JSONApi.newData(
+        return newData(
                 user.getId().toString(),
                 "user"
         ).attributes(
-                JSONApi.newAttributes()
+                newAttributes()
                         .add("username", user.getUsername())
                         .add("email", user.getEmail())
         );

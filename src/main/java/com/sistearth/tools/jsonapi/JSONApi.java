@@ -6,15 +6,16 @@ import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataDocumentBuilder;
 
 public class JSONApi {
-    public static JSONApiDataBuilder newData(String id, String type) {
-        return new JSONApiDataBuilder(id, type);
-    }
-
-    public static JSONApiAttributesBuilder newAttributes() {
-        return new JSONApiAttributesBuilder();
-    }
-
     public static JSONApiDataDocumentBuilder newDataDocument() {
         return new JSONApiDataDocumentBuilder();
+    }
+
+    public static class Data {
+        public static JSONApiDataBuilder newData(String id, String type) {
+            return new JSONApiDataBuilder(id, type);
+        }
+        public static JSONApiAttributesBuilder newAttributes() {
+            return new JSONApiAttributesBuilder();
+        }
     }
 }

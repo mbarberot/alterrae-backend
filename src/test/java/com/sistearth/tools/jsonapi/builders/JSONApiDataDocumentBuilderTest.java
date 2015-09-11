@@ -9,6 +9,8 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import java.util.Map;
 
 import static com.sistearth.tools.jsonapi.JSONApi.*;
+import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
+import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
 
 public class JSONApiDataDocumentBuilderTest {
 
