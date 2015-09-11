@@ -10,10 +10,10 @@ import java.util.Date;
 public class TestUtils {
     public static User createUser(int id, String username, String password, String email) {
         User user = new User();
-        user.setId(0);
-        user.setUsername("foo");
-        user.setPassword("secret");
-        user.setEmail("foo@bar.com");
+        user.setId(id);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
         return user;
     }
 

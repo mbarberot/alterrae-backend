@@ -11,4 +11,9 @@ public class JSONApiDataBuilder extends JSONApiBuilder {
         data.put("attributes", attributesBuilder.build());
         return this;
     }
+
+    public JSONApiDataBuilder relationships(JSONApiRelationshipsBuilder relationshipsBuilder) {
+        data.put("relationships", relationshipsBuilder.build());
+        return this;
+    }
 }

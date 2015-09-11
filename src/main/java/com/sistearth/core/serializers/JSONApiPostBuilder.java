@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
+import static com.sistearth.tools.jsonapi.JSONApi.Data.newRelationships;
 
 public class JSONApiPostBuilder {
 
@@ -35,6 +36,10 @@ public class JSONApiPostBuilder {
                                 .add("title", post.getTitle())
                                 .add("body", post.getBody())
                                 .add("created_at", dateFormatter.format(post.getCreatedAt()))
+                )
+                .relationships(
+                        newRelationships()
+                                .addData("author", post.getAuthor().toString(), "user")
                 )
                 ;
     }

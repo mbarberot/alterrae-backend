@@ -1,6 +1,7 @@
 package com.sistearth.tools.jsonapi.builders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sistearth.tools.jsonapi.JSONApi;
 import org.junit.Before;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -11,6 +12,8 @@ import java.util.Map;
 import static com.sistearth.tools.jsonapi.JSONApi.*;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
+import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
+import static org.skyscreamer.jsonassert.JSONCompareMode.STRICT;
 
 public class JSONApiDataDocumentBuilderTest {
 
@@ -22,8 +25,7 @@ public class JSONApiDataDocumentBuilderTest {
     }
 
     @Test
-    public void testBuild() throws Exception {
-
+    public void testBasicData() throws Exception {
         Map<String, Object> jsonApiObject = newDataDocument().data(
                 newData("0", "foo")
                         .attributes(
@@ -37,6 +39,35 @@ public class JSONApiDataDocumentBuilderTest {
                 "type: 'foo', id: '0', " +
                 "attributes: { bar: '25', shmoops: 'bazinga' } " +
                 "}}";
-        JSONAssert.assertEquals(expectedJson, mapper.writeValueAsString(jsonApiObject), JSONCompareMode.STRICT);
+        assertEquals(expectedJson, mapper.writeValueAsString(jsonApiObject), STRICT);
     }
+
+    @Test
+    public void testDataWithRelationShip() throws Exception {
+        Map<String, Object> jsonApiObject = newDataDocument().data(
+                newData("0", "foo")
+                        .attributes(
+                                newAttributes()
+                                        .add("cookie", "25")
+                                        .add("shmoops", "bazinga")
+                        )
+                        .relationships(
+                                JSONApi.Data.newRelationships()
+                                        .addData("giggles", "1", "bar")
+                        )
+        ).build();
+
+        String expectedJson = "{ data : { " +
+                "type: 'foo', id: '0', " +
+                "attributes: { cookie: '25', shmoops: 'bazinga' }, " +
+                "relationships: { giggles: { data: [{ type: 'bar', id: '1' }]}} " +
+                "}}";
+
+        assertEquals(
+                expectedJson,
+                mapper.writeValueAsString(jsonApiObject),
+                STRICT
+        );
+    }
+
 }
