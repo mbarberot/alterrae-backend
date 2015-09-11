@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sistearth.tools.jsonapi.JSONApi;
 import org.junit.Before;
 import org.junit.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.skyscreamer.jsonassert.JSONCompareMode;
 
 import java.util.Map;
 
@@ -35,33 +33,53 @@ public class JSONApiDataDocumentBuilderTest {
                         )
         ).build();
 
-        String expectedJson = "{ data : { " +
+        String expectedJson = "{ data : [{ " +
                 "type: 'foo', id: '0', " +
                 "attributes: { bar: '25', shmoops: 'bazinga' } " +
-                "}}";
+                "}]}";
         assertEquals(expectedJson, mapper.writeValueAsString(jsonApiObject), STRICT);
     }
 
     @Test
     public void testDataWithRelationShip() throws Exception {
-        Map<String, Object> jsonApiObject = newDataDocument().data(
-                newData("0", "foo")
-                        .attributes(
-                                newAttributes()
-                                        .add("cookie", "25")
-                                        .add("shmoops", "bazinga")
-                        )
-                        .relationships(
-                                JSONApi.Data.newRelationships()
-                                        .addData("giggles", "1", "bar")
-                        )
-        ).build();
+        Map<String, Object> jsonApiObject = newDataDocument()
+                .data(
+                        newData("0", "foo")
+                                .attributes(
+                                        newAttributes()
+                                                .add("cookie", "25")
+                                                .add("shmoops", "bazinga")
+                                )
+                                .relationships(
+                                        JSONApi.Data.newRelationships()
+                                                .addSingleData("giggles", "1", "bar")
 
-        String expectedJson = "{ data : { " +
-                "type: 'foo', id: '0', " +
-                "attributes: { cookie: '25', shmoops: 'bazinga' }, " +
-                "relationships: { giggles: { data: [{ type: 'bar', id: '1' }]}} " +
-                "}}";
+                                )
+                )
+                .included(
+                        newData("1", "bar")
+                                .attributes(
+                                        newAttributes()
+                                                .add("cacao", "yes")
+                                )
+                )
+                .build();
+
+        String expectedJson =
+                "{" +
+                "   data : [{ " +
+                "       type: 'foo', " +
+                "       id: '0', " +
+                "       attributes: { cookie: '25', shmoops: 'bazinga' }, " +
+                "       relationships: { " +
+                "           giggles: { data: { type: 'bar', id: '1' } }" +
+                "       } " +
+                "   }], " +
+                "   included: [{ "   +
+                "       type: 'bar', id: '1'," +
+                "       attributes: { cacao: 'yes' } " +
+                "   }]" +
+                "}";
 
         assertEquals(
                 expectedJson,

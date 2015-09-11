@@ -6,31 +6,44 @@ import com.sistearth.tools.jsonapi.JSONApi;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import static com.google.common.collect.Iterables.toArray;
+import static com.google.common.collect.Lists.newArrayList;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newRelationships;
 
 public class JSONApiPostBuilder {
 
-    private final Post post;
-    private final User user;
     private final SimpleDateFormat dateFormatter;
 
-    public JSONApiPostBuilder(Post post, User user) {
-        this.post = post;
-        this.user = user;
+    public JSONApiPostBuilder() {
         this.dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
-    public Object build() {
+    public Object build(List<Post> posts, List<User> authors) {
         return JSONApi.newDataDocument()
-                .data(buildData())
+                .data(buildDatas(posts))
+                .included(new JSONApiUserBuilder().buildDatas(authors))
                 .build();
     }
 
-    public JSONApiDataBuilder buildData() {
-        return newData(post.getId().toString(), "post")
+    public Object build(Post post, User author) {
+        return build(newArrayList(post), newArrayList(author));
+    }
+
+    public JSONApiDataBuilder[] buildDatas(List<Post> posts) {
+        List<JSONApiDataBuilder> builders = newArrayList();
+        for (Post post : posts) {
+            builders.add(buildData(post));
+        }
+
+        return toArray(builders, JSONApiDataBuilder.class);
+    }
+
+    public JSONApiDataBuilder buildData(Post post) {
+        return newData(post.getId().toString(), "posts")
                 .attributes(
                         newAttributes()
                                 .add("title", post.getTitle())
@@ -39,7 +52,7 @@ public class JSONApiPostBuilder {
                 )
                 .relationships(
                         newRelationships()
-                                .addData("author", post.getAuthor().toString(), "user")
+                                .addSingleData("author", post.getAuthor().toString(), "users")
                 )
                 ;
     }

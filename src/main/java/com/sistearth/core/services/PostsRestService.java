@@ -6,6 +6,7 @@ import com.sistearth.core.database.PostManager;
 import com.sistearth.core.database.UserManager;
 import com.sistearth.core.models.Post;
 import com.sistearth.core.models.User;
+import com.sistearth.core.serializers.JSONApiPostBuilder;
 import com.sistearth.core.serializers.JsonSerializer;
 
 import java.util.List;
@@ -30,13 +31,13 @@ public class PostsRestService implements Service {
             for (Post post : posts) {
                 authors.add(userManager.getById(post.getAuthor()));
             }
-            return newHashMap(of("posts", posts, "authors", authors));
+            return new JSONApiPostBuilder().build(posts, authors);
         }, new JsonSerializer());
 
         get("/api/posts/:id", (request, response) -> {
             Post post = postManager.getById(valueOf(request.params("id")));
-            User user = userManager.getById(post.getAuthor());
-            return newHashMap(of("post", post, "author", user));
+            User author = userManager.getById(post.getAuthor());
+            return new JSONApiPostBuilder().build(post, author);
         }, new JsonSerializer());
     }
 

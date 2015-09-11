@@ -4,27 +4,37 @@ import com.sistearth.core.models.User;
 import com.sistearth.tools.jsonapi.JSONApi;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 
+import java.util.List;
+
+import static com.google.common.collect.Iterables.toArray;
+import static com.google.common.collect.Lists.newArrayList;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
 import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
 import static com.sistearth.tools.jsonapi.JSONApi.newDataDocument;
 
 public class JSONApiUserBuilder {
-    private User user;
-
-    public JSONApiUserBuilder(User user) {
-        this.user = user;
-    }
-
-    public Object build() {
+    public Object build(List<User> users) {
         return newDataDocument()
-                .data(buildData())
+                .data(buildDatas(users))
                 .build();
     }
 
-    public JSONApiDataBuilder buildData() {
+    public Object build(User user) {
+        return build(newArrayList(user));
+    }
+
+    public JSONApiDataBuilder[] buildDatas(List<User> users) {
+        List<JSONApiDataBuilder> builders = newArrayList();
+        for (User user : users) {
+            builders.add(buildData(user));
+        }
+        return toArray(builders, JSONApiDataBuilder.class);
+    }
+
+    public JSONApiDataBuilder buildData(User user) {
         return newData(
                 user.getId().toString(),
-                "user"
+                "users"
         ).attributes(
                 newAttributes()
                         .add("username", user.getUsername())

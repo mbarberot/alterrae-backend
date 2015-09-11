@@ -1,6 +1,5 @@
 package com.sistearth.test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sistearth.core.models.Post;
 import com.sistearth.core.models.User;
 import com.sistearth.core.serializers.JsonSerializer;

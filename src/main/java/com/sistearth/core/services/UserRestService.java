@@ -16,7 +16,7 @@ public class UserRestService implements Service {
         UserManager userManager = new UserManager(getDatabase());
         get("/api/users/:id", (request, response) -> {
             User user = userManager.getById(Integer.valueOf(request.params("id")));
-            return new JSONApiUserBuilder(user).build();
+            return new JSONApiUserBuilder().build(user);
         }, new JsonSerializer());
     }
 }
