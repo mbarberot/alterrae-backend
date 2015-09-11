@@ -4,6 +4,7 @@ import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
 import com.sistearth.core.services.IndexService;
 import com.sistearth.core.services.PostsRestService;
+import com.sistearth.core.services.UserRestService;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
@@ -12,11 +13,14 @@ import static spark.SparkBase.secure;
 
 public class App {
 
+    public static final String BASE_URL = "https://localhost:8080";
+
     public static void main(String[] args) {
         setConfig();
         enableCORS();
         setServices(
                 new IndexService(),
+                new UserRestService(),
                 new PostsRestService()
         );
     }

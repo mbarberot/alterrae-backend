@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class Post {
-    private int id;
+    private Integer id;
 
     private String title;
 
@@ -16,5 +16,5 @@ public class Post {
     @JsonProperty("created_at")
     private Date createdAt;
 
-    private User author;
+    private Integer author;
 }
