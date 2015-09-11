@@ -4,6 +4,7 @@ import com.sistearth.api.service.Service;
 import com.sistearth.api.service.ServiceException;
 import com.sistearth.core.services.IndexService;
 import com.sistearth.core.services.PostsRestService;
+import com.sistearth.core.services.UserRestService;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
@@ -19,6 +20,7 @@ public class App {
         enableCORS();
         setServices(
                 new IndexService(),
+                new UserRestService(),
                 new PostsRestService()
         );
     }

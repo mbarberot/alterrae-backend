@@ -1,7 +1,6 @@
 package com.sistearth.core.serializers;
 
 import com.sistearth.core.models.User;
-import junit.framework.TestCase;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
