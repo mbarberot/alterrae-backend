@@ -4,6 +4,11 @@ import lombok.Data;
 
 @Data
 public class Answer {
-    private int code;
+    private int status;
     private String body;
+
+    public Answer (int status, String body){
+        this.status = status;
+        this.body = body;
+    }
 }

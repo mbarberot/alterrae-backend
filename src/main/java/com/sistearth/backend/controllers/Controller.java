@@ -1,8 +1,9 @@
 package com.sistearth.backend.controllers;
 
-import spark.Request;
-import spark.Response;
+import com.sistearth.backend.controllers.payloads.Payload;
+
+import java.util.Map;
 
 public interface Controller {
-    Answer process(Request request, Response response) throws ControllerException;
+    Answer process(Payload payload, Map<String,String> params) throws ControllerException;
 }

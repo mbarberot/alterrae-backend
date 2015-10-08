@@ -9,7 +9,7 @@ import com.sistearth.backend.views.legacy.JsonSerializer;
 
 public class JsonApiUserView implements View<User> {
     @Override
-    public String render(User bean) throws ViewException {
+    public String renderBean(User bean) throws ViewException {
         try {
             return new JsonSerializer().render2(new JSONApiUserBuilder().build(bean));
         } catch (JsonProcessingException e) {

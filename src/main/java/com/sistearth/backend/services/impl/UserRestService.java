@@ -1,6 +1,6 @@
 package com.sistearth.backend.services.impl;
 
-import com.sistearth.backend.controllers.impl.GetUserById;
+import com.sistearth.backend.controllers.impl.GetUserByIdController;
 import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.models.managers.impl.UserManager;
@@ -18,6 +18,6 @@ public class UserRestService implements Service {
         ModelManager<User> userManager = new UserManager(getDatabase());
         View<User> userView = new JsonApiUserView();
 
-        get("/api/users/:id", new GetUserById(userManager, userView));
+        get("/api/users/:id", new GetUserByIdController(userManager, userView));
     }
 }
