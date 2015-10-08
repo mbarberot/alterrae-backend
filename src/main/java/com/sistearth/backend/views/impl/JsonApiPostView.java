@@ -1,18 +1,18 @@
 package com.sistearth.backend.views.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sistearth.backend.views.UserView;
+import com.sistearth.backend.views.PostView;
 import com.sistearth.backend.views.ViewException;
-import com.sistearth.backend.views.legacy.JSONApiUserBuilder;
+import com.sistearth.backend.views.legacy.JSONApiPostBuilder;
 import com.sistearth.backend.views.legacy.JsonSerializer;
 
-public class JsonApiUserView extends UserView {
+public class JsonApiPostView extends PostView {
     @Override
     public String render() throws ViewException {
         try {
-            return new JsonSerializer().render2(new JSONApiUserBuilder().build(user));
+            return new JsonSerializer().render2(new JSONApiPostBuilder().build(post, author));
         } catch (JsonProcessingException e) {
-            throw new ViewException("Failed to render bean", e);
+            throw new ViewException("Failed to serialize", e);
         }
     }
 }

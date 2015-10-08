@@ -6,7 +6,6 @@ import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.models.managers.impl.UserManager;
 import com.sistearth.backend.services.Service;
 import com.sistearth.backend.services.ServiceException;
-import com.sistearth.backend.views.View;
 import com.sistearth.backend.views.impl.JsonApiUserView;
 
 import static com.sistearth.backend.utils.Database.getDatabase;
@@ -16,8 +15,7 @@ public class UserRestService implements Service {
     @Override
     public void registerRoutes() throws ServiceException {
         ModelManager<User> userManager = new UserManager(getDatabase());
-        View<User> userView = new JsonApiUserView();
 
-        get("/api/users/:id", new GetUserByIdController(userManager, userView));
+        get("/api/users/:id", new GetUserByIdController(userManager, new JsonApiUserView()));
     }
 }

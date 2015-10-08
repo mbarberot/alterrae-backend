@@ -1,16 +1,14 @@
-package com.sistearth.core.serializers;
+package com.sistearth.backend.views.legacy;
 
 import com.sistearth.backend.models.beans.Post;
 import com.sistearth.backend.models.beans.User;
-import com.sistearth.backend.views.legacy.JSONApiPostBuilder;
-import com.sistearth.backend.views.legacy.JSONApiUserBuilder;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
 import java.util.GregorianCalendar;
 
-import static com.sistearth.test.TestUtils.*;
+import static com.sistearth.backend.utils.TestUtils.*;
 
 public class JSONApiPostBuilderTest {
 
