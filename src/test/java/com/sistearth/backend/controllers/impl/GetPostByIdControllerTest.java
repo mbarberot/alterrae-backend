@@ -7,6 +7,7 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestPostManager;
 import com.sistearth.backend.utils.TestUserManager;
+import com.sistearth.backend.views.PostView;
 import com.sistearth.backend.views.impl.JsonApiPostView;
 import org.junit.Test;
 
@@ -32,9 +33,9 @@ public class GetPostByIdControllerTest {
         ModelManager<User> userManager = mock(TestUserManager.class);
         when(userManager.getById(1)).thenReturn(user);
 
-        JsonApiPostView expectedView = new JsonApiPostView();
-        expectedView.setPost(post);
-        expectedView.setAuthor(user);
+        PostView expectedView = new JsonApiPostView();
+        expectedView.setPosts(post);
+        expectedView.setAuthors(user);
 
         assertEquals(
                 new Answer(200, expectedView.render()),

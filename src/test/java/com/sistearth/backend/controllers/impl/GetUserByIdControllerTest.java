@@ -6,6 +6,7 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TestUtils;
+import com.sistearth.backend.views.UserView;
 import com.sistearth.backend.views.impl.JsonApiUserView;
 import org.junit.Test;
 
@@ -24,12 +25,13 @@ public class GetUserByIdControllerTest {
         ModelManager<User> userManager = mock(TestUserManager.class);
         when(userManager.getById(0)).thenReturn(user);
 
-        JsonApiUserView expectedView = new JsonApiUserView();
+        UserView expectedView = new JsonApiUserView();
         expectedView.setUser(user);
 
         assertEquals(
                 new Answer(200, expectedView.render()),
-                new GetUserByIdController(userManager, new JsonApiUserView()).process(new EmptyPayload(), newHashMap(of("id", "0")))
+                new GetUserByIdController(userManager, new JsonApiUserView())
+                        .process(new EmptyPayload(), newHashMap(of("id", "0")))
         );
     }
 

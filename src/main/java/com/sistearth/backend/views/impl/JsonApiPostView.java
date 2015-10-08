@@ -10,7 +10,7 @@ public class JsonApiPostView extends PostView {
     @Override
     public String render() throws ViewException {
         try {
-            return new JsonSerializer().render2(new JSONApiPostBuilder().build(post, author));
+            return new JsonSerializer().render2(new JSONApiPostBuilder().build(posts, authors));
         } catch (JsonProcessingException e) {
             throw new ViewException("Failed to serialize", e);
         }
