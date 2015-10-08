@@ -16,7 +16,7 @@ public abstract class BaseController<V extends Payload> implements Route, Contro
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
-        Answer answer = process(payloadExtractor.extractPayload(request), request.params());
+        Answer answer = process(payloadExtractor.extractPayload(request.body()), request.params());
         response.status(answer.getStatus());
         return answer.getBody();
     }
