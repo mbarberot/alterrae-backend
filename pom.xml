@@ -28,7 +28,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.sistearth.App</mainClass>
+                    <mainClass>com.sistearth.backend.App</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -48,7 +48,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>com.sistearth.App</mainClass>
+                            <mainClass>com.sistearth.backend.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
