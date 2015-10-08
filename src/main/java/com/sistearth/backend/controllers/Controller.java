@@ -4,6 +4,6 @@ import com.sistearth.backend.controllers.payloads.Payload;
 
 import java.util.Map;
 
-public interface Controller {
-    Answer process(Payload payload, Map<String,String> params) throws ControllerException;
+public interface Controller<V extends Payload> {
+    Answer process(V payload, Map<String,String> params) throws ControllerException;
 }

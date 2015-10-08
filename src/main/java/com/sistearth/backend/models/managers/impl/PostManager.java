@@ -43,7 +43,7 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post create(Post post) throws ModelException {
+    public void create(Post post) throws ModelException {
         try (Connection conn = database.beginTransaction()) {
             conn.createQuery("INSERT INTO post (title, body, created_at) VALUES (:title, :body, :created_at)")
                     .addParameter("title", post.getTitle())
@@ -51,7 +51,6 @@ public class PostManager implements ModelManager<Post> {
                     .addParameter("created_at", new Date())
                     .executeUpdate();
             conn.commit();
-            return conn.createQuery("SELECT * FROM post ORDER BY id DESC LIMIT 1").executeAndFetch(Post.class).get(0);
         }
     }
 

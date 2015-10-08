@@ -19,7 +19,7 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
-    public User create(User entity) throws ModelException {
+    public void create(User entity) throws ModelException {
         throw new NotImplementedException();
     }
 

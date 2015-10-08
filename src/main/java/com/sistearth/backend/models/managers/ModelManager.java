@@ -7,7 +7,7 @@ public interface ModelManager<T> {
 
     T getById(int id) throws ModelException;
 
-    T create(T entity) throws ModelException;
+    void create(T entity) throws ModelException;
 
     boolean exists(int id) throws ModelException;
 }

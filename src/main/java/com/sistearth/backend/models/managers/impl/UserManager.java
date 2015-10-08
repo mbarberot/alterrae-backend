@@ -35,8 +35,7 @@ public class UserManager implements ModelManager<User>{
     }
 
     @Override
-    public User create(User entity) throws ModelException {
-        return null;
+    public void create(User entity) throws ModelException {
     }
 
     @Override

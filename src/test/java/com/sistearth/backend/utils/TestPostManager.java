@@ -19,7 +19,7 @@ public class TestPostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post create(Post entity) throws ModelException {
+    public void create(Post entity) throws ModelException {
         throw new NotImplementedException();
     }
 
