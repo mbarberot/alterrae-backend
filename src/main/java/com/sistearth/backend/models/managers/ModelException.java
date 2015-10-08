@@ -1,4 +1,4 @@
-package com.sistearth.api.model;
+package com.sistearth.backend.models.managers;
 
 public class ModelException extends Exception {
     public ModelException(String message) {

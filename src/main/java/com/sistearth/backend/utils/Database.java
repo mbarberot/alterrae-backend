@@ -1,4 +1,4 @@
-package com.sistearth.api.database;
+package com.sistearth.backend.utils;
 
 import org.sql2o.Sql2o;
 

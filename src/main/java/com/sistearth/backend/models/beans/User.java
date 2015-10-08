@@ -1,4 +1,4 @@
-package com.sistearth.core.models;
+package com.sistearth.backend.models.beans;
 
 import lombok.Data;
 

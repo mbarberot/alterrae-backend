@@ -1,8 +1,8 @@
-package com.sistearth.core.database;
+package com.sistearth.backend.models.managers.impl;
 
-import com.sistearth.api.model.ModelManager;
-import com.sistearth.api.model.ModelException;
-import com.sistearth.core.models.Post;
+import com.sistearth.backend.models.beans.Post;
+import com.sistearth.backend.models.managers.ModelException;
+import com.sistearth.backend.models.managers.ModelManager;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 

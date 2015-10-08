@@ -1,7 +1,6 @@
-package com.sistearth.core.serializers;
+package com.sistearth.backend.views.legacy;
 
-import com.sistearth.core.models.User;
-import com.sistearth.tools.jsonapi.JSONApi;
+import com.sistearth.backend.models.beans.User;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 
 import java.util.List;

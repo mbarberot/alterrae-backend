@@ -1,18 +1,18 @@
 package com.sistearth.backend.services.impl;
 
+import com.sistearth.backend.models.beans.Post;
+import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.models.managers.impl.PostManager;
+import com.sistearth.backend.models.managers.impl.UserManager;
 import com.sistearth.backend.services.Service;
 import com.sistearth.backend.services.ServiceException;
-import com.sistearth.core.database.PostManager;
-import com.sistearth.core.database.UserManager;
-import com.sistearth.core.models.Post;
-import com.sistearth.core.models.User;
-import com.sistearth.core.serializers.JSONApiPostBuilder;
-import com.sistearth.core.serializers.JsonSerializer;
+import com.sistearth.backend.views.legacy.JSONApiPostBuilder;
+import com.sistearth.backend.views.legacy.JsonSerializer;
 
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.sistearth.api.database.Database.getDatabase;
+import static com.sistearth.backend.utils.Database.getDatabase;
 import static java.lang.Integer.valueOf;
 import static spark.Spark.get;
 

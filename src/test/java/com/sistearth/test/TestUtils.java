@@ -1,8 +1,8 @@
 package com.sistearth.test;
 
-import com.sistearth.core.models.Post;
-import com.sistearth.core.models.User;
-import com.sistearth.core.serializers.JsonSerializer;
+import com.sistearth.backend.models.beans.Post;
+import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.views.legacy.JsonSerializer;
 
 import java.util.Date;
 

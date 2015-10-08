@@ -1,6 +1,7 @@
 package com.sistearth.core.serializers;
 
-import com.sistearth.core.models.User;
+import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.views.legacy.JSONApiUserBuilder;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;

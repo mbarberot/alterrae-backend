@@ -1,4 +1,4 @@
-package com.sistearth.api.model;
+package com.sistearth.backend.models.managers;
 
 import java.util.List;
 

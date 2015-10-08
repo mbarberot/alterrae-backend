@@ -1,22 +1,23 @@
 package com.sistearth.backend.services.impl;
 
+import com.sistearth.backend.controllers.impl.GetUserById;
+import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.models.managers.ModelManager;
+import com.sistearth.backend.models.managers.impl.UserManager;
 import com.sistearth.backend.services.Service;
 import com.sistearth.backend.services.ServiceException;
-import com.sistearth.core.database.UserManager;
-import com.sistearth.core.models.User;
-import com.sistearth.core.serializers.JSONApiUserBuilder;
-import com.sistearth.core.serializers.JsonSerializer;
+import com.sistearth.backend.views.View;
+import com.sistearth.backend.views.impl.JsonApiUserView;
 
-import static com.sistearth.api.database.Database.getDatabase;
+import static com.sistearth.backend.utils.Database.getDatabase;
 import static spark.Spark.get;
 
 public class UserRestService implements Service {
     @Override
     public void registerRoutes() throws ServiceException {
-        UserManager userManager = new UserManager(getDatabase());
-        get("/api/users/:id", (request, response) -> {
-            User user = userManager.getById(Integer.valueOf(request.params("id")));
-            return new JSONApiUserBuilder().build(user);
-        }, new JsonSerializer());
+        ModelManager<User> userManager = new UserManager(getDatabase());
+        View<User> userView = new JsonApiUserView();
+
+        get("/api/users/:id", new GetUserById(userManager, userView));
     }
 }

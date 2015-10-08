@@ -1,7 +1,7 @@
-package com.sistearth.core.serializers;
+package com.sistearth.backend.views.legacy;
 
-import com.sistearth.core.models.Post;
-import com.sistearth.core.models.User;
+import com.sistearth.backend.models.beans.Post;
+import com.sistearth.backend.models.beans.User;
 import com.sistearth.tools.jsonapi.JSONApi;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
 
@@ -10,9 +10,7 @@ import java.util.List;
 
 import static com.google.common.collect.Iterables.toArray;
 import static com.google.common.collect.Lists.newArrayList;
-import static com.sistearth.tools.jsonapi.JSONApi.Data.newAttributes;
-import static com.sistearth.tools.jsonapi.JSONApi.Data.newData;
-import static com.sistearth.tools.jsonapi.JSONApi.Data.newRelationships;
+import static com.sistearth.tools.jsonapi.JSONApi.Data.*;
 
 public class JSONApiPostBuilder {
 
