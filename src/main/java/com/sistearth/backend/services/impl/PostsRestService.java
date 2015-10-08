@@ -1,7 +1,7 @@
-package com.sistearth.core.services;
+package com.sistearth.backend.services.impl;
 
-import com.sistearth.api.service.Service;
-import com.sistearth.api.service.ServiceException;
+import com.sistearth.backend.services.Service;
+import com.sistearth.backend.services.ServiceException;
 import com.sistearth.core.database.PostManager;
 import com.sistearth.core.database.UserManager;
 import com.sistearth.core.models.Post;
@@ -11,9 +11,7 @@ import com.sistearth.core.serializers.JsonSerializer;
 
 import java.util.List;
 
-import static com.google.common.collect.ImmutableMap.of;
 import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
 import static com.sistearth.api.database.Database.getDatabase;
 import static java.lang.Integer.valueOf;
 import static spark.Spark.get;

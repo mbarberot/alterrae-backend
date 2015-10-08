@@ -1,7 +1,7 @@
-package com.sistearth.core.services;
+package com.sistearth.backend.services.impl;
 
-import com.sistearth.api.service.Service;
-import com.sistearth.api.service.ServiceException;
+import com.sistearth.backend.services.Service;
+import com.sistearth.backend.services.ServiceException;
 import com.sistearth.core.database.UserManager;
 import com.sistearth.core.models.User;
 import com.sistearth.core.serializers.JSONApiUserBuilder;

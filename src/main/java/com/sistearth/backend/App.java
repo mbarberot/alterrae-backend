@@ -1,10 +1,10 @@
-package com.sistearth;
+package com.sistearth.backend;
 
-import com.sistearth.api.service.Service;
-import com.sistearth.api.service.ServiceException;
-import com.sistearth.core.services.IndexService;
-import com.sistearth.core.services.PostsRestService;
-import com.sistearth.core.services.UserRestService;
+import com.sistearth.backend.services.Service;
+import com.sistearth.backend.services.ServiceException;
+import com.sistearth.backend.services.impl.IndexService;
+import com.sistearth.backend.services.impl.PostsRestService;
+import com.sistearth.backend.services.impl.UserRestService;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
