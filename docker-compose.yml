@@ -2,6 +2,7 @@ backend:
     build: .
     ports:
         - "443:8080"
+        - "8787:8787"
     links:
         - database
 
@@ -13,3 +14,9 @@ database:
         MYSQL_PASSWORD: sistearth
         MYSQL_DATABASE: sistearth
 
+admin:
+    image: clue/adminer
+    ports:
+        - "3000:80"
+    links:
+        - database
