@@ -27,4 +27,16 @@ public class TestUserManager implements ModelManager<User> {
     public boolean exists(int id) throws ModelException {
         throw new NotImplementedException();
     }
+
+
+    @Override
+    public User getBy(String field, Object value) throws ModelException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void delete(User entity) throws ModelException {
+        throw new NotImplementedException();
+    }
 }
+

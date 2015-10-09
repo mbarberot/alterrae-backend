@@ -31,7 +31,7 @@ public class GetUserByIdControllerTest {
         assertEquals(
                 new Answer(200, expectedView.render()),
                 new GetUserByIdController(userManager, new JsonApiUserView())
-                        .process(new EmptyPayload(), newHashMap(of("id", "0")))
+                        .process(new EmptyPayload(), newHashMap(of(":id", "0")))
         );
     }
 

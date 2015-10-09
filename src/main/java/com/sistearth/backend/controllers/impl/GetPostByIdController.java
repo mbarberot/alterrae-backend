@@ -29,7 +29,7 @@ public class GetPostByIdController extends EmptyPayloadController {
     @Override
     public Answer process(Map<String, String> params) throws ControllerException {
         try {
-            Post post = postManager.getById(valueOf(params.get("id")));
+            Post post = postManager.getById(valueOf(params.get(":id")));
             User author = userManager.getById(post.getAuthor());
 
             view.setPosts(post);

@@ -26,7 +26,7 @@ public class GetUserByIdController extends EmptyPayloadController {
     @Override
     public Answer process(Map<String, String> params) throws ControllerException {
         try {
-            User user = userManager.getById(valueOf(params.get("id")));
+            User user = userManager.getById(valueOf(params.get(":id")));
             view.setUser(user);
             return new Answer(200, view.render());
         } catch (ViewException | ModelException e) {
