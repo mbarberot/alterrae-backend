@@ -19,12 +19,22 @@ public class TestPostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post create(Post entity) throws ModelException {
+    public void create(Post entity) throws ModelException {
         throw new NotImplementedException();
     }
 
     @Override
     public boolean exists(int id) throws ModelException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public Post getBy(String field, Object value) throws ModelException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void delete(Post entity) throws ModelException {
         throw new NotImplementedException();
     }
 }

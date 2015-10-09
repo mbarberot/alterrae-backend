@@ -11,4 +11,8 @@ public class Answer {
         this.status = status;
         this.body = body;
     }
+
+    public Answer(int status) {
+        this(status, "");
+    }
 }

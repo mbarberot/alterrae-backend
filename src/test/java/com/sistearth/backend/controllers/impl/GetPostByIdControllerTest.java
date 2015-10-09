@@ -40,7 +40,7 @@ public class GetPostByIdControllerTest {
         assertEquals(
                 new Answer(200, expectedView.render()),
                 new GetPostByIdController(postManager, userManager, new JsonApiPostView())
-                        .process(new EmptyPayload(), newHashMap(of("id", "0")))
+                        .process(new EmptyPayload(), newHashMap(of(":id", "0")))
         );
     }
 }

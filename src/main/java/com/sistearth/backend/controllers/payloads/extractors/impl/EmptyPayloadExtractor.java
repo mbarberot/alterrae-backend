@@ -1,13 +1,11 @@
 package com.sistearth.backend.controllers.payloads.extractors.impl;
 
-import com.sistearth.backend.controllers.payloads.Payload;
 import com.sistearth.backend.controllers.payloads.extractors.PayloadExtractor;
 import com.sistearth.backend.controllers.payloads.impl.EmptyPayload;
-import spark.Request;
 
-public class EmptyPayloadExtractor implements PayloadExtractor {
+public class EmptyPayloadExtractor implements PayloadExtractor<EmptyPayload> {
     @Override
-    public Payload extractPayload(Request request) {
+    public EmptyPayload extractPayload(String requestBody) {
         return new EmptyPayload();
     }
 }

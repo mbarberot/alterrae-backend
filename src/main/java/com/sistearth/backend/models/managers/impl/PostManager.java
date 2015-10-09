@@ -6,8 +6,9 @@ import com.sistearth.backend.models.managers.ModelManager;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.Date;
 import java.util.List;
+
+import static java.lang.String.format;
 
 public class PostManager implements ModelManager<Post> {
     private Sql2o database;
@@ -29,30 +30,12 @@ public class PostManager implements ModelManager<Post> {
 
     @Override
     public Post getById(int id) throws ModelException {
-        try (Connection conn = database.open()) {
-            List<Post> postsForId = conn.createQuery("SELECT * FROM posts WHERE id = :id")
-                    .addParameter("id", id)
-                    .addColumnMapping("created_at", "createdAt")
-                    .executeAndFetch(Post.class);
-            if (postsForId.size() > 0) {
-                return postsForId.get(0);
-            } else {
-                throw new ModelException("Post with id " + id + " does not exists.");
-            }
-        }
+        return getBy("id", id);
     }
 
     @Override
-    public Post create(Post post) throws ModelException {
-        try (Connection conn = database.beginTransaction()) {
-            conn.createQuery("INSERT INTO post (title, body, created_at) VALUES (:title, :body, :created_at)")
-                    .addParameter("title", post.getTitle())
-                    .addParameter("body", post.getBody())
-                    .addParameter("created_at", new Date())
-                    .executeUpdate();
-            conn.commit();
-            return conn.createQuery("SELECT * FROM post ORDER BY id DESC LIMIT 1").executeAndFetch(Post.class).get(0);
-        }
+    public void create(Post post) throws ModelException {
+        throw new ModelException("[Not implemented] PostManager->create(post)");
     }
 
     @Override
@@ -64,5 +47,25 @@ public class PostManager implements ModelManager<Post> {
                     .executeAndFetch(Post.class);
             return postsForId.size() > 0;
         }
+    }
+
+    @Override
+    public Post getBy(String field, Object value) throws ModelException {
+        try (Connection conn = database.open()) {
+            List<Post> postsForId = conn.createQuery(format("SELECT * FROM posts WHERE %s = :%s", field, field))
+                    .addParameter(field, value)
+                    .addColumnMapping("created_at", "createdAt")
+                    .executeAndFetch(Post.class);
+            if (postsForId.size() > 0) {
+                return postsForId.get(0);
+            } else {
+                throw new ModelException(format("Post with %s: %s does not exists.", field, value));
+            }
+        }
+    }
+
+    @Override
+    public void delete(Post entity) throws ModelException {
+        throw new ModelException("[Not implemented] PostManager->delete(post)");
     }
 }
