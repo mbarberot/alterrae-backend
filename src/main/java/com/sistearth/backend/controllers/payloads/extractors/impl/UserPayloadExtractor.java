@@ -10,7 +10,7 @@ import org.apache.commons.lang.NotImplementedException;
 
 import java.io.IOException;
 
-import static org.apache.commons.lang.StringUtils.isBlank;
+import static com.sistearth.backend.controllers.payloads.extractors.PayloadExtractorUtils.isFilled;
 
 public class UserPayloadExtractor implements PayloadExtractor<UserPayload> {
 
@@ -59,12 +59,6 @@ public class UserPayloadExtractor implements PayloadExtractor<UserPayload> {
         if (isFilled(emailNode)) {
             payload.setEmail(emailNode.asText());
         }
-    }
-
-    private boolean isFilled(JsonNode usernameNode) {
-        return !usernameNode.isMissingNode()
-                && !usernameNode.isNull()
-                && !isBlank(usernameNode.asText());
     }
 
     public enum PayloadType {
