@@ -11,9 +11,10 @@ public class LoginViewTest {
     public void testRender() throws Exception {
         LoginView view = new LoginView();
         view.setUser(createUser(0, "jon", "winterfell", "jon@snow.com"));
+        view.setToken("my-token");
 
         assertEquals(
-                "{ username: \"jon\", password: \"winterfell\" }",
+                "{ username: \"jon\", token: \"my-token\" }",
                 view.render(),
                 STRICT
         );
