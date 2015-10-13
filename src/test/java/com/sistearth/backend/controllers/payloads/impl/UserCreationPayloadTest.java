@@ -20,7 +20,7 @@ public class UserCreationPayloadTest {
         payload.setPassword("winterfell");
         payload.setEmail("jon@snow.com");
 
-        assertEquals(user, payload.getUser());
+        assertEquals(user, payload.getEntity());
     }
 
     @Test

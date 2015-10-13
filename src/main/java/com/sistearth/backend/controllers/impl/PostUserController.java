@@ -27,7 +27,7 @@ public class PostUserController extends BaseController<UserPayload> {
     public Answer process(UserPayload payload, Map<String, String> params) throws ControllerException {
         if (payload.isValid()) {
             try {
-                User payloadUser = payload.getUser();
+                User payloadUser = payload.getEntity();
                 userManager.create(payloadUser);
                 view.setUser(userManager.getBy("username", payloadUser.getUsername()));
 
