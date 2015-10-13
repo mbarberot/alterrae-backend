@@ -1,4 +1,4 @@
-package com.sistearth.backend.views.legacy;
+package com.sistearth.backend.views.json.api;
 
 import com.sistearth.backend.models.beans.User;
 import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;

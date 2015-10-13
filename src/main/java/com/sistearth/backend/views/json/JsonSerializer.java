@@ -1,11 +1,10 @@
-package com.sistearth.backend.views.legacy;
+package com.sistearth.backend.views.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import spark.ResponseTransformer;
 
-public class JsonSerializer implements ResponseTransformer {
+public class JsonSerializer {
 
     private final ObjectMapper mapper;
 
@@ -14,14 +13,7 @@ public class JsonSerializer implements ResponseTransformer {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    @Override
-    public String render(Object o) throws Exception {
-        return render2(o);
-    }
-
-    public String render2(Object o) throws JsonProcessingException {
+    public String render(Object o) throws JsonProcessingException {
         return mapper.writeValueAsString(o);
     }
-
-
 }
