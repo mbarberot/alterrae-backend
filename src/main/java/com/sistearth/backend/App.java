@@ -3,6 +3,7 @@ package com.sistearth.backend;
 import com.sistearth.backend.services.Service;
 import com.sistearth.backend.services.ServiceException;
 import com.sistearth.backend.services.impl.IndexService;
+import com.sistearth.backend.services.impl.LoginService;
 import com.sistearth.backend.services.impl.PostsRestService;
 import com.sistearth.backend.services.impl.UserRestService;
 
@@ -21,6 +22,7 @@ public class App {
         setServices(
                 new IndexService(),
                 new UserRestService(),
+                new LoginService(),
                 new PostsRestService()
         );
     }
