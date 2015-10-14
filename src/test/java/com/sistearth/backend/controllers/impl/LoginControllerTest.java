@@ -23,18 +23,15 @@ import static org.mockito.Mockito.*;
 public class LoginControllerTest {
     @Test
     public void testLoginSuccess() throws Exception {
-        User payloadUser = new User();
-        payloadUser.setUsername("Jon");
-        payloadUser.setPassword("winterfell");
-
         User databaseUser = createUser(1, "Jon", "winterfell", "jon@snow.com");
 
         LoginPayload payload = mock(LoginPayload.class);
         doReturn(true).when(payload).isValid();
-        doReturn(payloadUser.getUsername()).when(payload).getUsername();
+        doReturn("Jon").when(payload).getUsername();
+        doReturn("winterfell").when(payload).getPassword();
 
         ModelManager<User> userManager = mock(TestUserManager.class);
-        doReturn(databaseUser).when(userManager).getBy(eq("username"), eq(payloadUser.getUsername()));
+        doReturn(databaseUser).when(userManager).getBy("username", "Jon");
 
         TokenManager tokenManager = mock(TokenManager.class);
         doReturn("my-token").when(tokenManager).createToken(anyObject());
@@ -49,7 +46,7 @@ public class LoginControllerTest {
                         .process(payload, emptyMap())
         );
 
-        verify(userManager, atLeastOnce()).getBy(eq("username"), eq(payloadUser.getUsername()));
+        verify(userManager, atLeastOnce()).getBy("username", "Jon");
     }
 
     @Test
