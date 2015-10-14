@@ -2,7 +2,6 @@ package com.sistearth.backend.utils;
 
 import com.sistearth.backend.models.beans.Post;
 import com.sistearth.backend.models.beans.User;
-import com.sistearth.backend.views.legacy.JsonSerializer;
 
 import java.util.Date;
 
@@ -24,9 +23,5 @@ public class TestUtils {
         post.setCreatedAt(createdAt);
         post.setAuthor(authorId);
         return post;
-    }
-
-    public static String serialize(Object object) throws Exception {
-        return new JsonSerializer().render(object);
     }
 }

@@ -29,7 +29,7 @@ public class PostUserControllerTest {
 
         UserPayload payload = mock(UserPayload.class);
         doReturn(true).when(payload).isValid();
-        doReturn(payloadUser).when(payload).getUser();
+        doReturn(payloadUser).when(payload).getEntity();
 
         ModelManager<User> userManager = spy(TestUserManager.class);
         doNothing().when(userManager).create(anyObject());

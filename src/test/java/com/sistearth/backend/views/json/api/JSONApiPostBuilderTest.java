@@ -1,14 +1,16 @@
-package com.sistearth.backend.views.legacy;
+package com.sistearth.backend.views.json.api;
 
 import com.sistearth.backend.models.beans.Post;
 import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.views.json.JsonSerializer;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
 import java.util.GregorianCalendar;
 
-import static com.sistearth.backend.utils.TestUtils.*;
+import static com.sistearth.backend.utils.TestUtils.createPost;
+import static com.sistearth.backend.utils.TestUtils.createUser;
 
 public class JSONApiPostBuilderTest {
 
@@ -27,13 +29,13 @@ public class JSONApiPostBuilderTest {
                 "   }" +
                 "}], " +
                 "included: [ " +
-                serialize(new JSONApiUserBuilder().buildData(user).build()) +
+                new JsonSerializer().render(new JSONApiUserBuilder().buildData(user).build()) +
                 "]" +
                 "}";
 
         JSONAssert.assertEquals(
                 expectedJson,
-                serialize(new JSONApiPostBuilder().build(post, user)),
+                new JsonSerializer().render(new JSONApiPostBuilder().build(post, user)),
                 JSONCompareMode.STRICT
         );
     }
