@@ -10,6 +10,7 @@ import com.sistearth.backend.utils.TestPostManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.views.PostView;
 import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.JsonApiPostView;
 import org.junit.Test;
 
@@ -54,7 +55,7 @@ public class GetPostByIdControllerTest {
 
         ModelManager<User> userManager = mock(TestUserManager.class);
 
-        ErrorView expectedView = new ErrorView("404");
+        ErrorView expectedView = new SimpleErrorView("404");
 
         assertEquals(
                 new Answer(404, expectedView.render()),

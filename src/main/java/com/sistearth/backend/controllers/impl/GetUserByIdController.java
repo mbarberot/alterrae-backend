@@ -7,7 +7,7 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.views.UserView;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 
 import java.util.Map;
 
@@ -31,7 +31,7 @@ public class GetUserByIdController extends EmptyPayloadController {
             view.setUser(user);
             return handleView(200, view);
         } catch (ModelException e) {
-            return handleView(404, new ErrorView("404"));
+            return handleView(404, new SimpleErrorView("404"));
         }
     }
 }

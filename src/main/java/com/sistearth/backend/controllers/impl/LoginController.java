@@ -9,7 +9,7 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TokenManager;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.LoginView;
 
 import java.util.Map;
@@ -43,7 +43,7 @@ public class LoginController extends BaseController<LoginPayload> {
         } catch (ModelException ignored) {
         }
 
-        return handleView(400, new ErrorView("400", BAD_CREDENTIALS));
+        return handleView(400, new SimpleErrorView("400", BAD_CREDENTIALS));
     }
 
 

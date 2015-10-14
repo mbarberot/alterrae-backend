@@ -8,7 +8,7 @@ import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TokenManager;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.LoginView;
 import org.junit.Test;
 
@@ -62,7 +62,7 @@ public class LoginControllerTest {
         doReturn("my-token").when(tokenManager).createToken(anyObject());
 
         assertEquals(
-                new Answer(400, new ErrorView("400", BAD_CREDENTIALS).render()),
+                new Answer(400, new SimpleErrorView("400", BAD_CREDENTIALS).render()),
                 new LoginController(userManager, tokenManager, new LoginPayloadExtractor(), new LoginView())
                         .process(payload, emptyMap())
         );
@@ -84,7 +84,7 @@ public class LoginControllerTest {
         doReturn("my-token").when(tokenManager).createToken(anyObject());
 
         assertEquals(
-                new Answer(400, new ErrorView("400", BAD_CREDENTIALS).render()),
+                new Answer(400, new SimpleErrorView("400", BAD_CREDENTIALS).render()),
                 new LoginController(userManager, tokenManager, new LoginPayloadExtractor(), new LoginView())
                         .process(payload, emptyMap())
         );

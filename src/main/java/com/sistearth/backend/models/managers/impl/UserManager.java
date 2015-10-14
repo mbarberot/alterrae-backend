@@ -5,12 +5,13 @@ import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
 
 import java.util.List;
 
 import static java.lang.String.format;
 
-public class UserManager implements ModelManager<User>{
+public class UserManager implements ModelManager<User> {
     private Sql2o database;
 
     public UserManager(Sql2o database) {
@@ -36,6 +37,14 @@ public class UserManager implements ModelManager<User>{
                     .addParameter("email", user.getEmail())
                     .executeUpdate();
             conn.commit();
+        } catch (Sql2oException e) {
+            String message = e.getMessage();
+            throw new ModelException(
+                    "Failed to create user",
+                    (message.contains("'username'")) ? "username" :
+                            (message.contains("'email'")) ? "email" : "",
+                    e
+            );
         }
     }
 

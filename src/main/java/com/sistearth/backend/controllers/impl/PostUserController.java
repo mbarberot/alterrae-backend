@@ -10,14 +10,14 @@ import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.views.UserView;
 import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.util.Map;
 
 import static com.sistearth.backend.controllers.AnswerFactory.handleView;
-import static com.sistearth.backend.utils.Errors.User.ALREADY_EXISTS;
-import static com.sistearth.backend.utils.Errors.User.NOT_VALID;
+import static org.eclipse.jetty.util.StringUtil.isNotBlank;
 
 public class PostUserController extends BaseController<UserPayload> {
     private static final Log LOG = LogFactory.getLog(PostUserController.class.getName());
@@ -39,7 +39,13 @@ public class PostUserController extends BaseController<UserPayload> {
             try {
                 userManager.create(payloadUser);
             } catch (ModelException e) {
-                return handleView(400, new ErrorView("400", ALREADY_EXISTS));
+                SimpleErrorView view;
+                if(isNotBlank(e.getCode())){
+                    view = new SimpleErrorView("400", e.getCode());
+                } else {
+                    view = new SimpleErrorView("400");
+                }
+                return handleView(400, view);
             }
 
             User user;
@@ -54,7 +60,7 @@ public class PostUserController extends BaseController<UserPayload> {
 
             return handleView(200, view);
         } else {
-            return handleView(400, new ErrorView("400", NOT_VALID));
+            return handleView(400, new ErrorView(payload.getErrors()));
         }
     }
 }

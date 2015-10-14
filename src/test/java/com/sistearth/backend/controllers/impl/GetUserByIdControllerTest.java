@@ -8,7 +8,7 @@ import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TestUtils;
 import com.sistearth.backend.views.UserView;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
+import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.JsonApiUserView;
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class GetUserByIdControllerTest {
         when(userManager.getById(anyInt())).thenThrow(new ModelException("foo"));
 
         assertEquals(
-                new Answer(404, new ErrorView("404").render()),
+                new Answer(404, new SimpleErrorView("404").render()),
                 new GetUserByIdController(userManager, new JsonApiUserView())
                         .process(new EmptyPayload(), newHashMap(of(":id", "0")))
         );
