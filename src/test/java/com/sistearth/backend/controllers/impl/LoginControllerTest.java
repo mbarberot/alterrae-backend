@@ -4,12 +4,15 @@ import com.sistearth.backend.controllers.Answer;
 import com.sistearth.backend.controllers.payloads.extractors.impl.LoginPayloadExtractor;
 import com.sistearth.backend.controllers.payloads.impl.LoginPayload;
 import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TokenManager;
+import com.sistearth.backend.views.impl.ErrorView.ErrorView;
 import com.sistearth.backend.views.impl.LoginView;
 import org.junit.Test;
 
+import static com.sistearth.backend.utils.Errors.Login.BAD_CREDENTIALS;
 import static com.sistearth.backend.utils.TestUtils.createUser;
 import static java.util.Collections.emptyMap;
 import static org.junit.Assert.assertEquals;
@@ -47,5 +50,46 @@ public class LoginControllerTest {
         );
 
         verify(userManager, atLeastOnce()).getBy(eq("username"), eq(payloadUser.getUsername()));
+    }
+
+    @Test
+    public void testLoginBadUsername() throws Exception {
+        LoginPayload payload = mock(LoginPayload.class);
+        doReturn(true).when(payload).isValid();
+        doReturn("Foo").when(payload).getUsername();
+
+        ModelManager<User> userManager = mock(TestUserManager.class);
+        doThrow(new ModelException("bar")).when(userManager).getBy(eq("username"), anyString());
+
+        TokenManager tokenManager = mock(TokenManager.class);
+        doReturn("my-token").when(tokenManager).createToken(anyObject());
+
+        assertEquals(
+                new Answer(400, new ErrorView("400", BAD_CREDENTIALS).render()),
+                new LoginController(userManager, tokenManager, new LoginPayloadExtractor(), new LoginView())
+                        .process(payload, emptyMap())
+        );
+    }
+
+    @Test
+    public void testLoginWrongPassword() throws Exception {
+        User user = createUser(1, "Jon", "winterfell", "jon@snow.com");
+
+        LoginPayload payload = mock(LoginPayload.class);
+        doReturn(true).when(payload).isValid();
+        doReturn("Jon").when(payload).getUsername();
+        doReturn("wrong-password").when(payload).getPassword();
+
+        ModelManager<User> userManager = mock(TestUserManager.class);
+        doReturn(user).when(userManager).getBy(eq("username"), eq(user.getUsername()));
+
+        TokenManager tokenManager = mock(TokenManager.class);
+        doReturn("my-token").when(tokenManager).createToken(anyObject());
+
+        assertEquals(
+                new Answer(400, new ErrorView("400", BAD_CREDENTIALS).render()),
+                new LoginController(userManager, tokenManager, new LoginPayloadExtractor(), new LoginView())
+                        .process(payload, emptyMap())
+        );
     }
 }
