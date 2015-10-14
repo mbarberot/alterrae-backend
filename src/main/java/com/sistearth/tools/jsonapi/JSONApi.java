@@ -1,12 +1,12 @@
 package com.sistearth.tools.jsonapi;
 
 
-import com.sistearth.tools.jsonapi.builders.JSONApiAttributesBuilder;
-import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
-import com.sistearth.tools.jsonapi.builders.JSONApiDataDocumentBuilder;
-import com.sistearth.tools.jsonapi.builders.JSONApiRelationshipsBuilder;
-import com.sistearth.tools.jsonapi.builders.errors.JSONApiErrorDocumentBuilder;
-import com.sistearth.tools.jsonapi.builders.errors.JsonApiErrorBuilder;
+import com.sistearth.tools.jsonapi.builders.data.JSONApiAttributesBuilder;
+import com.sistearth.tools.jsonapi.builders.data.JSONApiDataBuilder;
+import com.sistearth.tools.jsonapi.builders.data.JSONApiDataDocumentBuilder;
+import com.sistearth.tools.jsonapi.builders.data.JSONApiRelationshipsBuilder;
+import com.sistearth.tools.jsonapi.builders.error.JSONApiErrorDocumentBuilder;
+import com.sistearth.tools.jsonapi.builders.error.JsonApiErrorBuilder;
 
 public class JSONApi {
     public static JSONApiDataDocumentBuilder newDataDocument() {

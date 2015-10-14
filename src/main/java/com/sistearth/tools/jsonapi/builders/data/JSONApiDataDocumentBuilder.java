@@ -1,4 +1,6 @@
-package com.sistearth.tools.jsonapi.builders;
+package com.sistearth.tools.jsonapi.builders.data;
+
+import com.sistearth.tools.jsonapi.builders.JSONApiBuilder;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.stream.Collectors.toList;

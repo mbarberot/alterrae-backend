@@ -1,4 +1,4 @@
-package com.sistearth.tools.jsonapi.builders.errors;
+package com.sistearth.tools.jsonapi.builders.error;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.stream.Collectors.toList;

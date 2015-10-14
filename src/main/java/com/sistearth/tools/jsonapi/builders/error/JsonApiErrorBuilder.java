@@ -1,4 +1,4 @@
-package com.sistearth.tools.jsonapi.builders.errors;
+package com.sistearth.tools.jsonapi.builders.error;
 
 import com.sistearth.tools.jsonapi.builders.JSONApiBuilder;
 

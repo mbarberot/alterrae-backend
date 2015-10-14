@@ -3,7 +3,7 @@ package com.sistearth.backend.views.json.api;
 import com.sistearth.backend.models.beans.Post;
 import com.sistearth.backend.models.beans.User;
 import com.sistearth.tools.jsonapi.JSONApi;
-import com.sistearth.tools.jsonapi.builders.JSONApiDataBuilder;
+import com.sistearth.tools.jsonapi.builders.data.JSONApiDataBuilder;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
