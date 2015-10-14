@@ -5,12 +5,14 @@ import com.sistearth.backend.views.UserView;
 import com.sistearth.backend.views.ViewException;
 import com.sistearth.backend.views.json.JsonSerializer;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Map;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static com.google.common.collect.Maps.newHashMap;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class LoginView extends UserView {
     protected String token;
