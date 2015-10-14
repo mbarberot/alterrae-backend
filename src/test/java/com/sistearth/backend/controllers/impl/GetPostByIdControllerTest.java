@@ -4,10 +4,12 @@ import com.sistearth.backend.controllers.Answer;
 import com.sistearth.backend.controllers.payloads.impl.EmptyPayload;
 import com.sistearth.backend.models.beans.Post;
 import com.sistearth.backend.models.beans.User;
+import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestPostManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.views.PostView;
+import com.sistearth.backend.views.impl.ErrorView.ErrorView;
 import com.sistearth.backend.views.impl.JsonApiPostView;
 import org.junit.Test;
 
@@ -18,12 +20,13 @@ import static com.google.common.collect.Maps.newHashMap;
 import static com.sistearth.backend.utils.TestUtils.createPost;
 import static com.sistearth.backend.utils.TestUtils.createUser;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class GetPostByIdControllerTest {
     @Test
-    public void testName() throws Exception {
+    public void testSuccess() throws Exception {
         User user = createUser(1, "Jon", "winterfell", "jon@snow.com");
         Post post = createPost(0, "Foo", "Lorem ipsum", new Date(), user.getId());
 
@@ -42,5 +45,22 @@ public class GetPostByIdControllerTest {
                 new GetPostByIdController(postManager, userManager, new JsonApiPostView())
                         .process(new EmptyPayload(), newHashMap(of(":id", "0")))
         );
+    }
+
+    @Test
+    public void testPostNotFound() throws Exception {
+        ModelManager<Post> postManager = mock(TestPostManager.class);
+        when(postManager.getById(anyInt())).thenThrow(new ModelException("foo"));
+
+        ModelManager<User> userManager = mock(TestUserManager.class);
+
+        ErrorView expectedView = new ErrorView("404");
+
+        assertEquals(
+                new Answer(404, expectedView.render()),
+                new GetPostByIdController(postManager, userManager, new JsonApiPostView())
+                        .process(new EmptyPayload(), newHashMap(of(":id", "0")))
+        );
+
     }
 }

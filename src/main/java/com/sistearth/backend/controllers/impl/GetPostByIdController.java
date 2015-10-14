@@ -8,10 +8,11 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.views.PostView;
-import com.sistearth.backend.views.ViewException;
+import com.sistearth.backend.views.impl.ErrorView.ErrorView;
 
 import java.util.Map;
 
+import static com.sistearth.backend.controllers.AnswerFactory.handleView;
 import static java.lang.Integer.valueOf;
 
 public class GetPostByIdController extends EmptyPayloadController {
@@ -35,9 +36,9 @@ public class GetPostByIdController extends EmptyPayloadController {
             view.setPosts(post);
             view.setAuthors(author);
 
-            return new Answer(200, view.render());
-        } catch (ModelException | ViewException e) {
-            throw new ControllerException("Failed", e);
+            return handleView(200, view);
+        } catch (ModelException  e) {
+            return handleView(404, new ErrorView("404"));
         }
     }
 }
