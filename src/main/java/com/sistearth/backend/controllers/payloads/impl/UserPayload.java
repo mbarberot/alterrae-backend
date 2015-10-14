@@ -11,6 +11,7 @@ public abstract class UserPayload implements Payload<User> {
     protected String email;
     protected String actualPassword;
 
+    @Override
     public User getEntity() {
         User user = new User();
         user.setUsername(username);

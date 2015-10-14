@@ -7,7 +7,7 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.views.UserView;
-import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
+import com.sistearth.backend.views.impl.error.SimpleErrorView;
 
 import java.util.Map;
 

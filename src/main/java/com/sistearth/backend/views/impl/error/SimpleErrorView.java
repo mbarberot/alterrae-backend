@@ -1,4 +1,4 @@
-package com.sistearth.backend.views.impl.ErrorView;
+package com.sistearth.backend.views.impl.error;
 
 import com.sistearth.backend.utils.Error;
 

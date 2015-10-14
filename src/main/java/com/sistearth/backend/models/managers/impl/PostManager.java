@@ -45,7 +45,7 @@ public class PostManager implements ModelManager<Post> {
                     .addParameter("id", id)
                     .addColumnMapping("created_at", "createdAt")
                     .executeAndFetch(Post.class);
-            return postsForId.size() > 0;
+            return !postsForId.isEmpty();
         }
     }
 
@@ -56,7 +56,7 @@ public class PostManager implements ModelManager<Post> {
                     .addParameter(field, value)
                     .addColumnMapping("created_at", "createdAt")
                     .executeAndFetch(Post.class);
-            if (postsForId.size() > 0) {
+            if (!postsForId.isEmpty()) {
                 return postsForId.get(0);
             } else {
                 throw new ModelException(format("Post with %s: %s does not exists.", field, value));

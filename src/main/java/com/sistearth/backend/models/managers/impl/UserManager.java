@@ -59,7 +59,7 @@ public class UserManager implements ModelManager<User> {
             List<User> usersForId = conn.createQuery(format("SELECT * FROM users WHERE %s = :%s", field, field))
                     .addParameter(field, value)
                     .executeAndFetch(User.class);
-            if (usersForId.size() > 0) {
+            if (!usersForId.isEmpty()) {
                 return usersForId.get(0);
             } else {
                 throw new ModelException(format("User with %s: %s does not exists.", field, value));

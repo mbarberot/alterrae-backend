@@ -9,6 +9,9 @@ public class AnswerFactory {
 
     private static final Log LOG = LogFactory.getLog(AnswerFactory.class.getName());
 
+    private AnswerFactory() {
+    }
+
     public static Answer handleView(int status, View view) {
         try {
             return new Answer(status, view.render());

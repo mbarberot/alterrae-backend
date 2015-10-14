@@ -8,8 +8,8 @@ import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.Error;
 import com.sistearth.backend.utils.TestUserManager;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
 import com.sistearth.backend.views.impl.JsonApiUserView;
+import com.sistearth.backend.views.impl.error.ErrorView;
 import org.junit.Test;
 
 import java.util.List;

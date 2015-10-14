@@ -8,8 +8,8 @@ import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TestUtils;
 import com.sistearth.backend.views.UserView;
-import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.JsonApiUserView;
+import com.sistearth.backend.views.impl.error.SimpleErrorView;
 import org.junit.Test;
 
 import static com.google.common.collect.ImmutableMap.of;

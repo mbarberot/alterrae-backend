@@ -6,6 +6,8 @@ import com.sistearth.backend.services.impl.IndexService;
 import com.sistearth.backend.services.impl.LoginService;
 import com.sistearth.backend.services.impl.PostsRestService;
 import com.sistearth.backend.services.impl.UserRestService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
@@ -15,6 +17,10 @@ import static spark.SparkBase.secure;
 public class App {
 
     public static final String BASE_URL = "https://localhost:8080";
+    private static final Log LOG = LogFactory.getLog(App.class.getName());
+
+    private App() {
+    }
 
     public static void main(String[] args) {
         setConfig();
@@ -55,7 +61,7 @@ public class App {
             try {
                 service.registerRoutes();
             } catch (ServiceException e) {
-                e.printStackTrace();
+                LOG.error("Failed to register routes", e);
             }
         }
     }

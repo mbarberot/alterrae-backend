@@ -9,6 +9,9 @@ import com.sistearth.tools.jsonapi.builders.error.JSONApiErrorDocumentBuilder;
 import com.sistearth.tools.jsonapi.builders.error.JsonApiErrorBuilder;
 
 public class JSONApi {
+    private JSONApi() {
+    }
+
     public static JSONApiDataDocumentBuilder newDataDocument() {
         return new JSONApiDataDocumentBuilder();
     }
@@ -16,11 +19,13 @@ public class JSONApi {
     public static JSONApiErrorDocumentBuilder newErrorDocument() {
         return new JSONApiErrorDocumentBuilder();
     }
-
     public static class Data {
+        private Data() {
+        }
         public static JSONApiDataBuilder newData(String id, String type) {
             return new JSONApiDataBuilder(id, type);
         }
+
         public static JSONApiAttributesBuilder newAttributes() {
             return new JSONApiAttributesBuilder();
         }
@@ -28,10 +33,13 @@ public class JSONApi {
             return new JSONApiRelationshipsBuilder();
         }
     }
-
     public static class Error {
+
+        private Error() {
+        }
         public static JsonApiErrorBuilder newError() {
             return new JsonApiErrorBuilder();
         }
+
     }
 }

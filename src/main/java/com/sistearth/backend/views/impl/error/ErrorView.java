@@ -1,4 +1,4 @@
-package com.sistearth.backend.views.impl.ErrorView;
+package com.sistearth.backend.views.impl.error;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sistearth.backend.utils.Error;

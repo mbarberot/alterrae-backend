@@ -9,8 +9,8 @@ import com.sistearth.backend.models.beans.User;
 import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.views.UserView;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
-import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
+import com.sistearth.backend.views.impl.error.ErrorView;
+import com.sistearth.backend.views.impl.error.SimpleErrorView;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -39,13 +39,13 @@ public class PostUserController extends BaseController<UserPayload> {
             try {
                 userManager.create(payloadUser);
             } catch (ModelException e) {
-                SimpleErrorView view;
+                SimpleErrorView errorView;
                 if(isNotBlank(e.getCode())){
-                    view = new SimpleErrorView("400", e.getCode());
+                    errorView = new SimpleErrorView("400", e.getCode());
                 } else {
-                    view = new SimpleErrorView("400");
+                    errorView = new SimpleErrorView("400");
                 }
-                return handleView(400, view);
+                return handleView(400, errorView);
             }
 
             User user;

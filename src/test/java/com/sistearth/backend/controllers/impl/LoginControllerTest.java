@@ -8,8 +8,8 @@ import com.sistearth.backend.models.managers.ModelException;
 import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.utils.TokenManager;
-import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.LoginView;
+import com.sistearth.backend.views.impl.error.SimpleErrorView;
 import org.junit.Test;
 
 import static com.sistearth.backend.utils.Errors.Login.BAD_CREDENTIALS;

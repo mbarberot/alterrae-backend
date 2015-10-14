@@ -9,9 +9,9 @@ import com.sistearth.backend.models.managers.ModelManager;
 import com.sistearth.backend.utils.TestPostManager;
 import com.sistearth.backend.utils.TestUserManager;
 import com.sistearth.backend.views.PostView;
-import com.sistearth.backend.views.impl.ErrorView.ErrorView;
-import com.sistearth.backend.views.impl.ErrorView.SimpleErrorView;
 import com.sistearth.backend.views.impl.JsonApiPostView;
+import com.sistearth.backend.views.impl.error.ErrorView;
+import com.sistearth.backend.views.impl.error.SimpleErrorView;
 import org.junit.Test;
 
 import java.util.Date;
