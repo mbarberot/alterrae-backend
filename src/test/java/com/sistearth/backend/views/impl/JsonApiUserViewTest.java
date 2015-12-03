@@ -13,7 +13,7 @@ public class JsonApiUserViewTest {
         JsonApiUserView view = new JsonApiUserView();
         view.setUser(createUser(1, "Jon", "winterfell", "jon@snow.com"));
         assertEquals(
-                "{ \"data\" : [ { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" } ] }",
+                "{ \"data\" : { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" } }",
                 view.render(),
                 STRICT
         );

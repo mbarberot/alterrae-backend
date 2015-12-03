@@ -20,14 +20,14 @@ public class JSONApiPostBuilderTest {
         Post post = createPost(1, "Lorem Ipsum", "Dolor sit amet", new GregorianCalendar(2015, 0, 1, 12, 0, 0).getTime(), user.getId());
 
         String expectedJson = "{ " +
-                "data: [{ " +
+                "data: { " +
                 "   type: 'posts', id: '1', " +
                 "   attributes: { " +
                 "       title: 'Lorem Ipsum', body: 'Dolor sit amet', created_at: '2015-01-01 12:00:00' " +
                 "   }, relationships: { " +
                 "       author: { data: { id: '1', type: 'users' } }" +
                 "   }" +
-                "}], " +
+                "}, " +
                 "included: [ " +
                 new JsonSerializer().render(new JSONApiUserBuilder().buildData(user).build()) +
                 "]" +

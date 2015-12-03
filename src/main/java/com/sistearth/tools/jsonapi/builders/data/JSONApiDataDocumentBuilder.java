@@ -13,7 +13,9 @@ public class JSONApiDataDocumentBuilder extends JSONApiBuilder {
     public JSONApiDataDocumentBuilder data(JSONApiDataBuilder... dataBuilders) {
         data.put(
                 "data",
-                newArrayList(dataBuilders).stream().map(JSONApiDataBuilder::build).collect(toList())
+                dataBuilders.length == 1 ?
+                        dataBuilders[0].build() :
+                        newArrayList(dataBuilders).stream().map(JSONApiDataBuilder::build).collect(toList())
         );
         return this;
     }
