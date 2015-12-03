@@ -21,4 +21,9 @@ public class PostsRestService implements Service {
         get("/api/posts", new GetAllPostsController(postManager, userManager, new JsonApiPostView()));
         get("/api/posts/:id", new GetPostByIdController(postManager, userManager, new JsonApiPostView()));
     }
+
+    @Override
+    public void registerFilters() throws ServiceException {
+        // nothing to do
+    }
 }
