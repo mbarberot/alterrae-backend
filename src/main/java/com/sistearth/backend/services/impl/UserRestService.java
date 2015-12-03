@@ -1,6 +1,7 @@
 package com.sistearth.backend.services.impl;
 
 import com.sistearth.backend.controllers.impl.GetUserByIdController;
+import com.sistearth.backend.controllers.impl.GetUserProfileController;
 import com.sistearth.backend.controllers.impl.PostUserController;
 import com.sistearth.backend.controllers.payloads.extractors.impl.UserPayloadExtractor;
 import com.sistearth.backend.models.beans.User;
@@ -22,6 +23,7 @@ public class UserRestService implements Service {
     public void registerRoutes() throws ServiceException {
         ModelManager<User> userManager = new UserManager(getDatabase());
 
+        get("/api/users/profile", new GetUserProfileController(userManager, new JsonApiUserView()));
         get("/api/users/:id", new GetUserByIdController(userManager, new JsonApiUserView()));
         post("/api/users", new PostUserController(userManager, new UserPayloadExtractor(CREATION), new JsonApiUserView()));
     }
