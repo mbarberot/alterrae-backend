@@ -18,4 +18,14 @@ public class TokenManager {
                 .signWith(HS512, KEY)
                 .compact();
     }
+
+    public String decodeToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(KEY)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+
 }
