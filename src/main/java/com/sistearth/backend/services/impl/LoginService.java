@@ -24,4 +24,9 @@ public class LoginService implements Service {
                 new LoginView()
         ));
     }
+
+    @Override
+    public void registerFilters() throws ServiceException {
+        // nothing to do
+    }
 }

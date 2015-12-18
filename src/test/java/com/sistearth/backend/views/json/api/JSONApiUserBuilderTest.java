@@ -13,10 +13,10 @@ public class JSONApiUserBuilderTest {
     @Test
     public void testBuild() throws Exception {
         User user = createUser(0, "foo", "secret", "foo@bar.com");
-        String expectedJson = "{ data : [{ " +
+        String expectedJson = "{ data : { " +
                 "type: 'users', id: '0', " +
                 "attributes: { username: 'foo', email: 'foo@bar.com' } " +
-                "}]}";
+                "}}";
         JSONAssert.assertEquals(expectedJson, new JsonSerializer().render(new JSONApiUserBuilder().build(user)), JSONCompareMode.STRICT);
     }
 }

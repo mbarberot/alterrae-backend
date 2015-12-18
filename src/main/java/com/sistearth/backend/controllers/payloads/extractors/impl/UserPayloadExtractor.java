@@ -9,6 +9,7 @@ import com.sistearth.backend.controllers.payloads.impl.UserPayload;
 import org.apache.commons.lang.NotImplementedException;
 
 import java.io.IOException;
+import java.util.Map;
 
 import static com.sistearth.backend.controllers.payloads.extractors.PayloadExtractorUtils.isFilled;
 
@@ -21,8 +22,7 @@ public class UserPayloadExtractor implements PayloadExtractor<UserPayload> {
     }
 
     @Override
-    public UserPayload extractPayload(String requestBody) throws PayloadException {
-
+    public UserPayload extractPayload(String requestBody, Map<String, String> requestHeaders) throws PayloadException {
         UserPayload payload;
         switch (payloadType) {
             case CREATION:

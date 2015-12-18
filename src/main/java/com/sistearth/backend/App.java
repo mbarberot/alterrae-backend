@@ -60,6 +60,7 @@ public class App {
         for (Service service : services) {
             try {
                 service.registerRoutes();
+                service.registerFilters();
             } catch (ServiceException e) {
                 LOG.error("Failed to register routes", e);
             }

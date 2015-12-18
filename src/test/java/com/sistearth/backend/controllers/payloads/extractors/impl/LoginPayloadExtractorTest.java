@@ -4,6 +4,7 @@ import com.sistearth.backend.controllers.payloads.PayloadException;
 import com.sistearth.backend.controllers.payloads.impl.LoginPayload;
 import org.junit.Test;
 
+import static java.util.Collections.emptyMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -17,7 +18,7 @@ public class LoginPayloadExtractorTest {
 
         String json = "{\"password\":\"winterfell\",\"username\":\"jon\"}";
 
-        assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json));
+        assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json, emptyMap()));
     }
 
     @Test
@@ -27,7 +28,7 @@ public class LoginPayloadExtractorTest {
 
         String json = "{\"username\":\"jon\"}";
         try {
-            assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json));
+            assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json, emptyMap()));
         } catch (PayloadException e) {
             fail();
         }
@@ -40,7 +41,7 @@ public class LoginPayloadExtractorTest {
 
         String json = "{\"password\":null,\"username\":\"jon\"}";
         try {
-            assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json));
+            assertEquals(expectedPayload, new LoginPayloadExtractor().extractPayload(json, emptyMap()));
         } catch (PayloadException e) {
             fail();
         }

@@ -17,7 +17,7 @@ public class JsonApiPostViewTest {
         view.setAuthors(createUser(1, "Jon", "winterfell", "jon@snow.com"));
 
         JSONAssert.assertEquals(
-                "{ \"data\" : [ { \"relationships\" : { \"author\" : { \"data\" : { \"type\" : \"users\", \"id\" : \"1\" } } }, \"attributes\" : { \"created_at\" : \"2015-10-13 00:00:00\", \"title\" : \"Foo\", \"body\" : \"Lorem ipsum.\" }, \"id\" : \"1\", \"type\" : \"posts\" } ], \"included\" : [ { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" } ] }",
+                "{ \"data\" : { \"relationships\" : { \"author\" : { \"data\" : { \"type\" : \"users\", \"id\" : \"1\" } } }, \"attributes\" : { \"created_at\" : \"2015-10-13 00:00:00\", \"title\" : \"Foo\", \"body\" : \"Lorem ipsum.\" }, \"id\" : \"1\", \"type\" : \"posts\" } , \"included\" : [ { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" } ] }",
                 view.render(),
                 STRICT
         );

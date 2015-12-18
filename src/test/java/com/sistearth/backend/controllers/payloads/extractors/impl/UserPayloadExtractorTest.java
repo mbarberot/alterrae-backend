@@ -5,6 +5,7 @@ import com.sistearth.backend.controllers.payloads.impl.UserCreationPayload;
 import org.junit.Test;
 
 import static com.sistearth.backend.controllers.payloads.extractors.impl.UserPayloadExtractor.PayloadType.CREATION;
+import static java.util.Collections.emptyMap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -19,7 +20,7 @@ public class UserPayloadExtractorTest {
 
         String json = "{\"data\":{\"attributes\":{\"username\":\"jon\",\"email\":\"jon@snow.com\",\"password\":\"winterfell\",\"actual-password\":null},\"type\":\"users\"}}";
 
-        assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json));
+        assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json, emptyMap()));
     }
 
     @Test
@@ -30,7 +31,7 @@ public class UserPayloadExtractorTest {
 
         String json = "{\"data\":{\"attributes\":{\"username\":\"jon\",\"password\":\"winterfell\",\"actual-password\":null},\"type\":\"users\"}}";
         try {
-            assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json));
+            assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json, emptyMap()));
         } catch (PayloadException e) {
             fail();
         }
@@ -44,7 +45,7 @@ public class UserPayloadExtractorTest {
 
         String json = "{\"data\":{\"attributes\":{\"username\":null,\"email\":\"jon@snow.com\",\"password\":\"winterfell\",\"actual-password\":null},\"type\":\"users\"}}";
         try {
-            assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json));
+            assertEquals(expectedPayload, new UserPayloadExtractor(CREATION).extractPayload(json, emptyMap()));
         } catch (PayloadException e) {
             fail();
         }

@@ -7,13 +7,14 @@ import com.sistearth.backend.controllers.payloads.extractors.PayloadExtractor;
 import com.sistearth.backend.controllers.payloads.impl.LoginPayload;
 
 import java.io.IOException;
+import java.util.Map;
 
 import static com.sistearth.backend.controllers.payloads.extractors.PayloadExtractorUtils.isFilled;
 
 public class LoginPayloadExtractor implements PayloadExtractor<LoginPayload> {
 
     @Override
-    public LoginPayload extractPayload(String requestBody) throws PayloadException {
+    public LoginPayload extractPayload(String requestBody, Map<String, String> requestHeaders) throws PayloadException {
         LoginPayload payload = new LoginPayload();
         JsonNode rootNode;
         try {
