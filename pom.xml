@@ -3,6 +3,7 @@
 
     <groupId>com.sistearth</groupId>
     <artifactId>sistearth-backend</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
 
     <build>
@@ -16,69 +17,26 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>com.sistearth.backend.App</mainClass>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.5</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <finalName>sistearth-backend</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.sistearth.backend.App</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>sistearth-db</module>
+        <module>sistearth-db-mysql</module>
+        <module>sistearth-spark</module>
+        <module>sistearth-game</module>
+        <module>sistearth-view</module>
+        <module>sistearth-view-json</module>
+        <module>sistearth-json-utils</module>
+        <module>java-json-api</module>
+        <module>sistearth-test-utils</module>
+    </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>com.sparkjava</groupId>
-            <artifactId>spark-core</artifactId>
-            <version>2.2</version>
-        </dependency>
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.sql2o</groupId>
-            <artifactId>sql2o</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>1.2.0</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
@@ -86,25 +44,10 @@
             <version>2.6</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <groupId>org.projectlombok</groupId>
             <version>1.16.6</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.5.1</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -121,12 +64,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.0.31-beta</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>1.2.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
