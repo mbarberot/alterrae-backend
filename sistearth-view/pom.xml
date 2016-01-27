@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sistearth-view</artifactId>
+    <name>sistearth-view</name>
 
     <dependencies>
         <dependency>

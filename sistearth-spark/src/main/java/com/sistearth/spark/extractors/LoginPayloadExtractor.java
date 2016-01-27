@@ -21,14 +21,16 @@ public class LoginPayloadExtractor extends BasePayloadExtractor<LoginPayload> {
             throw new PayloadException("Failed to deserialize", e);
         }
 
-        JsonNode usernameNode = rootNode.path("username");
-        JsonNode passwordNode = rootNode.path("password");
+        if(rootNode.size() == 2) {
+            JsonNode usernameNode = rootNode.path("username");
+            JsonNode passwordNode = rootNode.path("password");
 
-        if(isFilled(usernameNode)) {
-            payload.setUsername(usernameNode.asText());
-        }
-        if(isFilled(passwordNode)){
-            payload.setPassword(passwordNode.asText());
+            if (isFilled(usernameNode)) {
+                payload.setUsername(usernameNode.asText());
+            }
+            if (isFilled(passwordNode)) {
+                payload.setPassword(passwordNode.asText());
+            }
         }
 
         return payload;

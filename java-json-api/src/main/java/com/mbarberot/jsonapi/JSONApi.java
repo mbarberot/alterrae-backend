@@ -7,10 +7,12 @@ import com.mbarberot.jsonapi.builders.data.JSONApiDataDocumentBuilder;
 import com.mbarberot.jsonapi.builders.data.JSONApiRelationshipsBuilder;
 import com.mbarberot.jsonapi.builders.error.JSONApiErrorDocumentBuilder;
 import com.mbarberot.jsonapi.builders.error.JsonApiErrorBuilder;
+import lombok.NoArgsConstructor;
 
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
 public class JSONApi {
-    private JSONApi() {
-    }
 
     public static JSONApiDataDocumentBuilder newDataDocument() {
         return new JSONApiDataDocumentBuilder();
@@ -19,9 +21,9 @@ public class JSONApi {
     public static JSONApiErrorDocumentBuilder newErrorDocument() {
         return new JSONApiErrorDocumentBuilder();
     }
+
+    @NoArgsConstructor(access = PRIVATE)
     public static class Data {
-        private Data() {
-        }
         public static JSONApiDataBuilder newData(String id, String type) {
             return new JSONApiDataBuilder(id, type);
         }
@@ -33,10 +35,9 @@ public class JSONApi {
             return new JSONApiRelationshipsBuilder();
         }
     }
-    public static class Error {
 
-        private Error() {
-        }
+    @NoArgsConstructor(access = PRIVATE)
+    public static class Error {
         public static JsonApiErrorBuilder newError() {
             return new JsonApiErrorBuilder();
         }

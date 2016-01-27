@@ -15,7 +15,7 @@ public class JsonApiPostViewTest {
     public void testRenderSinglePost() throws Exception {
 
         JSONAssert.assertEquals(
-                "{ \"data\" : { \"relationships\" : { \"author\" : { \"data\" : { \"type\" : \"users\", \"id\" : \"1\" } } }, \"attributes\" : { \"created_at\" : \"2015-10-13 00:00:00\", \"title\" : \"Foo\", \"body\" : \"Lorem ipsum.\" }, \"id\" : \"1\", \"type\" : \"posts\" } , \"included\" : [ { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" } ] }",
+                "{\"data\":{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"1\"}}},\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"1\",\"type\":\"posts\"},\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
                         new Post(1, "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), 1),
                         new User(1, "Jon", "winterfell", "jon@snow.com")
@@ -28,7 +28,7 @@ public class JsonApiPostViewTest {
     public void testRenderMultiplePost() throws Exception {
 
         JSONAssert.assertEquals(
-                "{ \"data\" : [ { \"relationships\" : { \"author\" : { \"data\" : { \"type\" : \"users\", \"id\" : \"1\" } } }, \"attributes\" : { \"created_at\" : \"2015-10-13 00:00:00\", \"title\" : \"Foo\", \"body\" : \"Lorem ipsum.\" }, \"id\" : \"1\", \"type\" : \"posts\" }, { \"relationships\" : { \"author\" : { \"data\" : { \"type\" : \"users\", \"id\" : \"2\" } } }, \"attributes\" : { \"created_at\" : \"2015-11-15 00:00:00\", \"title\" : \"Bar\", \"body\" : \"Dolor sit amet.\" }, \"id\" : \"2\", \"type\" : \"posts\" } ], \"included\" : [ { \"attributes\" : { \"email\" : \"jon@snow.com\", \"username\" : \"Jon\" }, \"id\" : \"1\", \"type\" : \"users\" }, { \"attributes\" : { \"email\" : \"bran@stark.com\", \"username\" : \"Bran\" }, \"id\" : \"2\", \"type\" : \"users\" } ] }",
+                "{\"data\":[{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"1\"}}},\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"1\",\"type\":\"posts\"},{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"2\"}}},\"attributes\":{\"created_at\":\"2015-11-15 00:00:00\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"},\"id\":\"2\",\"type\":\"posts\"}],\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"},{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"2\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
                         newArrayList(
                                 new Post(1, "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), 1),

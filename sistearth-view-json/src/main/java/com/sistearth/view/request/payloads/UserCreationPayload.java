@@ -1,6 +1,7 @@
 package com.sistearth.view.request.payloads;
 
 import com.sistearth.db.beans.Error;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -8,7 +9,13 @@ import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
+@NoArgsConstructor
 public class UserCreationPayload extends UserPayload {
+
+    public UserCreationPayload(String username, String password, String email) {
+        super(username, password, email, null);
+    }
+
     @Override
     public boolean isValid() {
         return isNotBlank(username)

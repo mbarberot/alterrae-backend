@@ -1,5 +1,6 @@
 package com.sistearth.game.auth;
 
+import com.sistearth.db.api.ModelException;
 import com.sistearth.db.beans.User;
 import com.sistearth.test.utils.TestUserManager;
 import org.junit.Test;
@@ -24,6 +25,13 @@ public class AuthenticatorTest {
         TestUserManager userManager = mock(TestUserManager.class);
         when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
         assertEquals(REJECTED, new Authenticator(userManager).authenticate("foo", "wrongpassword"));
+    }
+
+    @Test
+    public void testAuthenticateRejected_ModelException() throws Exception {
+        TestUserManager userManager = mock(TestUserManager.class);
+        when(userManager.getBy("username", "foo")).thenThrow(new ModelException("whatever"));
+        assertEquals(REJECTED, new Authenticator(userManager).authenticate("foo", "whatever"));
     }
 
     @Test

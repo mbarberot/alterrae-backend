@@ -1,21 +1,22 @@
 package com.sistearth.spark.extractors;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.NoArgsConstructor;
 import spark.Request;
 
 import java.util.Map;
 
 import static com.google.common.collect.Maps.newHashMap;
-import static org.apache.commons.lang.StringUtils.isBlank;
+import static lombok.AccessLevel.PRIVATE;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
+@NoArgsConstructor(access = PRIVATE)
 public class PayloadExtractorUtils {
-    private PayloadExtractorUtils() {
-    }
 
-    public static boolean isFilled(JsonNode usernameNode) {
-        return !usernameNode.isMissingNode()
-                && !usernameNode.isNull()
-                && !isBlank(usernameNode.asText());
+    public static boolean isFilled(JsonNode node) {
+        return !node.isMissingNode()
+                && !node.isNull()
+                && isNotBlank(node.asText());
     }
 
     public static Map<String, String> getRequestHeaders(Request request) {

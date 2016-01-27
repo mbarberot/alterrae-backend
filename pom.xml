@@ -5,6 +5,19 @@
     <artifactId>sistearth-backend</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+    <name>sistearth-backend</name>
+
+    <modules>
+        <module>sistearth-db</module>
+        <module>sistearth-db-mysql</module>
+        <module>sistearth-spark</module>
+        <module>sistearth-game</module>
+        <module>sistearth-view</module>
+        <module>sistearth-view-json</module>
+        <module>sistearth-json-utils</module>
+        <module>java-json-api</module>
+        <module>sistearth-test-utils</module>
+    </modules>
 
     <build>
         <plugins>
@@ -19,20 +32,8 @@
             </plugin>
         </plugins>
     </build>
-    <modules>
-        <module>sistearth-db</module>
-        <module>sistearth-db-mysql</module>
-        <module>sistearth-spark</module>
-        <module>sistearth-game</module>
-        <module>sistearth-view</module>
-        <module>sistearth-view-json</module>
-        <module>sistearth-json-utils</module>
-        <module>java-json-api</module>
-        <module>sistearth-test-utils</module>
-    </modules>
 
     <dependencies>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

@@ -1,4 +1,4 @@
-package com.sistearth.view.response.jsonapi;
+package com.sistearth.view.response.json;
 
 import com.sistearth.db.beans.User;
 import org.junit.Test;
@@ -6,13 +6,12 @@ import org.junit.Test;
 import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 import static org.skyscreamer.jsonassert.JSONCompareMode.STRICT;
 
-public class JsonApiUserViewTest {
-
+public class JsonLoginViewTest {
     @Test
     public void testRender() throws Exception {
         assertEquals(
-                "{\"data\":{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"}}",
-                new JsonApiUserView(new User(1, "Jon", "winterfell", "jon@snow.com")).render(),
+                "{\"username\":\"Jon\",\"token\":\"jon-s-token\"}",
+                new JsonLoginView(new User(1, "Jon", "jonsecret", "jon@dot.com"), "jon-s-token").render(),
                 STRICT
         );
     }
