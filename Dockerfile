@@ -3,7 +3,7 @@ FROM java:8
 RUN mkdir /sistearth
 WORKDIR /sistearth
 
-ADD sistearth-spark/target/sistearth-backend.jar /sistearth/sistearth-backend.jar
+ADD app/sistearth-backend.jar /sistearth/sistearth-backend.jar
 ADD ssl /sistearth/ssl
 
 EXPOSE 8080 8787

@@ -15,9 +15,14 @@
         <module>sistearth-view</module>
         <module>sistearth-view-json</module>
         <module>sistearth-json-utils</module>
-        <module>java-json-api</module>
+        <module>java-jsonapi</module>
         <module>sistearth-test-utils</module>
     </modules>
+
+    <properties>
+        <app-dir>app</app-dir>
+        <app-name>sistearth-backend</app-name>
+    </properties>
 
     <build>
         <plugins>
