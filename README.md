@@ -1,6 +1,8 @@
 Sistearth Backend
 =================
 
+[![Build Status](https://travis-ci.org/mbarberot/sistearth-backend.svg?branch=master)](https://travis-ci.org/mbarberot/sistearth-backend)
+
 A RESTful API for Sistearth v4 implemented in Java
 
 Reason (vs PHP / Symfony backend)
