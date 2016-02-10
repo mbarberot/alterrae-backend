@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sistearth-backend</artifactId>
+        <groupId>com.sistearth</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sistearth-docker</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <configuration>
+                    <imageName>sistearth/backend</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>app/</targetPath>
+                            <directory>${project.parent.basedir}/${app-dir}</directory>
+                            <include>${app-name}.jar</include>
+                        </resource>
+                        <resource>
+                            <targetPath>ssl/</targetPath>
+                            <directory>${project.parent.basedir}/${ssl-dir}</directory>
+                            <include>${ssl-name}</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Just to ensure spark is already builded -->
+        <dependency>
+            <groupId>com.sistearth</groupId>
+            <artifactId>sistearth-spark</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+</project>

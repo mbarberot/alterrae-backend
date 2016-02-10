@@ -17,11 +17,14 @@
         <module>sistearth-view-json</module>
         <module>sistearth-json-utils</module>
         <module>sistearth-test-utils</module>
+        <module>sistearth-docker</module>
     </modules>
 
     <properties>
         <app-dir>app</app-dir>
         <app-name>sistearth-backend</app-name>
+        <ssl-dir>ssl</ssl-dir>
+        <ssl-name>keystore</ssl-name>
     </properties>
 
     <build>
