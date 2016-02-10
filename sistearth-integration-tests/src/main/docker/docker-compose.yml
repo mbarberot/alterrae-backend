@@ -1,22 +1,15 @@
-backend:
-    build: sistearth/backend
+backendtest:
+    image: sistearth/backend
     ports:
         - "443:8080"
         - "8787:8787"
     links:
-        - database
+        - databasetest
 
-database:
+databasetest:
     image: mariadb
     environment:
         MYSQL_ROOT_PASSWORD: sistearth
         MYSQL_USER: sistearth
         MYSQL_PASSWORD: sistearth
         MYSQL_DATABASE: sistearth
-
-#admin:
-#    image: clue/adminer
-#    ports:
-#        - "3000:80"
-#    links:
-#        - database
