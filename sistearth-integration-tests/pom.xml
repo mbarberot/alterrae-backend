@@ -97,6 +97,7 @@
                             <executable>docker-compose</executable>
                             <arguments>
                                 <argument>rm</argument>
+                                <argument>--force</argument>
                             </arguments>
                             <workingDirectory>${project.basedir}/src/main/docker</workingDirectory>
                         </configuration>
