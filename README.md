@@ -5,32 +5,6 @@ Sistearth Backend
 
 A RESTful API for Sistearth v4 implemented in Java
 
-Reason (vs PHP / Symfony backend)
----------------------------------
-
-* KISS
-* No more "magic" framework (thinking to you JEE and Symfony)
-* Dev comfort : explicit types, easier to monitor/debug, maven 
- 
-Tools
------
-
-### Dev
-
-* Java
-* Spark framework (light, easy and simple)
-* Guava
-* Sql2o
-* Jackson
-* Lombok
-* JUnit
-
-### Deployment
-
-* Docker
-* docker-compose
-* MariaDB (+ official docker image)
-
 How to use
 ----------
 
@@ -40,12 +14,6 @@ How to use
 * Maven
 * Docker & docker-compose
 * Source code
-
-### Create keystore
-
-``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
-Set keystore password : ``sistearth``  
-Hit return to question ``Enter key password for <sistearth>``
 
 ### Build
 
@@ -79,3 +47,36 @@ PHPMyAdmin-like, but lighter
   1. Run with docker : ``docker run -d -p 8888:80 --link sistearthbackend_database_1:database clue/adminer``  
   2. Go to http://localhost:8888
   3. Login using db credential and host will be 'database'.
+  
+### Keytool (provided by java jdk)
+
+Creating keystore (example for the test keystore) : 
+- run ``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
+- use password : ``sistearth``
+- At question "What is your first and last name?" put your url (ie: api.sistearth.com)
+ 
+Tools
+-----
+
+### Dev
+
+* Java
+* Spark framework (light, easy and simple)
+* Guava
+* Sql2o
+* Jackson
+* Lombok
+* JUnit
+
+### Deployment
+
+* Docker
+* docker-compose
+* MariaDB (+ official docker image)
+
+Reason (vs PHP / Symfony backend)
+---------------------------------
+
+* KISS
+* No more "magic" framework (thinking to you JEE and Symfony)
+* Dev comfort : explicit types, easier to monitor/debug, maven 
