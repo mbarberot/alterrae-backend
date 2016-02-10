@@ -8,6 +8,7 @@
     <name>sistearth-backend</name>
 
     <modules>
+        <module>java-jsonapi</module>
         <module>sistearth-db</module>
         <module>sistearth-db-mysql</module>
         <module>sistearth-spark</module>
@@ -15,7 +16,6 @@
         <module>sistearth-view</module>
         <module>sistearth-view-json</module>
         <module>sistearth-json-utils</module>
-        <module>java-jsonapi</module>
         <module>sistearth-test-utils</module>
     </modules>
 
@@ -33,6 +33,21 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/${app-dir}</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
                 </configuration>
             </plugin>
         </plugins>
