@@ -3,3 +3,5 @@
 
 app/*.jar
 target
+
+sistearth-integration-tests/**/ssl
