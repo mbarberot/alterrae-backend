@@ -23,12 +23,12 @@
                     <resources>
                         <resource>
                             <targetPath>app/</targetPath>
-                            <directory>${project.parent.basedir}/${app-dir}</directory>
-                            <include>${app-name}.jar</include>
+                            <directory>${project.parent.basedir}/${app.dir}</directory>
+                            <include>${app.name}.jar</include>
                         </resource>
                         <resource>
                             <targetPath>ssl/</targetPath>
-                            <directory>${project.basedir}/src/main/resources/ssl</directory>
+                            <directory>${project.parent.basedir}/${ssl.dir}</directory>
                             <include>keystore</include>
                         </resource>
                     </resources>

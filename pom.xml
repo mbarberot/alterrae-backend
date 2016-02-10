@@ -18,11 +18,13 @@
         <module>sistearth-json-utils</module>
         <module>sistearth-test-utils</module>
         <module>sistearth-docker</module>
+        <module>sistearth-integration-tests</module>
     </modules>
 
     <properties>
-        <app-dir>app</app-dir>
-        <app-name>sistearth-backend</app-name>
+        <ssl.dir>ssl</ssl.dir>
+        <app.dir>app</app.dir>
+        <app.name>sistearth-backend</app.name>
     </properties>
 
     <build>
@@ -43,7 +45,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>${basedir}/${app-dir}</directory>
+                            <directory>${basedir}/${app.dir}</directory>
                             <includes>
                                 <include>*.jar</include>
                             </includes>
