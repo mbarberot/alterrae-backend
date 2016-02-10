@@ -28,8 +28,8 @@
                         </resource>
                         <resource>
                             <targetPath>ssl/</targetPath>
-                            <directory>${project.parent.basedir}/${ssl-dir}</directory>
-                            <include>${ssl-name}</include>
+                            <directory>${project.basedir}/src/main/resources/ssl</directory>
+                            <include>keystore</include>
                         </resource>
                     </resources>
                 </configuration>
