@@ -6,5 +6,5 @@ jar:
 	mvn clean install
 
 docker: jar
-	docker-compose build
+	docker build -t sistearth/backend .
 	docker-compose up
