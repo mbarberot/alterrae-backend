@@ -2,4 +2,5 @@
 *.iml
 
 ssl/keystore
+app/*.jar
 target
