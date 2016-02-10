@@ -1,6 +1,5 @@
 .idea
 *.iml
 
-**/ssl/keystore
 app/*.jar
 target
