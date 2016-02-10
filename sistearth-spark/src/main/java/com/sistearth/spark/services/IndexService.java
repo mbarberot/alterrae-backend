@@ -1,11 +1,12 @@
 package com.sistearth.spark.services;
 
+import static com.sistearth.spark.view.Answer.newJsonAnswer;
 import static spark.Spark.get;
 
 public class IndexService implements Service {
     @Override
     public void registerRoutes() throws ServiceException {
-        get("/", (request, response) -> "Welcome to Sistearth v4 REST API.");
+        get("/", (request, response) -> newJsonAnswer(response).body("{ \"message\": \"Welcome to Sistearth v4 REST API.\" }").build());
     }
 
     @Override
