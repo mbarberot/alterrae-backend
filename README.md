@@ -45,19 +45,17 @@ How to use
 Set keystore password : ``sistearth``  
 Hit return to question ``Enter key password for <sistearth>``
 
-### Build and run
+### Build
 
-``make jar``
+``mvn clean install``
 
-### Run with Java
+This will build, test, package code and build docker image.
 
-``make run-jar``  
-Then, go to https://localhost:8080
+### Run
 
-### Run with docker
-  
-``make``  
-Then go to https://localhost
+``docker-compose up`` or ``docker-compose start``
+
+This will run both server and databse container + adminer to manage db
 
 Useful tools
 ------------
@@ -74,7 +72,7 @@ Source code analysis tool.
   
 ### Adminer
 
-PHPMyAdmin-like
+PHPMyAdmin-like, but lighter
 
   1. Run with docker : ``docker run -d -p 8888:80 --link sistearthbackend_database_1:database clue/adminer``  
   2. Go to http://localhost:8888

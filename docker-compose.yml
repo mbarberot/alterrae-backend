@@ -14,9 +14,9 @@ database:
         MYSQL_PASSWORD: sistearth
         MYSQL_DATABASE: sistearth
 
-admin:
-    image: clue/adminer
-    ports:
-        - "3000:80"
-    links:
-        - database
+#admin:
+#    image: clue/adminer
+#    ports:
+#        - "3000:80"
+#    links:
+#        - database
