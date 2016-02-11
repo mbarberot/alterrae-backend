@@ -113,7 +113,7 @@
         <!-- Ensure docker image has been built -->
         <dependency>
             <groupId>com.sistearth</groupId>
-            <artifactId>sistearth-docker</artifactId>
+            <artifactId>sistearth-docker-server</artifactId>
             <version>1.0</version>
         </dependency>
 
