@@ -17,7 +17,7 @@
         <module>sistearth-view-json</module>
         <module>sistearth-json-utils</module>
         <module>sistearth-test-utils</module>
-        <module>sistearth-docker</module>
+        <module>sistearth-docker-server</module>
         <module>sistearth-integration-tests</module>
     </modules>
 
