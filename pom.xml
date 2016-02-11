@@ -19,6 +19,7 @@
         <module>sistearth-test-utils</module>
         <module>sistearth-docker</module>
         <module>sistearth-integration-tests</module>
+        <module>sistearth-docker-database</module>
     </modules>
 
     <properties>
