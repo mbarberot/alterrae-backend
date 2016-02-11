@@ -11,8 +11,37 @@
 
     <artifactId>sistearth-integration-tests</artifactId>
 
+    <properties>
+        <project.build.source.directory>${project.basedir}/src/main</project.build.source.directory>
+    </properties>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <configuration>
+                    <imageName>sistearth/database-test</imageName>
+                    <dockerDirectory>${project.build.source.directory}/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>sql/</targetPath>
+                            <directory>${project.build.source.directory}/sql</directory>
+                            <include>*.sql</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>Building test db docker image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -72,7 +101,7 @@
                                 <argument>up</argument>
                                 <argument>-d</argument>
                             </arguments>
-                            <workingDirectory>${project.basedir}/src/main/docker</workingDirectory>
+                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -86,7 +115,7 @@
                             <arguments>
                                 <argument>stop</argument>
                             </arguments>
-                            <workingDirectory>${project.basedir}/src/main/docker</workingDirectory>
+                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -101,7 +130,7 @@
                                 <argument>rm</argument>
                                 <argument>--force</argument>
                             </arguments>
-                            <workingDirectory>${project.basedir}/src/main/docker</workingDirectory>
+                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -110,10 +139,15 @@
     </build>
 
     <dependencies>
-        <!-- Ensure docker image has been built -->
+        <!-- Ensure required docker images has been built -->
         <dependency>
             <groupId>com.sistearth</groupId>
             <artifactId>sistearth-docker-server</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sistearth</groupId>
+            <artifactId>sistearth-docker-database</artifactId>
             <version>1.0</version>
         </dependency>
 

@@ -7,16 +7,16 @@ backend:
         - database
 
 database:
-    image: mariadb
+    image: sistearth/mariadb
     environment:
         MYSQL_ROOT_PASSWORD: sistearth
         MYSQL_USER: sistearth
         MYSQL_PASSWORD: sistearth
         MYSQL_DATABASE: sistearth
 
-#admin:
-#    image: clue/adminer
-#    ports:
-#        - "3000:80"
-#    links:
-#        - database
+admin:
+    image: clue/adminer
+    ports:
+        - "3000:80"
+    links:
+        - database

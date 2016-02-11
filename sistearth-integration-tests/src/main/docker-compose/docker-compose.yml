@@ -7,7 +7,7 @@ backendtest:
         - databasetest
 
 databasetest:
-    image: mariadb
+    image: sistearth/database-test
     environment:
         MYSQL_ROOT_PASSWORD: sistearth
         MYSQL_USER: sistearth
