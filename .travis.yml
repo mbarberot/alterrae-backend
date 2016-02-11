@@ -3,3 +3,6 @@ script: mvn clean test integration-test install
 sudo: required
 services:
     - docker
+addons:
+  hosts:
+    - api.sistearth.com
