@@ -4,7 +4,7 @@ backendtest:
         - "443:8080"
         - "8787:8787"
     links:
-        - databasetest
+        - databasetest:database
 
 databasetest:
     image: sistearth/database-test
