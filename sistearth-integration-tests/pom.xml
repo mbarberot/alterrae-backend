@@ -35,7 +35,7 @@
                 <executions>
                     <execution>
                         <id>Building test db docker image</id>
-                        <phase>package</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
@@ -75,11 +75,11 @@
                 <version>1.4.0</version>
                 <executions>
                     <execution>
+                        <phase>generate-resources</phase>
                         <id>copy-ssl-config</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                        <phase>generate-test-resources</phase>
                         <configuration>
                             <executable>cp</executable>
                             <arguments>
@@ -90,26 +90,11 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>start-integration-server</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>pre-integration-test</phase>
-                        <configuration>
-                            <executable>docker-compose</executable>
-                            <arguments>
-                                <argument>up</argument>
-                                <argument>-d</argument>
-                            </arguments>
-                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
+                        <phase>pre-clean</phase>
                         <id>stop-integration-server</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                        <phase>post-integration-test</phase>
                         <configuration>
                             <executable>docker-compose</executable>
                             <arguments>
@@ -119,16 +104,45 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <phase>clean</phase>
                         <id>clean-integration-server</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                        <phase>clean</phase>
                         <configuration>
                             <executable>docker-compose</executable>
                             <arguments>
                                 <argument>rm</argument>
                                 <argument>--force</argument>
+                            </arguments>
+                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>pre-integration-test</phase>
+                        <id>start-integration-server</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>bash</executable>
+                            <arguments>
+                                <argument>-x</argument>
+                                <argument>start.sh</argument>
+                            </arguments>
+                            <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>post-integration-test</phase>
+                        <id>stop-integration-server-after-tests</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>docker-compose</executable>
+                            <arguments>
+                                <argument>stop</argument>
                             </arguments>
                             <workingDirectory>${project.build.source.directory}/docker-compose</workingDirectory>
                         </configuration>
