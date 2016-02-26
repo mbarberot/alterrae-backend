@@ -11,6 +11,8 @@ import com.sistearth.view.response.jsonapi.JsonApiPostView;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.sistearth.spark.view.Answer.newJsonAnswer;
+import static com.sistearth.spark.view.Answer.newJsonApiAnswer;
 import static java.lang.Integer.valueOf;
 import static spark.Spark.get;
 
@@ -27,13 +29,13 @@ public class PostsRestService implements Service {
             for (Post post : posts) {
                 authors.add(userManager.getById(post.getAuthor()));
             }
-            return new Answer(response).body(new JsonApiPostView(posts, authors)).build();
+            return newJsonAnswer(response).body(new JsonApiPostView(posts, authors)).build();
         });
 
         get("/api/posts/:id", (request, response) -> {
             Post post = postManager.getById(valueOf(request.params(":id")));
             User author = userManager.getById(post.getAuthor());
-            return new Answer(response).body(new JsonApiPostView(post, author)).build();
+            return newJsonAnswer(response).body(new JsonApiPostView(post, author)).build();
         });
     }
 

@@ -9,7 +9,7 @@ import com.sistearth.view.serializer.JacksonSerializer;
 
 public class JsonApiUserView extends UserView {
     public JsonApiUserView(User user) {
-        setUser(user);
+        super(user);
     }
 
     @Override
