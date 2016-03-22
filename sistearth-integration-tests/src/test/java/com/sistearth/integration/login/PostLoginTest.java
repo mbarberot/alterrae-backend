@@ -2,8 +2,8 @@ package com.sistearth.integration.login;
 
 import org.junit.Test;
 
+import static com.sistearth.integration.utils.TestHelper.loginData;
 import static com.sistearth.integration.utils.TestHelper.restApi;
-import static java.lang.String.format;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -57,7 +57,4 @@ public class PostLoginTest {
     }
 
 
-    private String loginData(String username, String password) {
-        return format("{\"username\": \"%s\",\"password\": \"%s\"}", username, password);
-    }
 }
