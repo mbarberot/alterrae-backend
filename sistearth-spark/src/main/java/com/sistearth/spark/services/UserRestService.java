@@ -19,6 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import spark.Spark;
 
 import static com.sistearth.spark.extractors.UserPayloadExtractor.PayloadType.CREATION;
+import static com.sistearth.spark.view.Answer.newJsonAnswer;
 import static java.lang.Integer.valueOf;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static spark.Spark.get;
@@ -35,17 +36,17 @@ public class UserRestService implements Service {
         get("/api/users/profile", (request, response) -> {
             TokenPayload payload = new TokenPayloadExtractor().extractPayload(request);
             User user = userManager.getBy("username", tokenManager.decodeToken(payload.getToken()));
-            return new Answer(response).body(new JsonApiUserView(user)).build();
+            return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
         });
 
         get("/api/users/:id", (request, response) -> {
             User user = userManager.getById(valueOf(request.params(":id")));
-            return new Answer(response).body(new JsonApiUserView(user)).build();
+            return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
         });
 
         post("/api/users", (request, response) -> {
             UserPayload payload = new UserPayloadExtractor(CREATION).extractPayload(request);
-            Answer answer  = new Answer(response);
+            Answer answer  = newJsonAnswer(response);
             if (payload.isValid()) {
                 User payloadUser = payload.getEntity();
                 try {
