@@ -69,7 +69,7 @@ public class UserRestService implements Service {
 
                 return answer.body(new JsonApiUserView(user)).build();
             } else {
-                return answer.body(new JsonApiErrorView(payload.getErrors())).build();
+                return answer.status(400).body(new JsonApiErrorView(payload.getErrors())).build();
             }
         });
     }
