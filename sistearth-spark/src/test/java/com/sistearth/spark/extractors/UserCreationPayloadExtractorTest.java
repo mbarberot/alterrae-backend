@@ -5,10 +5,11 @@ import com.sistearth.view.request.payloads.UserCreationPayload;
 import org.junit.Test;
 import spark.Request;
 
-import static com.sistearth.spark.extractors.UserPayloadExtractor.PayloadType.CREATION;
 import static junit.framework.Assert.assertEquals;
 
-public class UserPayloadExtractorTest {
+// TOOD update tests ?
+
+public class UserCreationPayloadExtractorTest {
     @Test
     public void testExtractUserValidPayload() throws Exception {
         Request request = RequestMock.builder()
@@ -17,7 +18,7 @@ public class UserPayloadExtractorTest {
 
         assertEquals(
                 new UserCreationPayload("Jon", "jonsecret", "jon@dot.com"),
-                new UserPayloadExtractor(CREATION).extractPayload(request)
+                new UserCreationPayloadExtractor().extractPayload(request)
         );
     }
 
@@ -29,7 +30,7 @@ public class UserPayloadExtractorTest {
 
         assertEquals(
                 new UserCreationPayload(),
-                new UserPayloadExtractor(CREATION).extractPayload(request)
+                new UserCreationPayloadExtractor().extractPayload(request)
         );
     }
 
@@ -44,7 +45,7 @@ public class UserPayloadExtractorTest {
         expectedPayload.setPassword("jonsecret");
         assertEquals(
                 expectedPayload,
-                new UserPayloadExtractor(CREATION).extractPayload(request)
+                new UserCreationPayloadExtractor().extractPayload(request)
         );
     }
 
@@ -59,7 +60,7 @@ public class UserPayloadExtractorTest {
         expectedPayload.setPassword("jonsecret");
         assertEquals(
                 expectedPayload,
-                new UserPayloadExtractor(CREATION).extractPayload(request)
+                new UserCreationPayloadExtractor().extractPayload(request)
         );
     }
 
@@ -74,7 +75,7 @@ public class UserPayloadExtractorTest {
         expectedPayload.setEmail("jon@dot.com");
         assertEquals(
                 expectedPayload,
-                new UserPayloadExtractor(CREATION).extractPayload(request)
+                new UserCreationPayloadExtractor().extractPayload(request)
         );
     }
 
@@ -83,6 +84,6 @@ public class UserPayloadExtractorTest {
         Request request = RequestMock.builder()
                 .body("{\"data\":{\"attributes\":{\"email\":\"jon@dot.com\",\"username\":\"Jon\",\"password\":\"jonsecret\"")
                 .build();
-        new UserPayloadExtractor(CREATION).extractPayload(request);
+        new UserCreationPayloadExtractor().extractPayload(request);
     }
 }
