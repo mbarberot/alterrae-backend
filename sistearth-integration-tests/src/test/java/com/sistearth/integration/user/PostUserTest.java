@@ -19,7 +19,7 @@ public class PostUserTest {
                 .then()
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("3"),
+                        "data.id", equalTo("4"),
                         "data.attributes.username", equalTo("jon"),
                         "data.attributes.email", equalTo("jon@doe.com")
                 );
