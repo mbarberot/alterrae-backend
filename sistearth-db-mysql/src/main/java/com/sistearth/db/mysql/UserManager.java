@@ -78,10 +78,10 @@ public class UserManager implements ModelManager<User> {
 
     @Override
     public void update(User entity) throws ModelException {
+        // Changing username is not allowed
         try (Connection conn = database.open()) {
-            conn.createQuery("UPDATE FROM users (username, password, email) VALUES (:username, :password, :email) WHERE id = :id")
+            conn.createQuery("UPDATE users SET password = :password, email = :email WHERE id = :id")
                     .addParameter("id", entity.getId())
-                    .addParameter("username", entity.getUsername())
                     .addParameter("password", entity.getPassword())
                     .addParameter("email", entity.getEmail())
                     .executeUpdate();
