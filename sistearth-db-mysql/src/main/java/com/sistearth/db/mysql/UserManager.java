@@ -69,11 +69,22 @@ public class UserManager implements ModelManager<User> {
 
     @Override
     public void delete(User entity) throws ModelException {
-        throw new ModelException("[Not implemented] UserManager->delete(user)");
+        try (Connection conn = database.open()) {
+            conn.createQuery("DELETE FROM users WHERE id = :id")
+                    .addParameter("id", entity.getId())
+                    .executeUpdate();
+        }
     }
 
     @Override
     public void update(User entity) throws ModelException {
-        throw new ModelException("[Not implemented] UserManager->update(user)");
+        try (Connection conn = database.open()) {
+            conn.createQuery("UPDATE FROM users (username, password, email) VALUES (:username, :password, :email) WHERE id = :id")
+                    .addParameter("id", entity.getId())
+                    .addParameter("username", entity.getUsername())
+                    .addParameter("password", entity.getPassword())
+                    .addParameter("email", entity.getEmail())
+                    .executeUpdate();
+        }
     }
 }

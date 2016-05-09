@@ -67,11 +67,13 @@ public class PostManager implements ModelManager<Post> {
 
     @Override
     public void delete(Post entity) throws ModelException {
+        // This feature is not planned yet
         throw new ModelException("[Not implemented] PostManager->delete(post)");
     }
 
     @Override
     public void update(Post entity) throws ModelException {
+        // This feature is not planned yet
         throw new ModelException("[Not implemented] PostManager->update(post)");
     }
 }
