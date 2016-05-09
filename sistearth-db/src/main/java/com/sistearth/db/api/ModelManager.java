@@ -14,4 +14,6 @@ public interface ModelManager<T> {
     T getBy(String field, Object value) throws ModelException;
 
     void delete(T entity) throws ModelException;
+
+    void update(T entity) throws ModelException;
 }

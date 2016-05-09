@@ -71,4 +71,9 @@ public class UserManager implements ModelManager<User> {
     public void delete(User entity) throws ModelException {
         throw new ModelException("[Not implemented] UserManager->delete(user)");
     }
+
+    @Override
+    public void update(User entity) throws ModelException {
+        throw new ModelException("[Not implemented] UserManager->update(user)");
+    }
 }

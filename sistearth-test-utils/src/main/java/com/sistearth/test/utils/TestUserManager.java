@@ -38,5 +38,10 @@ public class TestUserManager implements ModelManager<User> {
     public void delete(User entity) throws ModelException {
         throw new NotImplementedException();
     }
+
+    @Override
+    public void update(User entity) throws ModelException {
+        throw new NotImplementedException();
+    }
 }
 

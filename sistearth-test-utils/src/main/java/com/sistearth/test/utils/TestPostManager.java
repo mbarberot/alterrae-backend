@@ -37,4 +37,9 @@ public class TestPostManager implements ModelManager<Post> {
     public void delete(Post entity) throws ModelException {
         throw new NotImplementedException();
     }
+
+    @Override
+    public void update(Post entity) throws ModelException {
+        throw new NotImplementedException();
+    }
 }
