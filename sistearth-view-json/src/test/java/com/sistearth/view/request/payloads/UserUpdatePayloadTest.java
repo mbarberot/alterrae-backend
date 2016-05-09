@@ -13,7 +13,7 @@ public class UserUpdatePayloadTest extends PayloadTest {
         assertTrue(payload.isValid());
         assertEquals(0, payload.getErrors().size());
         assertEquals(
-                User.builder().id(1).username("jon").password("newsecret").email("jon@new.com").build(),
+                User.builder().username("jon").password("newsecret").email("jon@new.com").build(),
                 payload.getEntity()
         );
     }
@@ -22,8 +22,7 @@ public class UserUpdatePayloadTest extends PayloadTest {
     public void testInvalidPayload() throws Exception {
         UserUpdatePayload payload = new UserUpdatePayload();
         assertFalse(payload.isValid());
-        assertEquals(3, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "id"));
+        assertEquals(2, payload.getErrors().size());
         assertTrue(hasError(payload.getErrors(), "actualPassword"));
         assertTrue(hasError(payload.getErrors(), "emailOrPassword"));
     }

@@ -13,7 +13,6 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PROTECTED)
 public abstract class UserPayload implements Payload<User> {
-    protected String id;
     protected String username;
     protected String password;
     protected String email;

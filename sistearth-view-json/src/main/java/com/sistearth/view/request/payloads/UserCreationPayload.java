@@ -14,7 +14,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 public class UserCreationPayload extends UserPayload {
 
     public UserCreationPayload(String username, String password, String email) {
-        super(null, username, password, email, null);
+        super(username, password, email, null);
     }
 
     @Override

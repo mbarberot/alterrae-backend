@@ -12,7 +12,7 @@ public class UserUpdatePayloadExtractorTest {
     @Test
     public void testExtractUserValidPayload() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"data\":{\"attributes\":{\"id\": \"1\", \"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"actualPassword\":\"jonsecret\"}}}")
+                .body("{\"data\":{\"attributes\":{\"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"actualPassword\":\"jonsecret\"}}}")
                 .build();
 
         assertEquals(
@@ -34,30 +34,12 @@ public class UserUpdatePayloadExtractorTest {
     }
 
     @Test
-    public void testExtractUserInvalidPayload_MissingId() throws Exception {
-        Request request = RequestMock.builder()
-                .body("{\"data\":{\"attributes\":{\"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"actualPassword\":\"jonsecret\"}}}")
-                .build();
-
-        UserUpdatePayload expectedPayload = new UserUpdatePayload();
-        expectedPayload.setActualPassword("jonsecret");
-        expectedPayload.setEmail("jon@new.com");
-        expectedPayload.setPassword("newsecret");
-        expectedPayload.setUsername("Jon");
-        assertEquals(
-                expectedPayload,
-                new UserUpdatePayloadExtractor().extractPayload(request)
-        );
-    }
-
-    @Test
     public void testExtractUserInvalidPayload_MissingActualPassword() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"data\":{\"attributes\":{\"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"id\":\"1\"}}}")
+                .body("{\"data\":{\"attributes\":{\"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\"}}}")
                 .build();
 
         UserUpdatePayload expectedPayload = new UserUpdatePayload();
-        expectedPayload.setId("1");
         expectedPayload.setEmail("jon@new.com");
         expectedPayload.setPassword("newsecret");
         expectedPayload.setUsername("Jon");
@@ -70,11 +52,10 @@ public class UserUpdatePayloadExtractorTest {
     @Test
     public void testExtractUserInvalidPayload_MissingEmailAndPassword() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"data\":{\"attributes\":{\"id\":\"1\",\"username\":\"Jon\",\"actualPassword\":\"jonsecret\"}}}")
+                .body("{\"data\":{\"attributes\":{\"username\":\"Jon\",\"actualPassword\":\"jonsecret\"}}}")
                 .build();
 
         UserUpdatePayload expectedPayload = new UserUpdatePayload();
-        expectedPayload.setId("1");
         expectedPayload.setUsername("Jon");
         expectedPayload.setActualPassword("jonsecret");
         assertEquals(
@@ -86,7 +67,7 @@ public class UserUpdatePayloadExtractorTest {
     @Test(expected = PayloadException.class)
     public void testFailExtractUserPayload_IncorrectJson() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"data\":{\"attributes\":{\"id\": \"1\", \"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"actualPassword\":\"jonsecret\"")
+                .body("{\"data\":{\"attributes\":{\"email\":\"jon@new.com\",\"username\":\"Jon\",\"password\":\"newsecret\",\"actualPassword\":\"jonsecret\"")
                 .build();
         new UserUpdatePayloadExtractor().extractPayload(request);
     }

@@ -14,15 +14,11 @@ public class PayloadExtractingUtils {
         JsonNode rootNode = parseJson(requestBody);
 
         JsonNode attributes = rootNode.path("data").path("attributes");
-        JsonNode idNode = attributes.path("id");
         JsonNode usernameNode = attributes.path("username");
         JsonNode passwordNode = attributes.path("password");
         JsonNode emailNode = attributes.path("email");
         JsonNode actualPasswordNode = attributes.path("actualPassword");
 
-        if (isFilled(idNode)) {
-            payload.setId(idNode.asText());
-        }
         if (isFilled(usernameNode)) {
             payload.setUsername(usernameNode.asText());
         }
