@@ -29,11 +29,27 @@ public class AnswerTest {
     }
 
     @Test
+    public void testAnswer_WithBody_StringNull() throws Exception {
+        Response response = mock(Response.class);
+        assertEquals("", new Answer(response).body((String)null).build());
+        verify(response).status(500);
+        verify(response).body("");
+    }
+
+    @Test
     public void testAnswer_WithBody_View() throws Exception {
         Response response = mock(Response.class);
         assertEquals(BODY, new Answer(response).body(getView(BODY)).build());
         verify(response).status(200);
         verify(response).body(BODY);
+    }
+
+    @Test
+    public void testAnswer_WithBody_ViewNull() throws Exception {
+        Response response = mock(Response.class);
+        assertEquals("", new Answer(response).body((View)null).build());
+        verify(response).status(500);
+        verify(response).body("");
     }
 
     @Test
