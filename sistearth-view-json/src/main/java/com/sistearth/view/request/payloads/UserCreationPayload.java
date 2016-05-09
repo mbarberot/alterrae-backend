@@ -1,6 +1,7 @@
 package com.sistearth.view.request.payloads;
 
 import com.sistearth.db.beans.Error;
+import com.sistearth.db.beans.User;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -13,7 +14,16 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 public class UserCreationPayload extends UserPayload {
 
     public UserCreationPayload(String username, String password, String email) {
-        super(username, password, email, null);
+        super(null, username, password, email, null);
+    }
+
+    @Override
+    public User getEntity() {
+        return User.builder()
+                .username(username)
+                .email(email)
+                .password(password)
+                .build();
     }
 
     @Override
