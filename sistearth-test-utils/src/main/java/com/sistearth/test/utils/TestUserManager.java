@@ -14,6 +14,11 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
+    public User getBy(String field, Object value) throws ModelException {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public User getById(int id) throws ModelException {
         throw new NotImplementedException();
     }
@@ -28,9 +33,13 @@ public class TestUserManager implements ModelManager<User> {
         throw new NotImplementedException();
     }
 
+    @Override
+    public List<User> findById(int id) throws ModelException {
+        throw new NotImplementedException();
+    }
 
     @Override
-    public User getBy(String field, Object value) throws ModelException {
+    public List<User> findBy(String field, Object value) throws ModelException {
         throw new NotImplementedException();
     }
 

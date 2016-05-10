@@ -24,6 +24,15 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
+    public User getBy(String field, Object value) throws ModelException {
+        List<User> users = this.findBy(field, value);
+        if (users.isEmpty()) {
+            throw new ModelException(format("User with %s: %s does not exists.", field, value));
+        }
+        return users.get(0);
+    }
+
+    @Override
     public User getById(int id) throws ModelException {
         return this.getBy("id", id);
     }
@@ -54,16 +63,16 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public User getBy(String field, Object value) throws ModelException {
+    public List<User> findById(int id) throws ModelException {
+        return this.findBy("id", id);
+    }
+
+    @Override
+    public List<User> findBy(String field, Object value) throws ModelException {
         try (Connection conn = database.open()) {
-            List<User> usersForId = conn.createQuery(format("SELECT * FROM users WHERE %s = :%s", field, field))
+            return conn.createQuery(format("SELECT * FROM users WHERE %s = :%s", field, field))
                     .addParameter(field, value)
                     .executeAndFetch(User.class);
-            if (!usersForId.isEmpty()) {
-                return usersForId.get(0);
-            } else {
-                throw new ModelException(format("User with %s: %s does not exists.", field, value));
-            }
         }
     }
 

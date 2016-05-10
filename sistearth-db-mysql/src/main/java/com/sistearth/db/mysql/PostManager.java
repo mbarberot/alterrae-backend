@@ -30,8 +30,17 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
+    public Post getBy(String field, Object value) throws ModelException {
+        List<Post> posts = findBy(field, value);
+        if (posts.isEmpty()) {
+            throw new ModelException(format("User with %s: %s does not exists.", field, value));
+        }
+        return posts.get(0);
+    }
+
+    @Override
     public Post getById(int id) throws ModelException {
-        return getBy("id", id);
+        return this.getBy("id", id);
     }
 
     @Override
@@ -51,17 +60,17 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post getBy(String field, Object value) throws ModelException {
+    public List<Post> findById(int id) throws ModelException {
+        return this.findBy("id", id);
+    }
+
+    @Override
+    public List<Post> findBy(String field, Object value) throws ModelException {
         try (Connection conn = database.open()) {
-            List<Post> postsForId = conn.createQuery(format("SELECT * FROM posts WHERE %s = :%s", field, field))
+            return conn.createQuery(format("SELECT * FROM posts WHERE %s = :%s", field, field))
                     .addParameter(field, value)
                     .addColumnMapping("created_at", "createdAt")
                     .executeAndFetch(Post.class);
-            if (!postsForId.isEmpty()) {
-                return postsForId.get(0);
-            } else {
-                throw new ModelException(format("Post with %s: %s does not exists.", field, value));
-            }
         }
     }
 
