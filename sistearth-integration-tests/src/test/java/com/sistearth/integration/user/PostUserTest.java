@@ -7,6 +7,8 @@ import static java.lang.String.format;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.text.IsEmptyString.isEmptyString;
 
 public class PostUserTest {
     @Test
@@ -19,10 +21,34 @@ public class PostUserTest {
                 .then()
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("4"),
+                        "data.id", not(isEmptyString()),
                         "data.attributes.username", equalTo("jon"),
                         "data.attributes.email", equalTo("jon@doe.com")
                 );
+    }
+
+    @Test
+    public void testPostUser_FailNameAlreadyExists() throws Exception {
+        restApi()
+                .contentType("application/json")
+                .content(userData("jane", "secret", "jane@doe.com"))
+                .when()
+                .post("/api/users")
+                .then()
+                .contentType("application/json")
+                .body(
+                        "data.id", not(isEmptyString()),
+                        "data.attributes.username", equalTo("jane"),
+                        "data.attributes.email", equalTo("jane@doe.com")
+                );
+
+        restApi()
+                .contentType("application/json")
+                .content(userData("jane", "anothersecret", "jane@another.mbox"))
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(400);
     }
 
     @Test

@@ -50,9 +50,23 @@ public class UserRestService implements Service {
         post("/api/users", (request, response) -> {
             UserPayload payload = new UserCreationPayloadExtractor().extractPayload(request);
             Answer answer = newJsonAnswer(response);
-            if (payload.isValid()) {
-                User payloadUser = payload.getEntity();
-                try {
+            if (!payload.isValid()) {
+                return newJsonAnswer(response)
+                        .status(400)
+                        .body(new JsonApiErrorView(payload.getErrors()))
+                        .build();
+            }
+
+            User payloadUser = payload.getEntity();
+
+            if(!userManager.findBy("username", payloadUser.getUsername()).isEmpty()) {
+                return newJsonAnswer(response)
+                        .status(400)
+                        .body(new JsonApiErrorView("400", "already-exists"))
+                        .build();
+            }
+
+            try {
                     userManager.create(payloadUser);
                 } catch (ModelException e) {
                     answer.status(400);
@@ -71,9 +85,6 @@ public class UserRestService implements Service {
                 }
 
                 return answer.body(new JsonApiUserView(user)).build();
-            } else {
-                return answer.status(400).body(new JsonApiErrorView(payload.getErrors())).build();
-            }
         });
 
         put("/api/users", (request, response) -> {
