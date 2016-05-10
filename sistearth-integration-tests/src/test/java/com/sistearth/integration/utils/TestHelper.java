@@ -1,5 +1,6 @@
 package com.sistearth.integration.utils;
 
+import com.jayway.restassured.response.ValidatableResponse;
 import com.jayway.restassured.specification.RequestSpecification;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -26,20 +27,19 @@ public class TestHelper {
     }
 
     public static RequestSpecification authRestApi(String username, String password) {
-        String token = authenticate(username, password);
+        String token = tryAuthenticate(username, password).extract().body().jsonPath().get("token");
         return restApi()
                 .given()
                 .header("Authorization", "Bearer " + token);
     }
 
-    private static String authenticate(String username, String password) {
+    public static ValidatableResponse tryAuthenticate(String username, String password) {
         return restApi()
                 .contentType("application/json")
                 .content(loginData(username, password))
                 .when()
                 .post("/api/login")
-                .then()
-                .extract().body().jsonPath().get("token");
+                .then();
     }
 
     public static String loginData(String username, String password) {

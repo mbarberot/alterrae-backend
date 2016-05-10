@@ -3,6 +3,7 @@ package com.sistearth.integration.user;
 import org.junit.Test;
 
 import static com.sistearth.integration.utils.TestHelper.authRestApi;
+import static com.sistearth.integration.utils.TestHelper.tryAuthenticate;
 import static java.lang.String.format;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -11,7 +12,7 @@ public class PutUserTest {
     public void testPutUser_ChangeEmail() throws Exception {
         authRestApi("kevin", "kevin")
                 .contentType("application/json")
-                .content(changeEmailData("kevin@changed.com", "kevin"))
+                .content(changeData("email", "kevin@changed.com", "kevin"))
                 .when()
                 .put("/api/users")
                 .then()
@@ -24,6 +25,25 @@ public class PutUserTest {
                 );
     }
 
+    @Test
+    public void testPutUser_ChangePassword() throws Exception {
+        authRestApi("vanessa", "vanessa")
+                .contentType("application/json")
+                .content(changeData("password", "assenav", "vanessa"))
+                .when()
+                .put("/api/users")
+                .then()
+                .statusCode(200)
+                .contentType("application/json")
+                .body(
+                        "data.id", equalTo("4"),
+                        "data.attributes.username", equalTo("vanessa"),
+                        "data.attributes.email", equalTo("vanessa@mail.com")
+                );
+
+        tryAuthenticate("vanessa", "assenav").statusCode(200);
+        tryAuthenticate("vanessa", "vanessa").statusCode(402);
+    }
 
     /*
      * Tests to implement after:
@@ -34,9 +54,10 @@ public class PutUserTest {
      */
 
 
-    private String changeEmailData(String email, String confirmationPassword) {
-        return format("{ \"data\": { \"attributes\" : { \"email\": \"%s\", \"actualPassword\": \"%s\" } } }",
-                email,
+    private String changeData(String field, String value, String confirmationPassword) {
+        return format("{ \"data\": { \"attributes\" : { \"%s\": \"%s\", \"actualPassword\": \"%s\" } } }",
+                field,
+                value,
                 confirmationPassword
         );
     }
