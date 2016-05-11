@@ -26,6 +26,27 @@ public class PutUserTest {
     }
 
     @Test
+    public void testPutUser_ChangeEmail_WrongPassword() throws Exception {
+        authRestApi("juanlucas", "juanlucas")
+                .contentType("application/json")
+                .content(changeData("email", "juan.lucas@wrong.com", "wrong-password"))
+                .when()
+                .put("/api/users")
+                .then()
+                .statusCode(400);
+
+        authRestApi("juanlucas", "juanlucas")
+                .when()
+                .get("/api/users/profile")
+                .then()
+                .body(
+                        "data.id", equalTo("5"),
+                        "data.attributes.username", equalTo("juanlucas"),
+                        "data.attributes.email", equalTo("juan.lucas@mbox.com")
+                );
+    }
+
+    @Test
     public void testPutUser_ChangePassword() throws Exception {
         authRestApi("vanessa", "vanessa")
                 .contentType("application/json")
@@ -46,11 +67,8 @@ public class PutUserTest {
     }
 
     /*
-     * Tests to implement after:
-     * - Change password
-     * - Try to change anything with a wrong confirmation password
-     * - Change with empty fields
-     * - Check with bad email syntax
+     * TODO : fail with bad new password
+     * TODO : fail because empty fields
      */
 
 
