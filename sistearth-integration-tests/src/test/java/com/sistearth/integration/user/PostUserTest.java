@@ -3,6 +3,7 @@ package com.sistearth.integration.user;
 import org.junit.Test;
 
 import static com.sistearth.integration.utils.TestHelper.restApi;
+import static com.sistearth.integration.utils.TestHelper.tryAuthenticate;
 import static java.lang.String.format;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -15,36 +16,26 @@ public class PostUserTest {
     public void testPostUser() throws Exception {
         restApi()
                 .contentType("application/json")
-                .content(userData("jon", "secret", "jon@doe.com"))
+                .content(userData("jon", "mysecretpassword", "jon@doe.com"))
                 .when()
                 .post("/api/users")
                 .then()
+                .statusCode(200)
                 .contentType("application/json")
                 .body(
                         "data.id", not(isEmptyString()),
                         "data.attributes.username", equalTo("jon"),
                         "data.attributes.email", equalTo("jon@doe.com")
                 );
+
+        tryAuthenticate("jon", "mysecretpassword").statusCode(200);
     }
 
     @Test
     public void testPostUser_FailNameAlreadyExists() throws Exception {
         restApi()
                 .contentType("application/json")
-                .content(userData("jane", "secret", "jane@doe.com"))
-                .when()
-                .post("/api/users")
-                .then()
-                .contentType("application/json")
-                .body(
-                        "data.id", not(isEmptyString()),
-                        "data.attributes.username", equalTo("jane"),
-                        "data.attributes.email", equalTo("jane@doe.com")
-                );
-
-        restApi()
-                .contentType("application/json")
-                .content(userData("jane", "anothersecret", "jane@another.mbox"))
+                .content(userData("twatson4", "anothersecret", "foobar@another.mbox"))
                 .when()
                 .post("/api/users")
                 .then()

@@ -18,14 +18,14 @@ public class GetUserProfileTest {
 
     @Test
     public void getUserProfile_Authenticated() throws Exception {
-        authRestApi("dale", "dale")
+        authRestApi("twilson2", "V1qReXAVgED")
                 .when()
                 .get("/api/users/profile")
                 .then()
                 .body(
-                        "data.id", equalTo("2"),
-                        "data.attributes.username", equalTo("dale"),
-                        "data.attributes.email", equalTo("dale@sistearth.com")
+                        "data.id", equalTo("3"),
+                        "data.attributes.username", equalTo("twilson2"),
+                        "data.attributes.email", equalTo("bgriffin2@time.com")
                 );
     }
 }

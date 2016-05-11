@@ -10,60 +10,60 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class PutUserTest {
     @Test
     public void testPutUser_ChangeEmail() throws Exception {
-        authRestApi("kevin", "kevin")
+        authRestApi("bhunter5", "pUJWnwSY6")
                 .contentType("application/json")
-                .content(changeData("email", "kevin@changed.com", "kevin"))
+                .content(changeData("email", "changed@mbox.com", "pUJWnwSY6"))
                 .when()
                 .put("/api/users")
                 .then()
                 .statusCode(200)
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("3"),
-                        "data.attributes.username", equalTo("kevin"),
-                        "data.attributes.email", equalTo("kevin@changed.com")
+                        "data.id", equalTo("6"),
+                        "data.attributes.username", equalTo("bhunter5"),
+                        "data.attributes.email", equalTo("changed@mbox.com")
                 );
     }
 
     @Test
     public void testPutUser_ChangeEmail_WrongPassword() throws Exception {
-        authRestApi("juanlucas", "juanlucas")
+        authRestApi("bross6", "dbo2u4nfVr")
                 .contentType("application/json")
-                .content(changeData("email", "juan.lucas@wrong.com", "wrong-password"))
+                .content(changeData("email", "changed@mbox.com", "wrong-password"))
                 .when()
                 .put("/api/users")
                 .then()
                 .statusCode(400);
 
-        authRestApi("juanlucas", "juanlucas")
+        authRestApi("bross6", "dbo2u4nfVr")
                 .when()
                 .get("/api/users/profile")
                 .then()
                 .body(
-                        "data.id", equalTo("5"),
-                        "data.attributes.username", equalTo("juanlucas"),
-                        "data.attributes.email", equalTo("juan.lucas@mbox.com")
+                        "data.id", equalTo("7"),
+                        "data.attributes.username", equalTo("bross6"),
+                        "data.attributes.email", equalTo("vbrooks6@theguardian.com")
                 );
     }
 
     @Test
     public void testPutUser_ChangePassword() throws Exception {
-        authRestApi("vanessa", "vanessa")
+        authRestApi("jtucker9", "PypuMk6r1YAN")
                 .contentType("application/json")
-                .content(changeData("password", "assenav", "vanessa"))
+                .content(changeData("password", "nouveau-password", "PypuMk6r1YAN"))
                 .when()
                 .put("/api/users")
                 .then()
                 .statusCode(200)
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("4"),
-                        "data.attributes.username", equalTo("vanessa"),
-                        "data.attributes.email", equalTo("vanessa@mail.com")
+                        "data.id", equalTo("8"),
+                        "data.attributes.username", equalTo("jtucker9"),
+                        "data.attributes.email", equalTo("cmontgomery9@newyorker.com")
                 );
 
-        tryAuthenticate("vanessa", "assenav").statusCode(200);
-        tryAuthenticate("vanessa", "vanessa").statusCode(402);
+        tryAuthenticate("jtucker9", "nouveau-password").statusCode(200);
+        tryAuthenticate("jtucker9", "PypuMk6r1YAN").statusCode(402);
     }
 
     private String changeData(String field, String value, String confirmationPassword) {

@@ -12,12 +12,12 @@ public class PostLoginTest {
     public void testPostLogin_Ok() throws Exception {
         restApi()
                 .contentType("application/json")
-                .content(loginData("admin", "admin"))
+                .content(loginData("wknight1", "Jteohv3n"))
                 .when()
                 .post("/api/login")
                 .then()
                 .contentType("application/json")
-                .body("username", equalTo("admin"));
+                .body("username", equalTo("wknight1"));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PostLoginTest {
     public void testPostLogin_WrongPassword() throws Exception {
         restApi()
                 .contentType("application/json")
-                .content(loginData("admin", "wrongpassword"))
+                .content(loginData("wknight1", "wrongpassword"))
                 .when()
                 .post("/api/login")
                 .then()
@@ -48,7 +48,7 @@ public class PostLoginTest {
     public void testPostLogin_WrongUsername() throws Exception {
         restApi()
                 .contentType("application/json")
-                .content(loginData("amdin", "admin"))
+                .content(loginData("wknight1foobar", "Jteohv3n"))
                 .when()
                 .post("/api/login")
                 .then()
