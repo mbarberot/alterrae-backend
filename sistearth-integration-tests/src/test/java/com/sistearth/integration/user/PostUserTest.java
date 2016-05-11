@@ -114,11 +114,6 @@ public class PostUserTest {
                 );
     }
 
-    /*
-     * TODO : fail bad email syntax
-     * TODO : fail bad password
-     */
-
     private String userData(String username, String password, String email) {
         return format("{ \"data\": { \"attributes\" : { \"username\": \"%s\", \"password\": \"%s\", \"email\": \"%s\" } } }",
                 username,

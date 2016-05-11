@@ -66,12 +66,6 @@ public class PutUserTest {
         tryAuthenticate("vanessa", "vanessa").statusCode(402);
     }
 
-    /*
-     * TODO : fail with bad new password
-     * TODO : fail because empty fields
-     */
-
-
     private String changeData(String field, String value, String confirmationPassword) {
         return format("{ \"data\": { \"attributes\" : { \"%s\": \"%s\", \"actualPassword\": \"%s\" } } }",
                 field,
