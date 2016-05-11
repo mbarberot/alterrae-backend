@@ -1,6 +1,8 @@
 TODO
 ====
 
+- Maintain todo list via issues and milestones
+- Use fake data (=> generated)
 - A better error handling (see payload errors)
 - Use User.id in token
 - Payload and extractors roles ?

@@ -13,7 +13,7 @@ import com.sistearth.spark.filters.AuthorizationTokenFilter;
 import com.sistearth.spark.token.TokenManager;
 import com.sistearth.spark.view.Answer;
 import com.sistearth.view.request.payloads.TokenPayload;
-import com.sistearth.view.request.payloads.UserPayload;
+import com.sistearth.view.request.payloads.UserCreationPayload;
 import com.sistearth.view.request.payloads.UserUpdatePayload;
 import com.sistearth.view.response.jsonapi.JsonApiErrorView;
 import com.sistearth.view.response.jsonapi.JsonApiUserView;
@@ -48,7 +48,7 @@ public class UserRestService implements Service {
         });
 
         post("/api/users", (request, response) -> {
-            UserPayload payload = new UserCreationPayloadExtractor().extractPayload(request);
+            UserCreationPayload payload = new UserCreationPayloadExtractor().extractPayload(request);
             Answer answer = newJsonAnswer(response);
             if (!payload.isValid()) {
                 return newJsonAnswer(response)
