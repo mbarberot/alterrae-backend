@@ -20,7 +20,7 @@ public class UserCreationValidatorTest {
     }
 
     @Test
-    public void testInvalidPayload() throws Exception {
+    public void testInvalidPayload_Empty() throws Exception {
         UserCreationPayload payload = new UserCreationPayload();
         UserCreationValidator validator = new UserCreationValidator(payload);
 
@@ -30,5 +30,16 @@ public class UserCreationValidatorTest {
         assertTrue(hasError(errors, "username"));
         assertTrue(hasError(errors, "email"));
         assertTrue(hasError(errors, "password"));
+    }
+
+    @Test
+    public void testInvalidPayload_BadEmail() throws Exception {
+        UserCreationPayload payload = new UserCreationPayload("jon", "jonsecret", "jon@dot@plop.com");
+        UserCreationValidator validator = new UserCreationValidator(payload);
+
+        assertFalse(validator.isValid());
+        List<Error> errors = validator.getErrors();
+        assertEquals(1, errors.size());
+        assertTrue(hasError(errors, "email-bad-syntax"));
     }
 }

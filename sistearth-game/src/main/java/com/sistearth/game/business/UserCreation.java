@@ -24,7 +24,7 @@ public class UserCreation extends BusinessPromise<User> {
     @Override
     protected void doIt() {
         if (!validator.isValid()) {
-            errors.addAll(payload.getErrors());
+            errors.addAll(validator.getErrors());
             return;
         }
 

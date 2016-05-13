@@ -3,6 +3,7 @@ package com.sistearth.game.validators;
 import com.sistearth.api.beans.Error;
 import com.sistearth.api.payloads.UserCreationPayload;
 import com.sistearth.api.validators.Validator;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class UserCreationValidator implements Validator {
     public boolean isValid() {
         return isNotBlank(payload.getUsername())
                 && isNotBlank(payload.getEmail())
+                && EmailValidator.getInstance().isValid(payload.getEmail())
                 && isNotBlank(payload.getPassword());
     }
 
@@ -31,9 +33,13 @@ public class UserCreationValidator implements Validator {
         if (isBlank(payload.getUsername())) {
             errors.add(new Error("400", "username"));
         }
-        if (isBlank(payload.getPassword())) {
+
+        if (isBlank(payload.getEmail())) {
             errors.add(new Error("400", "email"));
+        } else if (!EmailValidator.getInstance().isValid(payload.getEmail())) {
+            errors.add(new Error("400", "email-bad-syntax"));
         }
+
         if (isBlank(payload.getPassword())) {
             errors.add(new Error("400", "password"));
         }

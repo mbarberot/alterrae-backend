@@ -91,6 +91,22 @@ public class PostUserTest {
     }
 
     @Test
+    public void testPostUser_FailBadEmail() throws Exception {
+        restApi()
+                .contentType("application/json")
+                .content(userData("jane", "mysecretpassword", "jane@doe@plop.com"))
+                .when()
+                .post("/api/users")
+                .then()
+                .contentType("application/json")
+                .statusCode(400)
+                .body(
+                        "errors.status", hasItem("400"),
+                        "errors.title", hasItems("email-bad-syntax")
+                );
+    }
+
+    @Test
     public void testPostUser_FailNoFields() throws Exception {
         restApi()
                 .contentType("application/json")
