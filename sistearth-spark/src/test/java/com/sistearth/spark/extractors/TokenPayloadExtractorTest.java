@@ -1,6 +1,6 @@
 package com.sistearth.spark.extractors;
 
-import com.sistearth.view.request.payloads.TokenPayload;
+import com.sistearth.api.payloads.TokenPayload;
 import org.junit.Test;
 import spark.Request;
 

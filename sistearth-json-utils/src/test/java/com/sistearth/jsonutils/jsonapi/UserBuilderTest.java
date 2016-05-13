@@ -1,6 +1,6 @@
 package com.sistearth.jsonutils.jsonapi;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;

@@ -2,7 +2,7 @@ package com.sistearth.jsonutils.jsonapi;
 
 import com.mbarberot.jsonapi.JSONApi;
 import com.mbarberot.jsonapi.builders.error.JsonApiErrorBuilder;
-import com.sistearth.db.beans.Error;
+import com.sistearth.api.beans.Error;
 
 import java.util.List;
 

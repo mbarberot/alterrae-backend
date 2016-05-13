@@ -1,6 +1,6 @@
 package com.sistearth.view.request.payloads;
 
-import com.sistearth.db.beans.Error;
+import com.sistearth.api.beans.Error;
 
 import java.util.List;
 import java.util.Objects;

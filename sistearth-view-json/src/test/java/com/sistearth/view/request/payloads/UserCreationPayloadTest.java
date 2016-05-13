@@ -1,6 +1,7 @@
 package com.sistearth.view.request.payloads;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
+import com.sistearth.api.payloads.UserCreationPayload;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,7 +1,7 @@
 package com.sistearth.view.response.jsonapi;
 
-import com.sistearth.db.beans.Post;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.Post;
+import com.sistearth.api.beans.User;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 

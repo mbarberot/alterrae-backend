@@ -1,11 +1,11 @@
 package com.sistearth.spark.services;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
 import com.sistearth.db.mysql.UserManager;
 import com.sistearth.game.auth.Authenticator;
 import com.sistearth.spark.extractors.LoginPayloadExtractor;
 import com.sistearth.spark.token.TokenManager;
-import com.sistearth.view.request.payloads.LoginPayload;
+import com.sistearth.api.payloads.LoginPayload;
 import com.sistearth.view.response.json.JsonLoginView;
 import com.sistearth.view.response.jsonapi.JsonApiErrorView;
 

@@ -1,18 +1,16 @@
 package com.sistearth.spark.services;
 
 import com.sistearth.db.Database;
-import com.sistearth.db.beans.Post;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.Post;
+import com.sistearth.api.beans.User;
 import com.sistearth.db.mysql.PostManager;
 import com.sistearth.db.mysql.UserManager;
-import com.sistearth.spark.view.Answer;
 import com.sistearth.view.response.jsonapi.JsonApiPostView;
 
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.sistearth.spark.view.Answer.newJsonAnswer;
-import static com.sistearth.spark.view.Answer.newJsonApiAnswer;
 import static java.lang.Integer.valueOf;
 import static spark.Spark.get;
 

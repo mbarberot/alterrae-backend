@@ -1,6 +1,6 @@
 package com.sistearth.spark.extractors;
 
-import com.sistearth.view.request.Payload;
+import com.sistearth.api.payloads.Payload;
 import com.sistearth.view.request.PayloadException;
 import spark.Request;
 

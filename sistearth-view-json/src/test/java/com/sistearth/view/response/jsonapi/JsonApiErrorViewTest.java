@@ -1,6 +1,6 @@
 package com.sistearth.view.response.jsonapi;
 
-import com.sistearth.db.beans.Error;
+import com.sistearth.api.beans.Error;
 import org.junit.Test;
 
 import static com.google.common.collect.Lists.newArrayList;

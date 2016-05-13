@@ -1,6 +1,6 @@
 package com.sistearth.spark.token;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,6 +1,6 @@
 package com.sistearth.view.response;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

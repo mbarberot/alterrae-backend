@@ -1,7 +1,7 @@
 package com.sistearth.game.auth;
 
-import com.sistearth.db.api.ModelException;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.db.ModelException;
+import com.sistearth.api.beans.User;
 import com.sistearth.test.utils.TestUserManager;
 import org.junit.Test;
 

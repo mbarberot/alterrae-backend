@@ -1,6 +1,6 @@
 package com.sistearth.spark.token;
 
-import com.sistearth.db.beans.User;
+import com.sistearth.api.beans.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 

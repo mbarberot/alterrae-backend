@@ -1,7 +1,7 @@
 package com.sistearth.spark.extractors;
 
 import com.sistearth.view.request.PayloadException;
-import com.sistearth.view.request.payloads.LoginPayload;
+import com.sistearth.api.payloads.LoginPayload;
 import org.junit.Test;
 import spark.Request;
 

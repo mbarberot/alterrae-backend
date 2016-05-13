@@ -1,5 +1,6 @@
 package com.sistearth.view.request.payloads;
 
+import com.sistearth.api.payloads.EmptyPayload;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNull;
