@@ -11,7 +11,6 @@ import com.sistearth.spark.extractors.UserCreationPayloadExtractor;
 import com.sistearth.spark.extractors.UserUpdatePayloadExtractor;
 import com.sistearth.spark.filters.AuthorizationTokenFilter;
 import com.sistearth.spark.token.TokenManager;
-import com.sistearth.spark.view.Answer;
 import com.sistearth.view.request.payloads.TokenPayload;
 import com.sistearth.view.request.payloads.UserCreationPayload;
 import com.sistearth.view.request.payloads.UserUpdatePayload;
@@ -49,7 +48,8 @@ public class UserRestService implements Service {
 
         post("/api/users", (request, response) -> {
             UserCreationPayload payload = new UserCreationPayloadExtractor().extractPayload(request);
-            Answer answer = newJsonAnswer(response);
+//            UserCreationValidator validator = new UserCreationValidator(payload);
+
             if (!payload.isValid()) {
                 return newJsonAnswer(response)
                         .status(400)
@@ -69,11 +69,10 @@ public class UserRestService implements Service {
             try {
                     userManager.create(payloadUser);
                 } catch (ModelException e) {
-                    answer.status(400);
-                    if (isNotBlank(e.getCode())) {
-                        answer.body(new JsonApiErrorView("400", e.getCode()));
-                    }
-                    return answer.build();
+                    return newJsonAnswer(response)
+                            .status(400)
+                            .body(isNotBlank(e.getCode()) ? new JsonApiErrorView("400", e.getCode()) : null)
+                            .build();
                 }
 
                 User user;
@@ -81,10 +80,12 @@ public class UserRestService implements Service {
                     user = userManager.getBy("username", payloadUser.getUsername());
                 } catch (ModelException e) {
                     LOG.error("Failed to get created user", e);
-                    return answer.status(500).build();
+                    return newJsonAnswer(response)
+                            .status(500)
+                            .build();
                 }
 
-                return answer.body(new JsonApiUserView(user)).build();
+                return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
         });
 
         put("/api/users", (request, response) -> {
