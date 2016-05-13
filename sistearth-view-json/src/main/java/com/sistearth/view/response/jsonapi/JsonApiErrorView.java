@@ -1,7 +1,8 @@
 package com.sistearth.view.response.jsonapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sistearth.db.beans.Error;
+import com.sistearth.api.beans.Error;
+import com.sistearth.api.misc.Errors;
 import com.sistearth.jsonutils.jsonapi.ErrorBuilder;
 import com.sistearth.view.response.ErrorView;
 import com.sistearth.view.response.ViewException;
@@ -14,8 +15,12 @@ public class JsonApiErrorView extends ErrorView {
         super(errors);
     }
 
+    public JsonApiErrorView(Errors errors) {
+        super(errors.getErrors());
+    }
+
     public JsonApiErrorView(String status, String title) {
-        super(status,title);
+        super(status, title);
     }
 
     public JsonApiErrorView(String status) {

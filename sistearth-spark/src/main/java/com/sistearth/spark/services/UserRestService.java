@@ -1,19 +1,20 @@
 package com.sistearth.spark.services;
 
 import com.sistearth.db.Database;
-import com.sistearth.db.api.ModelException;
-import com.sistearth.db.api.ModelManager;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.db.ModelException;
+import com.sistearth.api.db.ModelManager;
+import com.sistearth.api.beans.User;
 import com.sistearth.db.mysql.UserManager;
 import com.sistearth.game.auth.Authenticator;
+import com.sistearth.game.business.UserCreation;
 import com.sistearth.spark.extractors.TokenPayloadExtractor;
 import com.sistearth.spark.extractors.UserCreationPayloadExtractor;
 import com.sistearth.spark.extractors.UserUpdatePayloadExtractor;
 import com.sistearth.spark.filters.AuthorizationTokenFilter;
 import com.sistearth.spark.token.TokenManager;
-import com.sistearth.view.request.payloads.TokenPayload;
-import com.sistearth.view.request.payloads.UserCreationPayload;
-import com.sistearth.view.request.payloads.UserUpdatePayload;
+import com.sistearth.api.payloads.TokenPayload;
+import com.sistearth.api.payloads.UserCreationPayload;
+import com.sistearth.api.payloads.UserUpdatePayload;
 import com.sistearth.view.response.jsonapi.JsonApiErrorView;
 import com.sistearth.view.response.jsonapi.JsonApiUserView;
 import org.apache.commons.logging.Log;
@@ -24,7 +25,6 @@ import static com.sistearth.game.auth.Authenticator.Result.ACCEPTED;
 import static com.sistearth.spark.view.Answer.newJsonAnswer;
 import static java.lang.Integer.valueOf;
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static spark.Spark.*;
 
 public class UserRestService implements Service {
@@ -48,44 +48,18 @@ public class UserRestService implements Service {
 
         post("/api/users", (request, response) -> {
             UserCreationPayload payload = new UserCreationPayloadExtractor().extractPayload(request);
-//            UserCreationValidator validator = new UserCreationValidator(payload);
 
-            if (!payload.isValid()) {
-                return newJsonAnswer(response)
-                        .status(400)
-                        .body(new JsonApiErrorView(payload.getErrors()))
-                        .build();
-            }
-
-            User payloadUser = payload.getEntity();
-
-            if(!userManager.findBy("username", payloadUser.getUsername()).isEmpty()) {
-                return newJsonAnswer(response)
-                        .status(400)
-                        .body(new JsonApiErrorView("400", "already-exists"))
-                        .build();
-            }
-
-            try {
-                    userManager.create(payloadUser);
-                } catch (ModelException e) {
-                    return newJsonAnswer(response)
+            return new UserCreation(payload, userManager)
+                    .onSuccess(entity -> newJsonAnswer(response)
+                            .status(200)
+                            .body(new JsonApiUserView(entity))
+                            .build())
+                    .onFailure(errors -> newJsonAnswer(response)
                             .status(400)
-                            .body(isNotBlank(e.getCode()) ? new JsonApiErrorView("400", e.getCode()) : null)
-                            .build();
-                }
-
-                User user;
-                try {
-                    user = userManager.getBy("username", payloadUser.getUsername());
-                } catch (ModelException e) {
-                    LOG.error("Failed to get created user", e);
-                    return newJsonAnswer(response)
-                            .status(500)
-                            .build();
-                }
-
-                return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
+                            .body(new JsonApiErrorView(errors))
+                            .build()
+                    )
+                    .resolve();
         });
 
         put("/api/users", (request, response) -> {
@@ -113,7 +87,7 @@ public class UserRestService implements Service {
             if (payloadUser.getId() == null) {
                 payloadUser.setId(authenticatedUser.getId());
             }
-            if(isBlank(payloadUser.getUsername())) {
+            if (isBlank(payloadUser.getUsername())) {
                 payloadUser.setUsername(authenticatedUser.getUsername());
             }
             if (isBlank(payloadUser.getPassword())) {
@@ -123,28 +97,20 @@ public class UserRestService implements Service {
                 payloadUser.setEmail(authenticatedUser.getEmail());
             }
 
+
             try {
                 userManager.update(payloadUser);
-            } catch (ModelException e) {
-                JsonApiErrorView errorView = null;
-                if (isNotBlank(e.getCode())) {
-                    errorView = new JsonApiErrorView("400", e.getCode());
-                }
-                return newJsonAnswer(response).status(400).body(errorView).build();
-            }
-
-            User user;
-            try {
-                user = userManager.getById(payloadUser.getId());
+                User user = userManager.getById(payloadUser.getId());
+                return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
             } catch (ModelException e) {
                 LOG.error("Failed to get updated user", e);
                 return newJsonAnswer(response).status(500).build();
             }
 
-            return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
 
         });
     }
+
 
     @Override
     public void registerFilters() throws ServiceException {
