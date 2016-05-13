@@ -1,15 +1,15 @@
 package com.sistearth.test.utils;
 
-import com.sistearth.db.api.ModelException;
-import com.sistearth.db.api.ModelManager;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.db.ModelException;
+import com.sistearth.api.db.ModelManager;
+import com.sistearth.api.beans.User;
 import org.apache.commons.lang.NotImplementedException;
 
 import java.util.List;
 
 public class TestUserManager implements ModelManager<User> {
     @Override
-    public List<User> getAll() throws ModelException {
+    public List<User> getAll() {
         throw new NotImplementedException();
     }
 
@@ -29,27 +29,27 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
-    public boolean exists(int id) throws ModelException {
+    public boolean exists(int id) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<User> findById(int id) throws ModelException {
+    public List<User> findById(int id) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<User> findBy(String field, Object value) throws ModelException {
+    public List<User> findBy(String field, Object value) {
         throw new NotImplementedException();
     }
 
     @Override
-    public void delete(User entity) throws ModelException {
+    public void delete(User entity) {
         throw new NotImplementedException();
     }
 
     @Override
-    public void update(User entity) throws ModelException {
+    public void update(User entity) {
         throw new NotImplementedException();
     }
 }

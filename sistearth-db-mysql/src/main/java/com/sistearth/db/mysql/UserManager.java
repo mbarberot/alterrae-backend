@@ -1,8 +1,9 @@
 package com.sistearth.db.mysql;
 
-import com.sistearth.db.api.ModelException;
-import com.sistearth.db.api.ModelManager;
-import com.sistearth.db.beans.User;
+import com.sistearth.api.db.ModelException;
+import com.sistearth.api.db.ModelManager;
+import com.sistearth.api.beans.User;
+import org.apache.commons.lang.NotImplementedException;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -19,8 +20,8 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public List<User> getAll() throws ModelException {
-        throw new ModelException("[Not implemented] UserManager->getAll()");
+    public List<User> getAll() {
+        throw new NotImplementedException("[Not implemented] UserManager->getAll()");
     }
 
     @Override
@@ -58,17 +59,17 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public boolean exists(int id) throws ModelException {
-        throw new ModelException("[Not implemented] UserManager->exists(id)");
+    public boolean exists(int id) {
+        throw new NotImplementedException("[Not implemented] UserManager->exists(id)");
     }
 
     @Override
-    public List<User> findById(int id) throws ModelException {
+    public List<User> findById(int id) {
         return this.findBy("id", id);
     }
 
     @Override
-    public List<User> findBy(String field, Object value) throws ModelException {
+    public List<User> findBy(String field, Object value) {
         try (Connection conn = database.open()) {
             return conn.createQuery(format("SELECT * FROM users WHERE %s = :%s", field, field))
                     .addParameter(field, value)
@@ -77,7 +78,7 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public void delete(User entity) throws ModelException {
+    public void delete(User entity) {
         try (Connection conn = database.open()) {
             conn.createQuery("DELETE FROM users WHERE id = :id")
                     .addParameter("id", entity.getId())
@@ -86,7 +87,7 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public void update(User entity) throws ModelException {
+    public void update(User entity) {
         // Changing username is not allowed
         try (Connection conn = database.open()) {
             conn.createQuery("UPDATE users SET password = :password, email = :email WHERE id = :id")

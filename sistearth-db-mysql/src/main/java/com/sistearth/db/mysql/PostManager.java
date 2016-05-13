@@ -1,9 +1,10 @@
 package com.sistearth.db.mysql;
 
 
-import com.sistearth.db.api.ModelException;
-import com.sistearth.db.api.ModelManager;
-import com.sistearth.db.beans.Post;
+import com.sistearth.api.db.ModelException;
+import com.sistearth.api.db.ModelManager;
+import com.sistearth.api.beans.Post;
+import org.apache.commons.lang.NotImplementedException;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -19,7 +20,7 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public List<Post> getAll() throws ModelException {
+    public List<Post> getAll() {
         List<Post> posts;
         try (Connection conn = database.open()) {
             posts = conn.createQuery("SELECT * FROM posts")
@@ -44,12 +45,12 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public void create(Post post) throws ModelException {
-        throw new ModelException("[Not implemented] PostManager->create(post)");
+    public void create(Post post) {
+        throw new NotImplementedException("[Not implemented] PostManager->create(post)");
     }
 
     @Override
-    public boolean exists(int id) throws ModelException {
+    public boolean exists(int id) {
         try (Connection conn = database.open()) {
             List<Post> postsForId = conn.createQuery("SELECT * FROM posts WHERE id = :id")
                     .addParameter("id", id)
@@ -60,12 +61,12 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public List<Post> findById(int id) throws ModelException {
+    public List<Post> findById(int id) {
         return this.findBy("id", id);
     }
 
     @Override
-    public List<Post> findBy(String field, Object value) throws ModelException {
+    public List<Post> findBy(String field, Object value) {
         try (Connection conn = database.open()) {
             return conn.createQuery(format("SELECT * FROM posts WHERE %s = :%s", field, field))
                     .addParameter(field, value)
@@ -75,14 +76,14 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public void delete(Post entity) throws ModelException {
+    public void delete(Post entity) {
         // This feature is not planned yet
-        throw new ModelException("[Not implemented] PostManager->delete(post)");
+        throw new NotImplementedException("[Not implemented] PostManager->delete(post)");
     }
 
     @Override
-    public void update(Post entity) throws ModelException {
+    public void update(Post entity) {
         // This feature is not planned yet
-        throw new ModelException("[Not implemented] PostManager->update(post)");
+        throw new NotImplementedException("[Not implemented] PostManager->update(post)");
     }
 }

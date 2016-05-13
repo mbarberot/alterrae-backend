@@ -1,4 +1,4 @@
-package com.sistearth.db.beans;
+package com.sistearth.api.beans;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

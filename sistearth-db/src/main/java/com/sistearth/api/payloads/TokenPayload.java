@@ -1,7 +1,6 @@
-package com.sistearth.view.request.payloads;
+package com.sistearth.api.payloads;
 
-import com.sistearth.db.beans.Error;
-import com.sistearth.view.request.Payload;
+import com.sistearth.api.beans.Error;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
