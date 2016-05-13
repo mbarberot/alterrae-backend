@@ -4,9 +4,10 @@ import com.sistearth.api.beans.User;
 import com.sistearth.api.payloads.LoginPayload;
 import org.junit.Test;
 
+import static com.sistearth.test.utils.PayloadTestHelper.hasError;
 import static org.junit.Assert.*;
 
-public class LoginPayloadTest extends PayloadTest {
+public class LoginPayloadTest {
     @Test
     public void testValidPayload() throws Exception {
         LoginPayload payload = new LoginPayload("jon", "jonsecret");

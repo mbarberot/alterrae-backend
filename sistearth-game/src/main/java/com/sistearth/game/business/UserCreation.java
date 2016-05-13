@@ -6,21 +6,24 @@ import com.sistearth.api.beans.Error;
 import com.sistearth.api.beans.User;
 import com.sistearth.api.payloads.UserCreationPayload;
 import com.sistearth.api.business.BusinessPromise;
+import com.sistearth.game.validators.UserCreationValidator;
 
 public class UserCreation extends BusinessPromise<User> {
 
     private final UserCreationPayload payload;
     private final ModelManager<User> userManager;
+    private final UserCreationValidator validator;
 
     public UserCreation(UserCreationPayload payload, ModelManager<User> userManager) {
         super();
         this.payload = payload;
         this.userManager = userManager;
+        this.validator = new UserCreationValidator(payload);
     }
 
     @Override
     protected void doIt() {
-        if (!payload.isValid()) {
+        if (!validator.isValid()) {
             errors.addAll(payload.getErrors());
             return;
         }

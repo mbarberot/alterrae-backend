@@ -4,6 +4,7 @@ import com.sistearth.api.beans.User;
 import com.sistearth.api.payloads.UserUpdatePayload;
 import org.junit.Test;
 
+import static com.sistearth.test.utils.PayloadTestHelper.hasError;
 import static org.junit.Assert.*;
 
 public class UserUpdatePayloadTest extends PayloadTest {
