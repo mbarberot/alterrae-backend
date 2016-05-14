@@ -28,4 +28,23 @@ public class UserUpdateValidatorTest {
         assertTrue(hasError(validator.getErrors(), "emailOrPassword"));
     }
 
+    @Test
+    public void testBadEmailSyntax() throws Exception {
+        UserUpdatePayload payload = new UserUpdatePayload("1", "jon", "newsecret", "jon@new@plop.com", "jonsecret");
+        UserUpdateValidator validator = new UserUpdateValidator(payload);
+
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getErrors().size());
+        assertTrue(hasError(validator.getErrors(), "email-bad-syntax"));
+    }
+
+    @Test
+    public void testPasswordTooShort() throws Exception {
+        UserUpdatePayload payload = new UserUpdatePayload("1", "jon", "2short*", "jon@new.com", "jonsecret");
+        UserUpdateValidator validator = new UserUpdateValidator(payload);
+
+        assertFalse(validator.isValid());
+        assertEquals(1, validator.getErrors().size());
+        assertTrue(hasError(validator.getErrors(), "password-bad"));
+    }
 }

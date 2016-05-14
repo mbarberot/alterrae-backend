@@ -8,12 +8,12 @@ import org.apache.commons.validator.routines.EmailValidator;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.sistearth.game.Settings.PASSWORD_MIN_LENGTH;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class UserCreationValidator implements Validator {
 
-    private static final int PASSWORD_LENGTH = 8;
     private UserCreationPayload payload;
 
     public UserCreationValidator(UserCreationPayload payload) {
@@ -26,7 +26,7 @@ public class UserCreationValidator implements Validator {
                 && isNotBlank(payload.getEmail())
                 && EmailValidator.getInstance().isValid(payload.getEmail())
                 && isNotBlank(payload.getPassword())
-                && payload.getPassword().length() > PASSWORD_LENGTH;
+                && payload.getPassword().length() > PASSWORD_MIN_LENGTH;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UserCreationValidator implements Validator {
         if (isBlank(payload.getPassword())) {
             errors.add(new Error("400", "password"));
         } else {
-            if (payload.getPassword().length() < PASSWORD_LENGTH) {
+            if (payload.getPassword().length() < PASSWORD_MIN_LENGTH) {
                 errors.add(new Error("400", "password-bad"));
             }
         }
