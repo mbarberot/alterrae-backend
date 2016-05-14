@@ -7,6 +7,7 @@ import com.sistearth.api.db.ModelException;
 import com.sistearth.api.db.ModelManager;
 import com.sistearth.api.payloads.UserUpdatePayload;
 import com.sistearth.game.auth.Authenticator;
+import com.sistearth.game.validators.UserUpdateValidator;
 
 import static com.sistearth.game.auth.Authenticator.Result.ACCEPTED;
 import static org.apache.commons.lang.StringUtils.isBlank;
@@ -17,18 +18,20 @@ public class UserUpdate extends BusinessPromise<User> {
     private final ModelManager<User> userManager;
     private final String tokenInfo;
     private final Authenticator authenticator;
+    private final UserUpdateValidator validator;
 
     public UserUpdate(UserUpdatePayload payload, ModelManager<User> userManager, String tokenInfo) {
         this.payload = payload;
         this.userManager = userManager;
         this.tokenInfo = tokenInfo;
         this.authenticator = new Authenticator(userManager);
+        this.validator = new UserUpdateValidator(payload);
     }
 
     @Override
     protected void doIt() {
-        if (!payload.isValid()) {
-            errors.addAll(payload.getErrors());
+        if (!validator.isValid()) {
+            errors.addAll(validator.getErrors());
             return;
         }
 
