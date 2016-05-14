@@ -42,4 +42,15 @@ public class UserCreationValidatorTest {
         assertEquals(1, errors.size());
         assertTrue(hasError(errors, "email-bad-syntax"));
     }
+
+    @Test
+    public void testInvalidPayload_BadPassword() throws Exception {
+        UserCreationPayload payload = new UserCreationPayload("jon", "abc123*", "jon@doe.com");
+        UserCreationValidator validator = new UserCreationValidator(payload);
+
+        assertFalse(validator.isValid());
+        List<Error> errors = validator.getErrors();
+        assertEquals(1, errors.size());
+        assertTrue(hasError(errors, "password-bad"));
+    }
 }

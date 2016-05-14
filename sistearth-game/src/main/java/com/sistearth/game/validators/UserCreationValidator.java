@@ -13,6 +13,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class UserCreationValidator implements Validator {
 
+    private static final int PASSWORD_LENGTH = 8;
     private UserCreationPayload payload;
 
     public UserCreationValidator(UserCreationPayload payload) {
@@ -24,7 +25,8 @@ public class UserCreationValidator implements Validator {
         return isNotBlank(payload.getUsername())
                 && isNotBlank(payload.getEmail())
                 && EmailValidator.getInstance().isValid(payload.getEmail())
-                && isNotBlank(payload.getPassword());
+                && isNotBlank(payload.getPassword())
+                && payload.getPassword().length() > PASSWORD_LENGTH;
     }
 
     @Override
@@ -42,6 +44,10 @@ public class UserCreationValidator implements Validator {
 
         if (isBlank(payload.getPassword())) {
             errors.add(new Error("400", "password"));
+        } else {
+            if (payload.getPassword().length() < PASSWORD_LENGTH) {
+                errors.add(new Error("400", "password-bad"));
+            }
         }
         return errors;
     }
