@@ -75,6 +75,21 @@ public class PostUserTest {
     }
 
     @Test
+    public void testPostUser_FailPasswordTooShort() throws Exception {
+        restApi()
+                .contentType("application/json")
+                .content(userData("foo", "abc123*", "foobar@mbox.com"))
+                .when()
+                .post("/api/users")
+                .then()
+                .statusCode(400)
+                .body(
+                        "errors.status", hasItem("400"),
+                        "errors.title", hasItems("password-bad")
+                );
+    }
+
+    @Test
     public void testPostUser_FailNoEmail() throws Exception {
         restApi()
                 .contentType("application/json")
