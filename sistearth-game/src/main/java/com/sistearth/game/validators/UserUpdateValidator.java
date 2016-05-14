@@ -23,9 +23,21 @@ public class UserUpdateValidator implements Validator{
     @Override
     public boolean isValid() {
         return isNotBlank(payload.getActualPassword())
-                && (isNotBlank(payload.getEmail()) || isNotBlank(payload.getPassword()))
-                && (isNotBlank(payload.getEmail()) && EmailValidator.getInstance().isValid(payload.getEmail()))
-                && (isNotBlank(payload.getPassword()) && payload.getPassword().length() >= PASSWORD_MIN_LENGTH);
+                && hasOneOf(payload.getEmail(), payload.getPassword())
+                && isEmailValid(payload.getEmail())
+                && isPasswordValid(payload.getPassword());
+    }
+
+    private boolean isPasswordValid(String password) {
+        return isBlank(password) || password.length() >= PASSWORD_MIN_LENGTH;
+    }
+
+    private boolean isEmailValid(String email) {
+        return isBlank(email) || EmailValidator.getInstance().isValid(email);
+    }
+
+    private boolean hasOneOf(String email, String password) {
+        return isNotBlank(email) || isNotBlank(password);
     }
 
     @Override

@@ -96,7 +96,7 @@ public class PutUserTest {
                 .contentType("application/json")
                 .body(
                         "errors.status", hasItem("400"),
-                        "errors.title", hasItems("email-bad-syntax")
+                        "errors.title", hasItems("password-bad")
                 );
     }
 
