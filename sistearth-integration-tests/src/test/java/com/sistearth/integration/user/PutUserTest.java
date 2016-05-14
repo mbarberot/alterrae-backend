@@ -5,6 +5,8 @@ import org.junit.Test;
 import static com.sistearth.integration.utils.TestHelper.authRestApi;
 import static com.sistearth.integration.utils.TestHelper.tryAuthenticate;
 import static java.lang.String.format;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class PutUserTest {
@@ -64,6 +66,38 @@ public class PutUserTest {
 
         tryAuthenticate("jtucker9", "nouveau-password").statusCode(200);
         tryAuthenticate("jtucker9", "PypuMk6r1YAN").statusCode(402);
+    }
+
+    @Test
+    public void testPutUser_ChangeEmail_BadEmail() throws Exception {
+        authRestApi("akelleya", "MHxOIvfIlg")
+                .contentType("application/json")
+                .content(changeData("email", "changed@mbox@foo.com", "MHxOIvfIlg"))
+                .when()
+                .put("/api/users")
+                .then()
+                .statusCode(400)
+                .contentType("application/json")
+                .body(
+                        "errors.status", hasItem("400"),
+                        "errors.title", hasItems("email-bad-syntax")
+                );
+    }
+
+    @Test
+    public void testPutUser_ChangePassword_TooShort() throws Exception {
+        authRestApi("bfisherb", "ePmxZvl5R0u")
+                .contentType("application/json")
+                .content(changeData("password", "2short*", "ePmxZvl5R0u"))
+                .when()
+                .put("/api/users")
+                .then()
+                .statusCode(400)
+                .contentType("application/json")
+                .body(
+                        "errors.status", hasItem("400"),
+                        "errors.title", hasItems("email-bad-syntax")
+                );
     }
 
     private String changeData(String field, String value, String confirmationPassword) {
