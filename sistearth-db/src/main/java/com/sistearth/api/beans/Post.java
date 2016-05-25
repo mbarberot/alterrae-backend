@@ -10,9 +10,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post {
-    private Integer id;
+    private String id;
     private String title;
     private String body;
     private Date createdAt;
-    private Integer author;
+    private String author;
 }

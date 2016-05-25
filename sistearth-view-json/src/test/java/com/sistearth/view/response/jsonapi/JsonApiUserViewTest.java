@@ -12,7 +12,7 @@ public class JsonApiUserViewTest {
     public void testRender() throws Exception {
         assertEquals(
                 "{\"data\":{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"}}",
-                new JsonApiUserView(new User(1, "Jon", "winterfell", "jon@snow.com")).render(),
+                new JsonApiUserView(new User("1", "Jon", "winterfell", "jon@snow.com")).render(),
                 STRICT
         );
     }

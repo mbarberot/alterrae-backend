@@ -9,6 +9,7 @@ import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
 import java.util.List;
+import java.util.UUID;
 
 import static java.lang.String.format;
 
@@ -34,14 +35,14 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public User getById(int id) throws ModelException {
+    public User getById(String id) throws ModelException {
         return this.getBy("id", id);
     }
 
     @Override
     public void create(User user) throws ModelException {
         try (Connection conn = database.beginTransaction()) {
-            conn.createQuery("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)")
+            conn.createQuery("INSERT INTO users (id, username, password, email) VALUES (UUID(), :username, :password, :email)")
                     .addParameter("username", user.getUsername())
                     .addParameter("password", user.getPassword())
                     .addParameter("email", user.getEmail())
@@ -59,12 +60,12 @@ public class UserManager implements ModelManager<User> {
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(String id) {
         throw new NotImplementedException("[Not implemented] UserManager->exists(id)");
     }
 
     @Override
-    public List<User> findById(int id) {
+    public List<User> findById(String id) {
         return this.findBy("id", id);
     }
 

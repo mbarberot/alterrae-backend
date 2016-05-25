@@ -7,13 +7,13 @@ public interface ModelManager<T> {
 
     T getBy(String field, Object value) throws ModelException;
 
-    T getById(int id) throws ModelException;
+    T getById(String id) throws ModelException;
 
     void create(T entity) throws ModelException;
 
-    boolean exists(int id);
+    boolean exists(String id);
 
-    List<T> findById(int id);
+    List<T> findById(String id);
 
     List<T> findBy(String field, Object value);
 

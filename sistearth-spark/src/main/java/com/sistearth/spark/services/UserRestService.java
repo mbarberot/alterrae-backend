@@ -39,7 +39,7 @@ public class UserRestService implements Service {
         });
 
         get("/api/users/:id", (request, response) -> {
-            User user = userManager.getById(valueOf(request.params(":id")));
+            User user = userManager.getById(request.params(":id"));
             return newJsonAnswer(response).body(new JsonApiUserView(user)).build();
         });
 

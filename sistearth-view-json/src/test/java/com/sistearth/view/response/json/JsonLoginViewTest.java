@@ -11,7 +11,7 @@ public class JsonLoginViewTest {
     public void testRender() throws Exception {
         assertEquals(
                 "{\"username\":\"Jon\",\"token\":\"jon-s-token\"}",
-                new JsonLoginView(new User(1, "Jon", "jonsecret", "jon@dot.com"), "jon-s-token").render(),
+                new JsonLoginView(new User("1", "Jon", "jonsecret", "jon@dot.com"), "jon-s-token").render(),
                 STRICT
         );
     }

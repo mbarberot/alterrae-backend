@@ -40,7 +40,7 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post getById(int id) throws ModelException {
+    public Post getById(String id) throws ModelException {
         return this.getBy("id", id);
     }
 
@@ -50,7 +50,7 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(String id) {
         try (Connection conn = database.open()) {
             List<Post> postsForId = conn.createQuery("SELECT * FROM posts WHERE id = :id")
                     .addParameter("id", id)
@@ -61,7 +61,7 @@ public class PostManager implements ModelManager<Post> {
     }
 
     @Override
-    public List<Post> findById(int id) {
+    public List<Post> findById(String id) {
         return this.findBy("id", id);
     }
 

@@ -10,7 +10,7 @@ public class LoginViewTest {
     @Test
     public void testRender() throws Exception {
         JsonLoginView view = new JsonLoginView();
-        view.setUser(new User(0, "jon", "winterfell", "jon@snow.com"));
+        view.setUser(new User("0", "jon", "winterfell", "jon@snow.com"));
         view.setToken("my-token");
 
         assertEquals(

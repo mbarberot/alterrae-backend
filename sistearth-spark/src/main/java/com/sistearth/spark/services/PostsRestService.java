@@ -31,7 +31,7 @@ public class PostsRestService implements Service {
         });
 
         get("/api/posts/:id", (request, response) -> {
-            Post post = postManager.getById(valueOf(request.params(":id")));
+            Post post = postManager.getById(request.params(":id"));
             User author = userManager.getById(post.getAuthor());
             return newJsonAnswer(response).body(new JsonApiPostView(post, author)).build();
         });

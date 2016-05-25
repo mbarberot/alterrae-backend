@@ -19,7 +19,7 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
-    public User getById(int id) throws ModelException {
+    public User getById(String id) throws ModelException {
         throw new NotImplementedException();
     }
 
@@ -29,12 +29,12 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(String id) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<User> findById(int id) {
+    public List<User> findById(String id) {
         throw new NotImplementedException();
     }
 

@@ -19,7 +19,7 @@ public class TestPostManager implements ModelManager<Post> {
     }
 
     @Override
-    public Post getById(int id) throws ModelException {
+    public Post getById(String id) throws ModelException {
         throw new NotImplementedException();
     }
 
@@ -29,12 +29,12 @@ public class TestPostManager implements ModelManager<Post> {
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(String id) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<Post> findById(int id) {
+    public List<Post> findById(String id) {
         throw new NotImplementedException();
     }
 

@@ -13,6 +13,6 @@ public class GetPostsTest {
                 .get("/api/posts")
                 .then()
                 .contentType("application/json")
-                .body("data.id", hasItems("1","2"));
+                .body("data.id", hasItems("c55bc5a6-114e-48e0-a4c6-eb1dad55a979", "9723f94d-3c02-48ca-8dc1-ffb0913d9d23"));
     }
 }
