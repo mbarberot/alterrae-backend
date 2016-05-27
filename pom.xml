@@ -11,6 +11,7 @@
         <module>java-jsonapi</module>
         <module>sistearth-db</module>
         <module>sistearth-db-mysql</module>
+        <module>sistearth-db-mongo</module>
         <module>sistearth-spark</module>
         <module>sistearth-game</module>
         <module>sistearth-view</module>
