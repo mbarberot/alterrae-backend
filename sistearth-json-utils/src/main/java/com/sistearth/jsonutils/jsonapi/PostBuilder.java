@@ -41,7 +41,7 @@ public class PostBuilder {
     }
 
     public JSONApiDataBuilder buildData(Post post) {
-        return newData(post.getId().toString(), "posts")
+        return newData(post.getStringId(), "posts")
                 .attributes(
                         newAttributes()
                                 .add("title", post.getTitle())
@@ -50,7 +50,7 @@ public class PostBuilder {
                 )
                 .relationships(
                         newRelationships()
-                                .addSingleData("author", post.getAuthor().getId().toString(), "users")
+                                .addSingleData("author", post.getAuthor().getStringId(), "users")
                 )
                 ;
     }

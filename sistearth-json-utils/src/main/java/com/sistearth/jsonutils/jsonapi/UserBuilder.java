@@ -33,7 +33,7 @@ public class UserBuilder {
 
     public JSONApiDataBuilder buildData(User user) {
         return newData(
-                user.getId().toString(),
+                user.getStringId(),
                 "users"
         ).attributes(
                 newAttributes()

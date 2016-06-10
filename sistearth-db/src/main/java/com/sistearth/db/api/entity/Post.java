@@ -30,4 +30,8 @@ public class Post {
     public Post(String id, String title, String body, Date createdAt, User author) {
         this(new ObjectId(id), title, body, createdAt, author);
     }
+
+    public String getStringId() {
+        return this.getId().toString();
+    }
 }

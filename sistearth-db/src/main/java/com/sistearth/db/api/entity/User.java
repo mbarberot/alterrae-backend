@@ -23,4 +23,8 @@ public class User {
     public User(String s, String username, String password, String email) {
         this(new ObjectId(s), username, password, email);
     }
+
+    public String getStringId() {
+        return this.getId().toString();
+    }
 }
