@@ -22,15 +22,8 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.0</version>
                 <configuration>
-                    <imageName>sistearth/database-test</imageName>
+                    <imageName>sistearth/import-data</imageName>
                     <dockerDirectory>${project.build.source.directory}/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>sql/</targetPath>
-                            <directory>${project.build.source.directory}/sql</directory>
-                            <include>*.sql</include>
-                        </resource>
-                    </resources>
                 </configuration>
                 <executions>
                     <execution>
@@ -159,12 +152,6 @@
             <artifactId>sistearth-docker-server</artifactId>
             <version>1.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.sistearth</groupId>
-            <artifactId>sistearth-docker-database</artifactId>
-            <version>1.0</version>
-        </dependency>
-
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>

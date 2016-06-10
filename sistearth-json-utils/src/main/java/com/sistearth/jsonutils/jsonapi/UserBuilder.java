@@ -2,7 +2,7 @@ package com.sistearth.jsonutils.jsonapi;
 
 
 import com.mbarberot.jsonapi.builders.data.JSONApiDataBuilder;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class UserBuilder {
 
     public JSONApiDataBuilder buildData(User user) {
         return newData(
-                user.getId().toString(),
+                user.getStringId(),
                 "users"
         ).attributes(
                 newAttributes()

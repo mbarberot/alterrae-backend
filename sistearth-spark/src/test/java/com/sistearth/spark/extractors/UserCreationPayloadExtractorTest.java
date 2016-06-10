@@ -5,7 +5,8 @@ import com.sistearth.api.payloads.UserCreationPayload;
 import org.junit.Test;
 import spark.Request;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 // TOOD update tests ?
 

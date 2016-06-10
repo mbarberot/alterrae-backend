@@ -1,7 +1,7 @@
 package com.sistearth.jsonutils.jsonapi;
 
-import com.sistearth.api.beans.Post;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.Post;
+import com.sistearth.db.api.entity.User;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
@@ -13,12 +13,19 @@ import static com.google.common.collect.Lists.newArrayList;
 public class PostBuilderTest extends JsonTest {
     @Test
     public void testBuildSingle() throws Exception {
+        User author = new User("57595f70fc13ae7c88001be5", "John", "jonsecret", "jon@dot.com");
         JSONAssert.assertEquals(
-                "{'data':{'relationships':{'author':{'data':{'type':'users','id':'5'}}},'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'},'id':'0','type':'posts'},'included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'5','type':'users'}]}",
+                "{'data':{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}}," +
+                        "'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'}," +
+                        "'id':'57595f70fc13ae7c88001be6'," +
+                        "'type':'posts'" +
+                        "},'" +
+                        "included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'}]}",
                 jsonify(
                         new PostBuilder().build(
-                                new Post(0, "Foo", "Lorem ipsum", new GregorianCalendar(2016,1,1).getTime(), 5),
-                                new User(5, "John", "jonsecret", "jon@dot.com")
+                                new Post("57595f70fc13ae7c88001be6", "Foo", "Lorem ipsum", new GregorianCalendar(2016, 1, 1).getTime(), author),
+                                author
                         )
                 ),
                 JSONCompareMode.STRICT
@@ -27,18 +34,31 @@ public class PostBuilderTest extends JsonTest {
 
     @Test
     public void testBuildMultiple() throws Exception {
+        User user1 = new User("57595f70fc13ae7c88001be5", "John", "jonsecret", "jon@dot.com");
+        User user2 = new User("57595f70fc13ae7c88001be7", "Jane", "janesecret", "jane@dot.com");
         JSONAssert.assertEquals(
-                "{'data':[{'relationships':{'author':{'data':{'type':'users','id':'5'}}},'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'},'id':'0','type':'posts'},{'relationships':{'author':{'data':{'type':'users','id':'3'}}},'attributes':{'created_at':'2016-03-02 00:00:00','title':'Bar','body':'Dolor sit amet'},'id':'0','type':'posts'}],'included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'5','type':'users'},{'attributes':{'email':'jane@dot.com','username':'Jane'},'id':'3','type':'users'}]}",
+                "{'data':[{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}}," +
+                        "'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'}," +
+                        "'id':'57595f70fc13ae7c88001be6'," +
+                        "'type':'posts'" +
+                        "},{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be7'}}}," +
+                        "'attributes':{'created_at':'2016-03-02 00:00:00','title':'Bar','body':'Dolor sit amet'}," +
+                        "'id':'57595f70fc13ae7c88001be7'," +
+                        "'type':'posts'" +
+                        "}]," +
+                        "'included':[" +
+                        "{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'}," +
+                        "{'attributes':{'email':'jane@dot.com','username':'Jane'},'id':'57595f70fc13ae7c88001be7','type':'users'}" +
+                        "]}",
                 jsonify(
                         new PostBuilder().build(
                                 newArrayList(
-                                        new Post(0, "Foo", "Lorem ipsum", new GregorianCalendar(2016,1,1).getTime(), 5),
-                                        new Post(0, "Bar", "Dolor sit amet", new GregorianCalendar(2016,2,2).getTime(), 3)
+                                        new Post("57595f70fc13ae7c88001be6", "Foo", "Lorem ipsum", new GregorianCalendar(2016, 1, 1).getTime(), user1),
+                                        new Post("57595f70fc13ae7c88001be7", "Bar", "Dolor sit amet", new GregorianCalendar(2016, 2, 2).getTime(), user2)
                                 ),
-                                newArrayList(
-                                        new User(5, "John", "jonsecret", "jon@dot.com"),
-                                        new User(3, "Jane", "janesecret", "jane@dot.com")
-                                )
+                                newArrayList(user1, user2)
                         )
                 ),
                 JSONCompareMode.STRICT

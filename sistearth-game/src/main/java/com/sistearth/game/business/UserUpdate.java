@@ -1,16 +1,19 @@
 package com.sistearth.game.business;
 
 import com.sistearth.api.beans.Error;
-import com.sistearth.api.beans.User;
 import com.sistearth.api.business.BusinessPromise;
-import com.sistearth.api.db.ModelException;
-import com.sistearth.api.db.ModelManager;
 import com.sistearth.api.payloads.UserUpdatePayload;
+import com.sistearth.db.api.entity.User;
+import com.sistearth.db.api.manager.ModelException;
+import com.sistearth.db.api.manager.ModelManager;
 import com.sistearth.game.auth.Authenticator;
 import com.sistearth.game.validators.UserUpdateValidator;
 
+import java.util.Map;
+
+import static com.google.common.collect.Maps.newHashMap;
 import static com.sistearth.game.auth.Authenticator.Result.ACCEPTED;
-import static org.apache.commons.lang.StringUtils.isBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class UserUpdate extends BusinessPromise<User> {
 
@@ -35,42 +38,34 @@ public class UserUpdate extends BusinessPromise<User> {
             return;
         }
 
-        User authenticatedUser;
+        User user;
         try {
-            authenticatedUser = userManager.getBy("username", tokenInfo);
+            user = userManager.getBy("username", tokenInfo);
         } catch (ModelException e) {
             errors.add(new Error("401", "bad-token"));
             return;
         }
 
-        if (authenticator.authenticate(authenticatedUser.getUsername(), payload.getActualPassword()) != ACCEPTED) {
+        if (authenticator.authenticate(user.getUsername(), payload.getActualPassword()) != ACCEPTED) {
             errors.add(new Error("400", "Wrong password confirmation"));
             return;
         }
 
-        User payloadUser = mergeUser(payload.getEntity(), authenticatedUser);
-        userManager.update(payloadUser);
+        Map<String, Object> data = newHashMap();
+        if (isNotBlank(payload.getPassword())) {
+            data.put("password", payload.getPassword());
+        }
+        if (isNotBlank(payload.getEmail())) {
+            data.put("email", payload.getEmail());
+        }
+
+        userManager.update(user, data);
 
         try {
-            entity = userManager.getById(payloadUser.getId());
+            entity = userManager.getById(user.getId().toString());
         } catch (ModelException e) {
             errors.add(new Error("500", "update-failed"));
         }
     }
 
-    private User mergeUser(User payloadUser, User authenticatedUser) {
-        if (payloadUser.getId() == null) {
-            payloadUser.setId(authenticatedUser.getId());
-        }
-        if (isBlank(payloadUser.getUsername())) {
-            payloadUser.setUsername(authenticatedUser.getUsername());
-        }
-        if (isBlank(payloadUser.getPassword())) {
-            payloadUser.setPassword(authenticatedUser.getPassword());
-        }
-        if (isBlank(payloadUser.getEmail())) {
-            payloadUser.setEmail(authenticatedUser.getEmail());
-        }
-        return payloadUser;
-    }
 }

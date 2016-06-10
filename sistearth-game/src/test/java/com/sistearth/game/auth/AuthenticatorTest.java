@@ -1,7 +1,7 @@
 package com.sistearth.game.auth;
 
-import com.sistearth.api.db.ModelException;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.manager.ModelException;
+import com.sistearth.db.api.entity.User;
 import com.sistearth.test.utils.TestUserManager;
 import org.junit.Test;
 
@@ -16,14 +16,14 @@ public class AuthenticatorTest {
     @Test
     public void testAuthenticateAccepted() throws Exception {
         TestUserManager userManager = mock(TestUserManager.class);
-        when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
+        when(userManager.getBy("username", "foo")).thenReturn(new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com"));
         assertEquals(ACCEPTED, new Authenticator(userManager).authenticate("foo", "bar"));
     }
 
     @Test
     public void testAuthenticateRejected() throws Exception {
         TestUserManager userManager = mock(TestUserManager.class);
-        when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
+        when(userManager.getBy("username", "foo")).thenReturn(new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com"));
         assertEquals(REJECTED, new Authenticator(userManager).authenticate("foo", "wrongpassword"));
     }
 
@@ -37,7 +37,7 @@ public class AuthenticatorTest {
     @Test
     public void testIsAuthenticatedAccepted() throws Exception {
         TestUserManager userManager = mock(TestUserManager.class);
-        when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
+        when(userManager.getBy("username", "foo")).thenReturn(new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com"));
         Authenticator auth = new Authenticator(userManager);
         auth.authenticate("foo", "bar");
         assertTrue(auth.isAuthenticated());
@@ -46,7 +46,7 @@ public class AuthenticatorTest {
     @Test
     public void testIsAuthenticatedRejected() throws Exception {
         TestUserManager userManager = mock(TestUserManager.class);
-        when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
+        when(userManager.getBy("username", "foo")).thenReturn(new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com"));
         Authenticator auth = new Authenticator(userManager);
         auth.authenticate("foo", "wrong password");
         assertFalse(auth.isAuthenticated());
@@ -59,7 +59,7 @@ public class AuthenticatorTest {
 
     @Test
     public void testGetAuthenticatedUserAccepted() throws Exception {
-        User user = new User(1, "foo", "bar", "foo@dot.com");
+        User user = new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com");
 
         TestUserManager userManager = mock(TestUserManager.class);
         when(userManager.getBy("username", "foo")).thenReturn(user);
@@ -73,7 +73,7 @@ public class AuthenticatorTest {
     @Test(expected = AuthenticationException.class)
     public void testGetAuthenticatedUserRejected() throws Exception {
         TestUserManager userManager = mock(TestUserManager.class);
-        when(userManager.getBy("username", "foo")).thenReturn(new User(1, "foo", "bar", "foo@dot.com"));
+        when(userManager.getBy("username", "foo")).thenReturn(new User("57596105fc13ae0f3a001507", "foo", "bar", "foo@dot.com"));
 
         Authenticator auth = new Authenticator(userManager);
         auth.authenticate("foo", "wrong password");

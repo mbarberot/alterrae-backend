@@ -21,7 +21,7 @@ public class PutUserTest {
                 .statusCode(200)
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("6"),
+                        "data.id", equalTo("57486acab69c12fe0cf4a72c"),
                         "data.attributes.username", equalTo("bhunter5"),
                         "data.attributes.email", equalTo("changed@mbox.com")
                 );
@@ -42,7 +42,7 @@ public class PutUserTest {
                 .get("/api/users/profile")
                 .then()
                 .body(
-                        "data.id", equalTo("7"),
+                        "data.id", equalTo("57486acab69c12fe0cf4a72b"),
                         "data.attributes.username", equalTo("bross6"),
                         "data.attributes.email", equalTo("vbrooks6@theguardian.com")
                 );
@@ -59,7 +59,7 @@ public class PutUserTest {
                 .statusCode(200)
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("8"),
+                        "data.id", equalTo("57486acab69c12fe0cf4a72e"),
                         "data.attributes.username", equalTo("jtucker9"),
                         "data.attributes.email", equalTo("cmontgomery9@newyorker.com")
                 );

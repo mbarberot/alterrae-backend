@@ -1,7 +1,7 @@
 package com.sistearth.view.response.jsonapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 import com.sistearth.jsonutils.jsonapi.UserBuilder;
 import com.sistearth.view.response.UserView;
 import com.sistearth.view.response.ViewException;

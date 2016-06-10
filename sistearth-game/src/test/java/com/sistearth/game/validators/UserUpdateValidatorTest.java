@@ -1,6 +1,5 @@
 package com.sistearth.game.validators;
 
-import com.sistearth.api.beans.User;
 import com.sistearth.api.payloads.UserUpdatePayload;
 import org.junit.Test;
 

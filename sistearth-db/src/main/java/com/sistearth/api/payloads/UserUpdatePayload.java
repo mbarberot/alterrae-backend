@@ -1,7 +1,7 @@
 package com.sistearth.api.payloads;
 
 import com.sistearth.api.beans.Error;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 import lombok.NoArgsConstructor;
 
 import java.util.List;

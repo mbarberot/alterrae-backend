@@ -10,9 +10,10 @@ public class GetPostTest {
     public void testGetPost() throws Exception {
         restApi()
                 .when()
-                .get("/api/posts/1")
+                .get("/api/posts/57581171c35c1c060094d790")
                 .then()
+                .statusCode(200)
                 .contentType("application/json")
-                .body("data.id", equalTo("1"));
+                .body("data.id", equalTo("57581171c35c1c060094d790"));
     }
 }

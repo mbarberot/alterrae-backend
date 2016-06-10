@@ -1,9 +1,11 @@
 package com.sistearth.spark;
 
+import com.sistearth.db.core.Database;
 import com.sistearth.spark.services.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import static com.sistearth.db.core.Database.initDB;
 import static spark.Spark.*;
 
 public class App {
@@ -17,6 +19,7 @@ public class App {
     public static void main(String[] args) {
         setConfig();
         enableCORS();
+        initDB();
         setServices(
                 new IndexService(),
                 new UserRestService(),

@@ -81,11 +81,6 @@
         </dependency>
         <dependency>
             <groupId>com.sistearth</groupId>
-            <artifactId>sistearth-db-mysql</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sistearth</groupId>
             <artifactId>sistearth-view</artifactId>
             <version>1.0</version>
         </dependency>

@@ -1,4 +1,4 @@
-package com.sistearth.api.db;
+package com.sistearth.db.api.manager;
 
 import lombok.Getter;
 

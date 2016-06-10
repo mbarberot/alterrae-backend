@@ -1,8 +1,8 @@
 package com.sistearth.game.auth;
 
-import com.sistearth.api.db.ModelException;
-import com.sistearth.api.db.ModelManager;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.manager.ModelException;
+import com.sistearth.db.api.manager.ModelManager;
+import com.sistearth.db.api.entity.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

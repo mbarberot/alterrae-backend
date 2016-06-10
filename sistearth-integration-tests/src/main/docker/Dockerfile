@@ -1,3 +1,7 @@
-FROM sistearth/mariadb
+FROM mongo
 
-COPY sql/* /docker-entrypoint-initdb.d/
+COPY data /data
+COPY import.sh /import.sh
+RUN chmod +x /import.sh
+
+CMD ["/import.sh"]
