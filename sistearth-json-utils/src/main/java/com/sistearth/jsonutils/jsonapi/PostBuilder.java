@@ -17,7 +17,7 @@ public class PostBuilder {
     private final SimpleDateFormat dateFormatter;
 
     public PostBuilder() {
-        this.dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        this.dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
     public Object build(List<Post> posts, List<User> authors) {

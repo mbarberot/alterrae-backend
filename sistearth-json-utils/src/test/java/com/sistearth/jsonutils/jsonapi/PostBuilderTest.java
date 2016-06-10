@@ -15,7 +15,13 @@ public class PostBuilderTest extends JsonTest {
     public void testBuildSingle() throws Exception {
         User author = new User("57595f70fc13ae7c88001be5", "John", "jonsecret", "jon@dot.com");
         JSONAssert.assertEquals(
-                "{'data':{'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}},'attributes':{'created_at':'2016-02-01T00:00:00.000+0100','title':'Foo','body':'Lorem ipsum'},'id':'57595f70fc13ae7c88001be6','type':'posts'},'included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'}]}",
+                "{'data':{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}}," +
+                        "'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'}," +
+                        "'id':'57595f70fc13ae7c88001be6'," +
+                        "'type':'posts'" +
+                        "},'" +
+                        "included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'}]}",
                 jsonify(
                         new PostBuilder().build(
                                 new Post("57595f70fc13ae7c88001be6", "Foo", "Lorem ipsum", new GregorianCalendar(2016, 1, 1).getTime(), author),
@@ -31,7 +37,21 @@ public class PostBuilderTest extends JsonTest {
         User user1 = new User("57595f70fc13ae7c88001be5", "John", "jonsecret", "jon@dot.com");
         User user2 = new User("57595f70fc13ae7c88001be7", "Jane", "janesecret", "jane@dot.com");
         JSONAssert.assertEquals(
-                "{'data':[{'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}},'attributes':{'created_at':'2016-02-01T00:00:00.000+0100','title':'Foo','body':'Lorem ipsum'},'id':'57595f70fc13ae7c88001be6','type':'posts'},{'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be7'}}},'attributes':{'created_at':'2016-03-02T00:00:00.000+0100','title':'Bar','body':'Dolor sit amet'},'id':'57595f70fc13ae7c88001be7','type':'posts'}],'included':[{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'},{'attributes':{'email':'jane@dot.com','username':'Jane'},'id':'57595f70fc13ae7c88001be7','type':'users'}]}",
+                "{'data':[{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be5'}}}," +
+                        "'attributes':{'created_at':'2016-02-01 00:00:00','title':'Foo','body':'Lorem ipsum'}," +
+                        "'id':'57595f70fc13ae7c88001be6'," +
+                        "'type':'posts'" +
+                        "},{" +
+                        "'relationships':{'author':{'data':{'type':'users','id':'57595f70fc13ae7c88001be7'}}}," +
+                        "'attributes':{'created_at':'2016-03-02 00:00:00','title':'Bar','body':'Dolor sit amet'}," +
+                        "'id':'57595f70fc13ae7c88001be7'," +
+                        "'type':'posts'" +
+                        "}]," +
+                        "'included':[" +
+                        "{'attributes':{'email':'jon@dot.com','username':'John'},'id':'57595f70fc13ae7c88001be5','type':'users'}," +
+                        "{'attributes':{'email':'jane@dot.com','username':'Jane'},'id':'57595f70fc13ae7c88001be7','type':'users'}" +
+                        "]}",
                 jsonify(
                         new PostBuilder().build(
                                 newArrayList(

@@ -2,13 +2,10 @@ package com.sistearth.spark.services;
 
 import com.sistearth.api.beans.Error;
 import com.sistearth.api.business.BusinessPromise;
+import com.sistearth.api.payloads.TokenPayload;
 import com.sistearth.db.api.entity.User;
 import com.sistearth.db.api.manager.ModelException;
 import com.sistearth.db.api.manager.ModelManager;
-import com.sistearth.api.payloads.TokenPayload;
-import com.sistearth.api.payloads.UserCreationPayload;
-import com.sistearth.api.payloads.UserUpdatePayload;
-import com.sistearth.db.Database;
 import com.sistearth.db.core.UserManager;
 import com.sistearth.game.business.UserCreation;
 import com.sistearth.game.business.UserUpdate;
@@ -25,8 +22,6 @@ import org.apache.commons.logging.LogFactory;
 import spark.Spark;
 
 import static com.sistearth.spark.view.Answer.newJsonAnswer;
-import static com.sistearth.spark.view.Answer.newJsonApiAnswer;
-import static java.lang.Integer.valueOf;
 import static spark.Spark.*;
 
 public class UserRestService implements Service {

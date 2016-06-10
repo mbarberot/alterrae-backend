@@ -16,7 +16,13 @@ public class JsonApiPostViewTest {
 
         User author = new User("57595f70fc13ae7c88001bec", "Jon", "winterfell", "jon@snow.com");
         JSONAssert.assertEquals(
-                "{\"data\":{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}},\"attributes\":{\"created_at\":\"2015-10-13T00:00:00.000+0200\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"57595f70fc13ae7c88001bed\",\"type\":\"posts\"},\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}]}",
+                "{\"data\":{" +
+                        "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}}," +
+                        "\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
+                        "\"id\":\"57595f70fc13ae7c88001bed\"," +
+                        "\"type\":\"posts\"" +
+                        "}," +
+                        "\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
                         new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), author),
                         author
@@ -31,7 +37,21 @@ public class JsonApiPostViewTest {
         User user1 = new User("57595f70fc13ae7c88001bec", "Jon", "winterfell", "jon@snow.com");
         User user2 = new User("57595f70fc13ae7c88001bee", "Bran", "wolves", "bran@stark.com");
         JSONAssert.assertEquals(
-                "{\"data\":[{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}},\"attributes\":{\"created_at\":\"2015-10-13T00:00:00.000+0200\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"57595f70fc13ae7c88001bed\",\"type\":\"posts\"},{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bee\"}}},\"attributes\":{\"created_at\":\"2015-11-15T00:00:00.000+0100\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"},\"id\":\"57596105fc13ae0f3a001508\",\"type\":\"posts\"}],\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"},{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"57595f70fc13ae7c88001bee\",\"type\":\"users\"}]}",
+                "{\"data\":[{" +
+                        "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}}," +
+                        "\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
+                        "\"id\":\"57595f70fc13ae7c88001bed\"," +
+                        "\"type\":\"posts\"" +
+                        "},{" +
+                        "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bee\"}}}," +
+                        "\"attributes\":{\"created_at\":\"2015-11-15 00:00:00\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"}," +
+                        "\"id\":\"57596105fc13ae0f3a001508\"," +
+                        "\"type\":\"posts\"" +
+                        "}]," +
+                        "\"included\":[" +
+                        "{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}," +
+                        "{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"57595f70fc13ae7c88001bee\",\"type\":\"users\"}" +
+                        "]}",
                 new JsonApiPostView(
                         newArrayList(
                                 new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), user1),
