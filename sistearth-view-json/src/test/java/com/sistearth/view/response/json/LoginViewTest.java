@@ -1,6 +1,6 @@
 package com.sistearth.view.response.json;
 
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 import org.junit.Test;
 
 import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
@@ -10,7 +10,7 @@ public class LoginViewTest {
     @Test
     public void testRender() throws Exception {
         JsonLoginView view = new JsonLoginView();
-        view.setUser(new User("0", "jon", "winterfell", "jon@snow.com"));
+        view.setUser(new User("57595f70fc13ae7c88001bed", "jon", "winterfell", "jon@snow.com"));
         view.setToken("my-token");
 
         assertEquals(

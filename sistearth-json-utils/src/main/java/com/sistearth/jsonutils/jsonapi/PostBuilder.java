@@ -1,8 +1,8 @@
 package com.sistearth.jsonutils.jsonapi;
 
 import com.mbarberot.jsonapi.builders.data.JSONApiDataBuilder;
-import com.sistearth.api.beans.Post;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.Post;
+import com.sistearth.db.api.entity.User;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -17,7 +17,7 @@ public class PostBuilder {
     private final SimpleDateFormat dateFormatter;
 
     public PostBuilder() {
-        this.dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     }
 
     public Object build(List<Post> posts, List<User> authors) {
@@ -50,7 +50,7 @@ public class PostBuilder {
                 )
                 .relationships(
                         newRelationships()
-                                .addSingleData("author", post.getAuthor().toString(), "users")
+                                .addSingleData("author", post.getAuthor().getId().toString(), "users")
                 )
                 ;
     }

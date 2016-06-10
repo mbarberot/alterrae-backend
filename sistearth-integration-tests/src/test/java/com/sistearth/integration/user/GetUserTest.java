@@ -10,11 +10,11 @@ public class GetUserTest {
     public void testGetUser() throws Exception {
         restApi()
                 .when()
-                .get("/api/users/1f5c6bf0-8e3b-4b0e-b111-7b47f75a8c55")
+                .get("/api/users/57486acab69c12fe0cf4a728")
                 .then()
                 .contentType("application/json")
                 .body(
-                        "data.id", equalTo("1f5c6bf0-8e3b-4b0e-b111-7b47f75a8c55"),
+                        "data.id", equalTo("57486acab69c12fe0cf4a728"),
                         "data.attributes.username", equalTo("jroberts3")
                 );
     }

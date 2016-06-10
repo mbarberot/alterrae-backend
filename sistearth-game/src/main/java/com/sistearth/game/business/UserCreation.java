@@ -1,9 +1,9 @@
 package com.sistearth.game.business;
 
-import com.sistearth.api.db.ModelException;
-import com.sistearth.api.db.ModelManager;
+import com.sistearth.db.api.manager.ModelException;
+import com.sistearth.db.api.manager.ModelManager;
 import com.sistearth.api.beans.Error;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 import com.sistearth.api.payloads.UserCreationPayload;
 import com.sistearth.api.business.BusinessPromise;
 import com.sistearth.game.validators.UserCreationValidator;

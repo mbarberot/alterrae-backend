@@ -7,9 +7,9 @@ backendtest:
         - databasetest:database
 
 databasetest:
-    image: sistearth/database-test
-    environment:
-        MYSQL_ROOT_PASSWORD: sistearth
-        MYSQL_USER: sistearth
-        MYSQL_PASSWORD: sistearth
-        MYSQL_DATABASE: sistearth
+    image: mongo
+
+databaseimport:
+    image: sistearth/import-data
+    links:
+        - databasetest:mongo

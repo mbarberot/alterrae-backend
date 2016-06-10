@@ -1,7 +1,7 @@
 package com.sistearth.view.response;
 
-import com.sistearth.api.beans.Post;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.Post;
+import com.sistearth.db.api.entity.User;
 import lombok.Getter;
 
 import java.util.List;

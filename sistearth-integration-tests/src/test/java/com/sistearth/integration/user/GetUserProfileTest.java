@@ -23,7 +23,7 @@ public class GetUserProfileTest {
                 .get("/api/users/profile")
                 .then()
                 .body(
-                        "data.id", equalTo("fe291792-43d1-4ae2-a0d5-0c934c34b75a"),
+                        "data.id", equalTo("57486acab69c12fe0cf4a727"),
                         "data.attributes.username", equalTo("twilson2"),
                         "data.attributes.email", equalTo("bgriffin2@time.com")
                 );

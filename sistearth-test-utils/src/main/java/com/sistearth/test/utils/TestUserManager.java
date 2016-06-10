@@ -1,11 +1,12 @@
 package com.sistearth.test.utils;
 
-import com.sistearth.api.db.ModelException;
-import com.sistearth.api.db.ModelManager;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.manager.ModelException;
+import com.sistearth.db.api.manager.ModelManager;
+import com.sistearth.db.api.entity.User;
 import org.apache.commons.lang.NotImplementedException;
 
 import java.util.List;
+import java.util.Map;
 
 public class TestUserManager implements ModelManager<User> {
     @Override
@@ -49,7 +50,7 @@ public class TestUserManager implements ModelManager<User> {
     }
 
     @Override
-    public void update(User entity) {
+    public void update(User entity, Map<String, Object> data) {
         throw new NotImplementedException();
     }
 }

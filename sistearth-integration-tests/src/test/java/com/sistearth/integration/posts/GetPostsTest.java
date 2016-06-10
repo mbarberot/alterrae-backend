@@ -12,7 +12,8 @@ public class GetPostsTest {
                 .when()
                 .get("/api/posts")
                 .then()
+                .statusCode(200)
                 .contentType("application/json")
-                .body("data.id", hasItems("c55bc5a6-114e-48e0-a4c6-eb1dad55a979", "9723f94d-3c02-48ca-8dc1-ffb0913d9d23"));
+                .body("data.id", hasItems("57581184c35c1c060094d794", "57581171c35c1c060094d790"));
     }
 }

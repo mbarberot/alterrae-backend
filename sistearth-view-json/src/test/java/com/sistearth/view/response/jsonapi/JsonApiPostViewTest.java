@@ -1,7 +1,7 @@
 package com.sistearth.view.response.jsonapi;
 
-import com.sistearth.api.beans.Post;
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.Post;
+import com.sistearth.db.api.entity.User;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
@@ -14,11 +14,12 @@ public class JsonApiPostViewTest {
     @Test
     public void testRenderSinglePost() throws Exception {
 
+        User author = new User("57595f70fc13ae7c88001bec", "Jon", "winterfell", "jon@snow.com");
         JSONAssert.assertEquals(
-                "{\"data\":{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"1\"}}},\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"1\",\"type\":\"posts\"},\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"}]}",
+                "{\"data\":{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}},\"attributes\":{\"created_at\":\"2015-10-13T00:00:00.000+0200\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"57595f70fc13ae7c88001bed\",\"type\":\"posts\"},\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
-                        new Post("1", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), "1"),
-                        new User("1", "Jon", "winterfell", "jon@snow.com")
+                        new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), author),
+                        author
                 ).render(),
                 STRICT
         );
@@ -27,17 +28,16 @@ public class JsonApiPostViewTest {
     @Test
     public void testRenderMultiplePost() throws Exception {
 
+        User user1 = new User("57595f70fc13ae7c88001bec", "Jon", "winterfell", "jon@snow.com");
+        User user2 = new User("57595f70fc13ae7c88001bee", "Bran", "wolves", "bran@stark.com");
         JSONAssert.assertEquals(
-                "{\"data\":[{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"1\"}}},\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"1\",\"type\":\"posts\"},{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"2\"}}},\"attributes\":{\"created_at\":\"2015-11-15 00:00:00\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"},\"id\":\"2\",\"type\":\"posts\"}],\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"1\",\"type\":\"users\"},{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"2\",\"type\":\"users\"}]}",
+                "{\"data\":[{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}},\"attributes\":{\"created_at\":\"2015-10-13T00:00:00.000+0200\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"},\"id\":\"57595f70fc13ae7c88001bed\",\"type\":\"posts\"},{\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bee\"}}},\"attributes\":{\"created_at\":\"2015-11-15T00:00:00.000+0100\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"},\"id\":\"57596105fc13ae0f3a001508\",\"type\":\"posts\"}],\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"},{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"57595f70fc13ae7c88001bee\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
                         newArrayList(
-                                new Post("1", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), "1"),
-                                new Post("2", "Bar", "Dolor sit amet.", new GregorianCalendar(2015, 10, 15).getTime(), "2")
+                                new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), user1),
+                                new Post("57596105fc13ae0f3a001508", "Bar", "Dolor sit amet.", new GregorianCalendar(2015, 10, 15).getTime(), user2)
                         ),
-                        newArrayList(
-                                new User("1", "Jon", "winterfell", "jon@snow.com"),
-                                new User("2", "Bran", "wolves", "bran@stark.com")
-                        )
+                        newArrayList(user1, user2)
                 ).render(),
                 STRICT
         );

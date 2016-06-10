@@ -1,6 +1,7 @@
-package com.sistearth.api.db;
+package com.sistearth.db.api.manager;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ModelManager<T> {
     List<T> getAll();
@@ -19,5 +20,5 @@ public interface ModelManager<T> {
 
     void delete(T entity);
 
-    void update(T entity);
+    void update(T entity, Map<String, Object> data);
 }

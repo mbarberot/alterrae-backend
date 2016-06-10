@@ -1,6 +1,6 @@
 package com.sistearth.spark.token;
 
-import com.sistearth.api.beans.User;
+import com.sistearth.db.api.entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 
@@ -10,7 +10,7 @@ import static io.jsonwebtoken.SignatureAlgorithm.HS512;
 
 public class TokenManager {
 
-    public static final Key KEY = MacProvider.generateKey(HS512);
+    private static final Key KEY = MacProvider.generateKey(HS512);
 
     public String createToken(User user) {
         return Jwts.builder()
