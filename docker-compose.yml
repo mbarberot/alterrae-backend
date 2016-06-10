@@ -7,16 +7,11 @@ backend:
         - database
 
 database:
-    image: sistearth/mariadb
-    environment:
-        MYSQL_ROOT_PASSWORD: sistearth
-        MYSQL_USER: sistearth
-        MYSQL_PASSWORD: sistearth
-        MYSQL_DATABASE: sistearth
+    image: mongo
 
 admin:
-    image: clue/adminer
+    image: mongo-express
     ports:
-        - "3000:80"
+        - "3000:8081"
     links:
-        - database
+        - database:mongo
