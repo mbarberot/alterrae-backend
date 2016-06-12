@@ -13,7 +13,7 @@ import static com.sistearth.game.Settings.*;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class UserUpdateValidator implements Validator{
+public class UserUpdateValidator implements Validator {
     private UserUpdatePayload payload;
 
     public UserUpdateValidator(UserUpdatePayload payload) {
@@ -49,16 +49,16 @@ public class UserUpdateValidator implements Validator{
 
         boolean hasEmailOrPassword = false;
 
-        if(isNotBlank(payload.getEmail())) {
+        if (isNotBlank(payload.getEmail())) {
             hasEmailOrPassword = true;
-            if(!EmailValidator.getInstance().isValid(payload.getEmail())) {
+            if (!EmailValidator.getInstance().isValid(payload.getEmail())) {
                 errors.add(new Error("400", "email-bad-syntax"));
             }
         }
 
-        if(isNotBlank(payload.getPassword())) {
+        if (isNotBlank(payload.getPassword())) {
             hasEmailOrPassword = true;
-            if(payload.getPassword().length() < PASSWORD_MIN_LENGTH) {
+            if (payload.getPassword().length() < PASSWORD_MIN_LENGTH) {
                 errors.add(new Error("400", "password-bad"));
             }
         }
