@@ -15,7 +15,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginPayload implements Payload<User> {
+public class LoginPayload implements OldPayload<User> {
     private String username;
     private String password;
 

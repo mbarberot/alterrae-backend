@@ -12,7 +12,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenPayload implements Payload {
+public class TokenPayload implements OldPayload {
     private String token;
 
     @Override

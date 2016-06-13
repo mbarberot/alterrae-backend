@@ -4,7 +4,8 @@ import com.sistearth.api.beans.Error;
 
 import java.util.List;
 
-public interface Payload<T> {
+@Deprecated
+public interface OldPayload<T> {
     boolean isValid();
     T getEntity();
     List<Error> getErrors();

@@ -8,7 +8,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 @EqualsAndHashCode
-public class EmptyPayload implements Payload<Void> {
+public class EmptyPayload implements OldPayload<Void> {
     @Override
     public boolean isValid() {
         return true;

@@ -1,12 +1,12 @@
 package com.sistearth.spark.extractors;
 
-import com.sistearth.api.payloads.Payload;
+import com.sistearth.api.payloads.OldPayload;
 import com.sistearth.view.request.PayloadException;
 import spark.Request;
 
 import java.util.Map;
 
-public abstract class BasePayloadExtractor<V extends Payload> implements PayloadExtractor<V> {
+public abstract class BasePayloadExtractor<V extends OldPayload> implements PayloadExtractor<V> {
     @Override
     public V extractPayload(Request request) throws PayloadException {
         return extractPayload(request.body(), PayloadExtractorUtils.getRequestHeaders(request));

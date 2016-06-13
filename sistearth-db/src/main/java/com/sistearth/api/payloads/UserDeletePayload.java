@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class UserDeletePayload implements Payload<User> {
+public class UserDeletePayload implements OldPayload<User> {
     private String actualPassword;
 
     public UserDeletePayload(String actualPassword) {
