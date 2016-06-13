@@ -1,10 +1,11 @@
-package com.sistearth.view.request.payloads;
+package com.sistearth.api.payloads;
 
+import com.sistearth.api.beans.Error;
 import com.sistearth.db.api.entity.User;
-import com.sistearth.api.payloads.LoginPayload;
 import org.junit.Test;
 
-import static com.sistearth.test.utils.PayloadTestHelper.hasError;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.*;
 
 public class LoginPayloadTest {
@@ -25,8 +26,10 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload();
         assertFalse(payload.isValid());
         assertEquals(2, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItems(
+                new Error("400", "username"),
+                new Error("400", "password")
+        ));
     }
 
     @Test
@@ -34,8 +37,10 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload(null, null);
         assertFalse(payload.isValid());
         assertEquals(2, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItems(
+                new Error("400", "username"),
+                new Error("400", "password")
+        ));
     }
 
     @Test
@@ -43,8 +48,10 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload("", "");
         assertFalse(payload.isValid());
         assertEquals(2, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItems(
+                new Error("400", "username"),
+                new Error("400", "password")
+        ));
     }
 
     @Test
@@ -54,14 +61,15 @@ public class LoginPayloadTest {
 
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "username")));
     }
+
     @Test
     public void testInvalidPayload_NullUsername() throws Exception {
         LoginPayload payload = new LoginPayload(null, "jonsecret");
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "username")));
     }
 
     @Test
@@ -69,7 +77,7 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload("", "jonsecret");
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "username"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "username")));
     }
 
     @Test
@@ -79,7 +87,7 @@ public class LoginPayloadTest {
 
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "password")));
     }
 
     @Test
@@ -87,7 +95,7 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload("jon", null);
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "password")));
     }
 
     @Test
@@ -95,6 +103,6 @@ public class LoginPayloadTest {
         LoginPayload payload = new LoginPayload("jon", "");
         assertFalse(payload.isValid());
         assertEquals(1, payload.getErrors().size());
-        assertTrue(hasError(payload.getErrors(), "password"));
+        assertThat(payload.getErrors(), hasItem(new Error("400", "password")));
     }
 }
