@@ -9,7 +9,7 @@ import java.util.Map;
 import static com.sistearth.spark.extractors.PayloadExtractorUtils.isFilled;
 import static com.sistearth.spark.extractors.utils.PayloadExtractingUtils.parseJson;
 
-public class UserDeletePayloadExtractor extends OldBasePayloadExtractor<UserDeletePayload> {
+public class UserDeletePayloadExtractor extends BasePayloadExtractor<UserDeletePayload> {
     @Override
     protected UserDeletePayload extractPayload(String requestBody, Map<String, String> requestHeaders) throws PayloadException {
         UserDeletePayload payload = new UserDeletePayload();

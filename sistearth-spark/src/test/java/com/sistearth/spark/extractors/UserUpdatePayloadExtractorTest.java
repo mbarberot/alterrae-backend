@@ -16,7 +16,7 @@ public class UserUpdatePayloadExtractorTest {
                 .build();
 
         assertEquals(
-                new UserUpdatePayload("1", "Jon", "newsecret", "jon@new.com", "jonsecret"),
+                new UserUpdatePayload("Jon", "newsecret", "jon@new.com", "jonsecret"),
                 new UserUpdatePayloadExtractor().extractPayload(request)
         );
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class UserDeletePayload implements OldPayload<User> {
+public class UserDeletePayload implements Payload<String> {
     private String actualPassword;
 
     public UserDeletePayload(String actualPassword) {
@@ -17,17 +17,7 @@ public class UserDeletePayload implements OldPayload<User> {
     }
 
     @Override
-    public boolean isValid() {
-        return false;
-    }
-
-    @Override
-    public User getEntity() {
-        return null;
-    }
-
-    @Override
-    public List<Error> getErrors() {
-        return null;
+    public String getEntity() {
+        return actualPassword;
     }
 }
