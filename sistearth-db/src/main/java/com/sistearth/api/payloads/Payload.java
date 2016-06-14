@@ -1,5 +1,5 @@
 package com.sistearth.api.payloads;
 
-interface Payload<T> {
+public interface Payload<T> {
     T getEntity();
 }

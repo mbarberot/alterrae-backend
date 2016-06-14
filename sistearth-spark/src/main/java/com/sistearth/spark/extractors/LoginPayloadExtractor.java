@@ -6,6 +6,7 @@ import com.sistearth.view.request.PayloadException;
 
 import java.util.Map;
 
+import static com.sistearth.spark.extractors.PayloadExtractorUtils.isFilled;
 import static com.sistearth.spark.extractors.utils.PayloadExtractingUtils.parseJson;
 
 public class LoginPayloadExtractor extends BasePayloadExtractor<LoginPayload> {
@@ -14,16 +15,18 @@ public class LoginPayloadExtractor extends BasePayloadExtractor<LoginPayload> {
         LoginPayload payload = new LoginPayload();
         JsonNode rootNode = parseJson(requestBody);
 
-        if(rootNode.size() == 2) {
+        if (rootNode.size() == 2) {
             JsonNode usernameNode = rootNode.path("username");
             JsonNode passwordNode = rootNode.path("password");
 
-            if (PayloadExtractorUtils.isFilled(usernameNode)) {
+            if (isFilled(usernameNode)) {
                 payload.setUsername(usernameNode.asText());
             }
-            if (PayloadExtractorUtils.isFilled(passwordNode)) {
+            if (isFilled(passwordNode)) {
                 payload.setPassword(passwordNode.asText());
             }
+        } else {
+            throw new PayloadException(rootNode.size() > 2 ? "Too many fields" : "Missing fields");
         }
 
         return payload;

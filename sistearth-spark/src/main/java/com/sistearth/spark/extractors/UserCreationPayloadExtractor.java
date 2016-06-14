@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static com.sistearth.spark.extractors.utils.PayloadExtractingUtils.fillUserPayload;
 
-public class UserCreationPayloadExtractor extends BasePayloadExtractor<UserCreationPayload> {
+public class UserCreationPayloadExtractor extends OldBasePayloadExtractor<UserCreationPayload> {
     @Override
     public UserCreationPayload extractPayload(String requestBody, Map<String, String> requestHeaders) throws PayloadException {
         UserCreationPayload payload = new UserCreationPayload();

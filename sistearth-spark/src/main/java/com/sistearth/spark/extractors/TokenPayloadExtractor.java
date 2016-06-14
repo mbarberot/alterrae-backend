@@ -8,7 +8,7 @@ import java.util.Map;
 import static org.apache.commons.lang.StringUtils.contains;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class TokenPayloadExtractor extends BasePayloadExtractor<TokenPayload> {
+public class TokenPayloadExtractor extends OldBasePayloadExtractor<TokenPayload> {
 
     public static final String BEARER = "Bearer";
 

@@ -1,9 +1,11 @@
 package com.sistearth.spark.services;
 
+import com.sistearth.api.validators.Validator;
 import com.sistearth.db.core.Database;
 import com.sistearth.db.api.entity.User;
 import com.sistearth.db.core.UserManager;
 import com.sistearth.game.auth.Authenticator;
+import com.sistearth.game.validators.LoginValidator;
 import com.sistearth.spark.extractors.LoginPayloadExtractor;
 import com.sistearth.spark.token.TokenManager;
 import com.sistearth.api.payloads.LoginPayload;
@@ -22,8 +24,9 @@ public class LoginService implements Service {
         post("/api/login", (request, response) -> {
             LoginPayload payload = new LoginPayloadExtractor().extractPayload(request);
             Authenticator auth = new Authenticator(new UserManager());
+            Validator validator = new LoginValidator(payload);
 
-            if (!payload.isValid() || auth.authenticate(payload.getUsername(), payload.getPassword()) == REJECTED) {
+            if (!validator.isValid() || auth.authenticate(payload.getUsername(), payload.getPassword()) == REJECTED) {
                 return newJsonAnswer(response)
                         .status(402)
                         .body(new JsonApiErrorView("402", getLabel("error.auth.bad-credential")))
