@@ -8,7 +8,6 @@
     <name>sistearth-backend</name>
 
     <modules>
-        <module>java-jsonapi</module>
         <module>sistearth-db</module>
         <module>sistearth-spark</module>
         <module>sistearth-game</module>
