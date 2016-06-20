@@ -1,0 +1,3 @@
+[submodule "java-jsonapi"]
+	path = java-jsonapi
+	url = git@github.com:mbarberot/java-jsonapi.git
