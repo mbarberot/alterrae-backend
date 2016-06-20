@@ -12,21 +12,11 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenPayload implements Payload {
+public class TokenPayload implements Payload<String> {
     private String token;
 
     @Override
-    public boolean isValid() {
-        return isNotBlank(token);
-    }
-
-    @Override
-    public Object getEntity() {
-        return null;
-    }
-
-    @Override
-    public List<Error> getErrors() {
-        return null;
+    public String getEntity() {
+        return token;
     }
 }

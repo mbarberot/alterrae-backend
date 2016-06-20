@@ -9,24 +9,27 @@ import static org.junit.Assert.*;
 
 public class LoginPayloadExtractorTest {
     @Test
-    public void testExtractValidPayload() throws Exception {
+    public void testExtractPayload() throws Exception {
         Request request = RequestMock.builder()
                 .body("{\"username\":\"jon\",\"password\":\"jonsecret\"}")
                 .build();
 
-        LoginPayload payload = new LoginPayloadExtractor().extractPayload(request);
-        assertTrue(payload.isValid());
-        assertEquals("jon", payload.getUsername());
-        assertEquals("jonsecret", payload.getPassword());
+        assertEquals(
+                new LoginPayload("jon", "jonsecret"),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
-    @Test
+    @Test(expected = PayloadException.class)
     public void testExtractInvalidPayload_NoUsername() throws Exception {
         Request request = RequestMock.builder()
                 .body("{\"password\":\"jonsecret\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload(null, "jonsecret"),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
     @Test
@@ -35,7 +38,10 @@ public class LoginPayloadExtractorTest {
                 .body("{\"username\":\"\",\"password\":\"jonsecret\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload(null, "jonsecret"),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
     @Test
@@ -44,43 +50,55 @@ public class LoginPayloadExtractorTest {
                 .body("{\"username\":null,\"password\":\"jonsecret\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload(null, "jonsecret"),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
-    @Test
+    @Test(expected = PayloadException.class)
     public void testExtractInvalidPayload_NoPassword() throws Exception {
         Request request = RequestMock.builder()
                 .body("{\"username\":\"jon\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload("jon", null),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
     @Test
     public void testExtractInvalidPayload_EmptyPassword() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"username\":\"\",\"password\":\"\"}")
+                .body("{\"username\":\"jon\",\"password\":\"\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload("jon", null),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
     @Test
     public void testExtractInvalidPayload_NullPassword() throws Exception {
         Request request = RequestMock.builder()
-                .body("{\"username\":\"\",\"password\":null}")
+                .body("{\"username\":\"jon\",\"password\":null}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        assertEquals(
+                new LoginPayload("jon", null),
+                new LoginPayloadExtractor().extractPayload(request)
+        );
     }
 
-    @Test
+    @Test(expected = PayloadException.class)
     public void testExtractInvalidPayload_UnexpectedField() throws Exception {
         Request request = RequestMock.builder()
                 .body("{\"username\":\"jon\",\"password\":\"jonsecret\",\"foo\":\"bar\"}")
                 .build();
 
-        assertFalse(new LoginPayloadExtractor().extractPayload(request).isValid());
+        new LoginPayloadExtractor().extractPayload(request);
     }
 
     @Test(expected = PayloadException.class)

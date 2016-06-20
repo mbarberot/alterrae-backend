@@ -1,4 +1,4 @@
-package com.sistearth.view.request.payloads;
+package com.sistearth.api.payloads;
 
 import com.sistearth.api.payloads.EmptyPayload;
 import org.junit.Test;
@@ -10,8 +10,6 @@ public class EmptyPayloadTest {
     @Test
     public void testEmptyPayload() throws Exception {
         EmptyPayload payload = new EmptyPayload();
-        assertTrue(payload.isValid());
         assertNull(payload.getEntity());
-        assertTrue(payload.getErrors().isEmpty());
     }
 }

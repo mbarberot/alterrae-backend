@@ -10,23 +10,26 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class TokenPayloadExtractor extends BasePayloadExtractor<TokenPayload> {
 
-    public static final String BEARER = "Bearer";
+    private static final String BEARER = "Bearer";
 
     @Override
     public TokenPayload extractPayload(String requestBody, Map<String, String> requestHeaders) throws PayloadException {
         String authorizationHeader = requestHeaders.get("Authorization");
-        TokenPayload payload = new TokenPayload();
         if (isValid(authorizationHeader)) {
-            payload.setToken(extractToken(authorizationHeader));
+            String token = extractToken(authorizationHeader);
+            if (isNotBlank(token)) {
+                return new TokenPayload(token);
+            }
         }
-        return payload;
+
+        throw new PayloadException("Invalid authorization header");
     }
 
     private boolean isValid(String authorizationHeader) {
         return isNotBlank(authorizationHeader) && contains(authorizationHeader, BEARER);
     }
 
-    public static String extractToken(String authorizationHeaderValue) {
+    private static String extractToken(String authorizationHeaderValue) {
         return authorizationHeaderValue
                 .replace(BEARER, "")
                 .trim()

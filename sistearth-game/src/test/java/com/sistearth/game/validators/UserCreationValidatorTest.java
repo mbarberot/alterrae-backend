@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.List;
 
 import static com.sistearth.test.utils.PayloadTestHelper.hasError;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.*;
 
 public class UserCreationValidatorTest {
@@ -16,7 +18,7 @@ public class UserCreationValidatorTest {
         UserCreationValidator validator = new UserCreationValidator(payload);
 
         assertTrue(validator.isValid());
-        assertEquals(0, validator.getErrors().size());
+        assertTrue(validator.getErrors().isEmpty());
     }
 
     @Test
@@ -25,11 +27,12 @@ public class UserCreationValidatorTest {
         UserCreationValidator validator = new UserCreationValidator(payload);
 
         assertFalse(validator.isValid());
-        List<Error> errors = validator.getErrors();
-        assertEquals(3, errors.size());
-        assertTrue(hasError(errors, "username"));
-        assertTrue(hasError(errors, "email"));
-        assertTrue(hasError(errors, "password"));
+        assertEquals(3, validator.getErrors().size());
+        assertThat(validator.getErrors(), hasItems(
+                new Error("400", "username"),
+                new Error("400", "email"),
+                new Error("400", "password")
+        ));
     }
 
     @Test
@@ -38,9 +41,8 @@ public class UserCreationValidatorTest {
         UserCreationValidator validator = new UserCreationValidator(payload);
 
         assertFalse(validator.isValid());
-        List<Error> errors = validator.getErrors();
-        assertEquals(1, errors.size());
-        assertTrue(hasError(errors, "email-bad-syntax"));
+        assertEquals(1, validator.getErrors().size());
+        assertThat(validator.getErrors(), hasItem(new Error("400", "email-bad-syntax")));
     }
 
     @Test
@@ -49,8 +51,7 @@ public class UserCreationValidatorTest {
         UserCreationValidator validator = new UserCreationValidator(payload);
 
         assertFalse(validator.isValid());
-        List<Error> errors = validator.getErrors();
-        assertEquals(1, errors.size());
-        assertTrue(hasError(errors, "password-bad"));
+        assertEquals(1, validator.getErrors().size());
+        assertThat(validator.getErrors(), hasItem(new Error("400", "password-bad")));
     }
 }

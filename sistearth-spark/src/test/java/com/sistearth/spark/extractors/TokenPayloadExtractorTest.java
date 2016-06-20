@@ -1,6 +1,7 @@
 package com.sistearth.spark.extractors;
 
 import com.sistearth.api.payloads.TokenPayload;
+import com.sistearth.view.request.PayloadException;
 import org.junit.Test;
 import spark.Request;
 
@@ -8,27 +9,39 @@ import static org.junit.Assert.*;
 
 public class TokenPayloadExtractorTest {
     @Test
-    public void testExtractValidPayload() throws Exception {
+    public void extractPayload_Ok() throws Exception {
         Request request = RequestMock.builder()
                 .addHeader("Authorization", "Bearer secret-token")
                 .build();
 
-        TokenPayload payload = new TokenPayloadExtractor().extractPayload(request);
-        assertTrue(payload.isValid());
-        assertEquals("secret-token", payload.getToken());
+        assertEquals(
+                new TokenPayload("secret-token"),
+                new TokenPayloadExtractor().extractPayload(request)
+        );
     }
 
-    @Test
-    public void testExtractInvalidPayload_NoHeader() throws Exception {
+    @Test(expected = PayloadException.class)
+    public void extractPayload_EmptyToken() throws Exception {
+        Request request = RequestMock.builder()
+                .addHeader("Authorization", "Bearer")
+                .build();
+
+        new TokenPayloadExtractor().extractPayload(request);
+    }
+
+    @Test(expected = PayloadException.class)
+    public void extractPayload_NoHeader() throws Exception {
         Request request = RequestMock.builder().build();
-        assertFalse(new TokenPayloadExtractor().extractPayload(request).isValid());
+
+        new TokenPayloadExtractor().extractPayload(request);
     }
 
-    @Test
-    public void testExtractInvalidPayload_IncorrectHeader() throws Exception {
+    @Test(expected = PayloadException.class)
+    public void extractPayload_IncorrectHeader() throws Exception {
         Request request = RequestMock.builder()
                 .addHeader("Authorization", "Foo secret-token")
                 .build();
-        assertFalse(new TokenPayloadExtractor().extractPayload(request).isValid());
+
+        new TokenPayloadExtractor().extractPayload(request);
     }
 }

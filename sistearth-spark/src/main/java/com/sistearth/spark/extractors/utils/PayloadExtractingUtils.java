@@ -2,8 +2,8 @@ package com.sistearth.spark.extractors.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sistearth.view.request.PayloadException;
 import com.sistearth.api.payloads.UserPayload;
+import com.sistearth.view.request.PayloadException;
 
 import java.io.IOException;
 

@@ -6,11 +6,13 @@ import spark.Request;
 
 import java.util.Map;
 
-public abstract class BasePayloadExtractor<V extends Payload> implements PayloadExtractor<V> {
+import static com.sistearth.spark.extractors.PayloadExtractorUtils.getRequestHeaders;
+
+abstract class BasePayloadExtractor<P extends Payload> implements PayloadExtractor<P> {
     @Override
-    public V extractPayload(Request request) throws PayloadException {
-        return extractPayload(request.body(), PayloadExtractorUtils.getRequestHeaders(request));
+    public P extractPayload(Request request) throws PayloadException {
+        return extractPayload(request.body(), getRequestHeaders(request));
     }
 
-    protected abstract V extractPayload(String body, Map<String, String> requestHeaders) throws PayloadException;
+    protected abstract P extractPayload(String body, Map<String, String> requestHeaders) throws PayloadException;
 }
