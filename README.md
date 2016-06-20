@@ -2,6 +2,7 @@ Sistearth Backend
 =================
 
 [![Build Status](https://travis-ci.org/mbarberot/sistearth-backend.svg?branch=master)](https://travis-ci.org/mbarberot/sistearth-backend)
+[![Coverage Status](https://coveralls.io/repos/github/mbarberot/sistearth-backend/badge.svg?branch=master)](https://coveralls.io/github/mbarberot/sistearth-backend?branch=master)
 
 A RESTful API for Sistearth v4 implemented in Java
 

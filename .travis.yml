@@ -1,8 +1,13 @@
 language: java
 script: mvn clean test integration-test install
+after_success:
+  - mvn clean test jacoco:report coveralls:report
 sudo: required
 services:
-    - docker
+  - docker
 addons:
   hosts:
     - api.sistearth.com
+env:
+  global:
+    - secure: "wsAH0EMnKYcga9isGfO+EER+lTycdoxfoWYg2W1kgwU9rHYrTTtwfx3EaLF6FhdkMznRBzHRPwN3bicQ6TvKtq+8bUZlfw21OD0iQbRkmLqSmKPYMgwahrm7AQtjXfli7WK2Wh2Yq6PL5gaIZfDSDm/ZX6zIWqJqi/8Yi3ohqL7saG+qLL0Xsxv5kEkYnYH6nA83XJ+eXdxE4Yr0sK04izxw/eQEkd/tdXlrDpLCrUL/PwqCVpoB80E5+JpngJCcga6CV4yP5tfYyWBTLaczA2EtkM45KJMJyeU3lXq9MGNlCbYkwYr6SztosWnrLTh+K8vDyXmpkvt7yfNb+opDFP0NK91pikBafEslvO28Btosgsxmzx9DKZR9KABRbsl69x4pUwG6466xn4ijKVhAnFU8zbiUJsnyfaQuSHD9dQJ0GvIFrnAt76J6k7wbFNpGKTLiIA7nLQRHzlX00rOL2VuMhrk2SsaCwVwt/ekUkvDrAOZJYBojH5CViziEe3ZO4Wyx9GshD6hZ5gQH9MuuDo4tkTpgyF0TXM6CrswjVMhBeDGcHIFTRP4iZGw15Q8313XIVw4wTAS+4yZB6DLmCnEZI+XxqDqXdjX9l00z4FqwOyO/601UfGtmK16sxiSwRamTeAcji0nmn3MWWnPELL/vuukM3ppPREQHE77yzQI="
