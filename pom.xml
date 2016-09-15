@@ -1,29 +1,28 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sistearth</groupId>
-    <artifactId>sistearth-backend</artifactId>
+    <groupId>com.alterrae</groupId>
+    <artifactId>alterrae-backend</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>sistearth-backend</name>
+    <name>alterrae-backend</name>
 
     <modules>
-        <module>java-jsonapi</module>
-        <module>sistearth-db</module>
-        <module>sistearth-spark</module>
-        <module>sistearth-game</module>
-        <module>sistearth-view</module>
-        <module>sistearth-view-json</module>
-        <module>sistearth-json-utils</module>
-        <module>sistearth-test-utils</module>
-        <module>sistearth-docker-server</module>
-        <module>sistearth-integration-tests</module>
+        <module>alterrae-db</module>
+        <module>alterrae-spark</module>
+        <module>alterrae-game</module>
+        <module>alterrae-view</module>
+        <module>alterrae-view-json</module>
+        <module>alterrae-json-utils</module>
+        <module>alterrae-test-utils</module>
+        <module>alterrae-docker-server</module>
+        <module>alterrae-integration-tests</module>
     </modules>
 
     <properties>
         <ssl.dir>ssl</ssl.dir>
         <app.dir>app</app.dir>
-        <app.name>sistearth-backend</app.name>
+        <app.name>alterrae-backend</app.name>
     </properties>
 
     <build>

@@ -4,4 +4,4 @@
 app/*.jar
 target
 
-sistearth-integration-tests/**/ssl
+alterrae-integration-tests/**/ssl
