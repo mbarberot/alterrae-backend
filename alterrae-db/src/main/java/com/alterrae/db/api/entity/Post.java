@@ -20,15 +20,13 @@ public class Post {
     private ObjectId id;
     private String title;
     private String body;
-
-    @Property("created_at")
-    private Date createdAt;
+    private Date creationDate;
 
     @Reference
     private User author;
 
-    public Post(String id, String title, String body, Date createdAt, User author) {
-        this(new ObjectId(id), title, body, createdAt, author);
+    public Post(String id, String title, String body, Date creationDate, User author) {
+        this(new ObjectId(id), title, body, creationDate, author);
     }
 
     public String getStringId() {

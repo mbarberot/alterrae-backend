@@ -12,6 +12,6 @@ public class GetTest {
                 .when()
                 .get("/")
                 .then()
-                .body("message", equalTo("Welcome to Sistearth v4 REST API."));
+                .body("message", equalTo("Welcome to Alterrae v4 REST API."));
     }
 }

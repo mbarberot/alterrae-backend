@@ -30,8 +30,8 @@ public class App {
     private static void setConfig() {
         port(8080);
         secure(
-                "/sistearth/ssl/keystore",
-                "sistearth",
+                "/alterrae/ssl/keystore",
+                "alterrae",
                 null,
                 null
         );

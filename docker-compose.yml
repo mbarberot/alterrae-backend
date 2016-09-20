@@ -1,5 +1,5 @@
 backend:
-    build: sistearth/backend
+    build: alterrae/backend
     ports:
         - "443:8080"
         - "8787:8787"

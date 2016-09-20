@@ -18,7 +18,7 @@ public class JsonApiPostViewTest {
         JSONAssert.assertEquals(
                 "{\"data\":{" +
                         "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}}," +
-                        "\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
+                        "\"attributes\":{\"creationDate\":\"1444687200000\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
                         "\"id\":\"57595f70fc13ae7c88001bed\"," +
                         "\"type\":\"posts\"" +
                         "}," +
@@ -29,7 +29,7 @@ public class JsonApiPostViewTest {
                 ).render(),
                 STRICT
         );
-    }
+    }   
 
     @Test
     public void testRenderMultiplePost() throws Exception {
@@ -39,18 +39,18 @@ public class JsonApiPostViewTest {
         JSONAssert.assertEquals(
                 "{\"data\":[{" +
                         "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bec\"}}}," +
-                        "\"attributes\":{\"created_at\":\"2015-10-13 00:00:00\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
+                        "\"attributes\":{\"creationDate\":\"1444687200000\",\"title\":\"Foo\",\"body\":\"Lorem ipsum.\"}," +
                         "\"id\":\"57595f70fc13ae7c88001bed\"," +
                         "\"type\":\"posts\"" +
                         "},{" +
                         "\"relationships\":{\"author\":{\"data\":{\"type\":\"users\",\"id\":\"57595f70fc13ae7c88001bee\"}}}," +
-                        "\"attributes\":{\"created_at\":\"2015-11-15 00:00:00\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"}," +
+                        "\"attributes\":{\"creationDate\":\"1447542000000\",\"title\":\"Bar\",\"body\":\"Dolor sit amet.\"}," +
                         "\"id\":\"57596105fc13ae0f3a001508\"," +
                         "\"type\":\"posts\"" +
                         "}]," +
                         "\"included\":[" +
-                        "{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}," +
-                        "{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"57595f70fc13ae7c88001bee\",\"type\":\"users\"}" +
+                        "{\"attributes\":{\"email\":\"bran@stark.com\",\"username\":\"Bran\"},\"id\":\"57595f70fc13ae7c88001bee\",\"type\":\"users\"}," +
+                        "{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}" +
                         "]}",
                 new JsonApiPostView(
                         newArrayList(

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 host="mongo"
-db="sistearth"
+db="alterrae"
 data_dir="/data"
 
 function import {

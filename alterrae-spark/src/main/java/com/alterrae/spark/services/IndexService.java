@@ -6,7 +6,7 @@ import static spark.Spark.get;
 public class IndexService implements Service {
     @Override
     public void registerRoutes() throws ServiceException {
-        get("/", (request, response) -> newJsonAnswer(response).body("{ \"message\": \"Welcome to Sistearth v4 REST API.\" }").build());
+        get("/", (request, response) -> newJsonAnswer(response).body("{ \"message\": \"Welcome to Alterrae v4 REST API.\" }").build());
     }
 
     @Override

@@ -10,8 +10,8 @@ public class Database {
     private static final Morphia morphia = new Morphia();
 
     public static void initDB() {
-        morphia.mapPackage("com.sistearth.db.api.entity");
-        dataStore = morphia.createDatastore(new MongoClient("database"), "sistearth");
+        morphia.mapPackage("com.alterrae.db.api.entity");
+        dataStore = morphia.createDatastore(new MongoClient("database"), "alterrae");
         dataStore.ensureIndexes();
     }
 

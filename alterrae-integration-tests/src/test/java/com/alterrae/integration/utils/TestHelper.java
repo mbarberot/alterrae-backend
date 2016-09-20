@@ -12,9 +12,9 @@ import static java.lang.String.format;
 public class TestHelper {
     public static RequestSpecification restApi() {
         String keystorePath = TestHelper.class.getResource("/ssl/keystore").getPath();
-        String keystorePassword = "sistearth";
+        String keystorePassword = "alterrae";
         return given()
-                .baseUri("https://api.sistearth.com")
+                .baseUri("https://api.alterrae.com")
                 .config(newConfig()
                         .httpClient(httpClientConfig()
                                 .setParam("javax.net.ssl.trustStore", keystorePath)

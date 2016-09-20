@@ -1,10 +1,10 @@
-Sistearth Backend
+alterrae Backend
 =================
 
-[![Build Status](https://travis-ci.org/mbarberot/sistearth-backend.svg?branch=master)](https://travis-ci.org/mbarberot/sistearth-backend)
-[![Coverage Status](https://coveralls.io/repos/github/mbarberot/sistearth-backend/badge.svg?branch=master)](https://coveralls.io/github/mbarberot/sistearth-backend?branch=master)
+[![Build Status](https://travis-ci.org/mbarberot/alterrae-backend.svg?branch=master)](https://travis-ci.org/mbarberot/alterrae-backend)
+[![Coverage Status](https://coveralls.io/repos/github/mbarberot/alterrae-backend/badge.svg?branch=master)](https://coveralls.io/github/mbarberot/alterrae-backend?branch=master)
 
-A RESTful API for Sistearth v4 implemented in Java
+A RESTful API for alterrae v4 implemented in Java
 
 How to use
 ----------
@@ -45,16 +45,16 @@ Source code analysis tool.
 
 PHPMyAdmin-like, but lighter
 
-  1. Run with docker : ``docker run -d -p 8888:80 --link sistearthbackend_database_1:database clue/adminer``  
+  1. Run with docker : ``docker run -d -p 8888:80 --link alterraebackend_database_1:database clue/adminer``  
   2. Go to http://localhost:8888
   3. Login using db credential and host will be 'database'.
   
 ### Keytool (provided by java jdk)
 
 Creating keystore (example for the test keystore) : 
-- run ``keytool -keystore keystore -alias sistearth -genkey -keyalg RSA``  
-- use password : ``sistearth``
-- At question "What is your first and last name?" put your url (ie: api.sistearth.com)
+- run ``keytool -keystore keystore -alias alterrae -genkey -keyalg RSA``  
+- use password : ``alterrae``
+- At question "What is your first and last name?" put your url (ie: api.alterrae.com)
  
 Tools
 -----

@@ -1,5 +1,5 @@
 backendtest:
-    image: sistearth/backend
+    image: alterrae/backend
     ports:
         - "443:8080"
         - "8787:8787"
@@ -10,6 +10,6 @@ databasetest:
     image: mongo
 
 databaseimport:
-    image: sistearth/import-data
+    image: alterrae/import-data
     links:
         - databasetest:mongo

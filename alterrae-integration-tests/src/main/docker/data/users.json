@@ -6,7 +6,7 @@
     "username": "twilson2",
     "password": "V1qReXAVgED",
     "email": "bgriffin2@time.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -15,7 +15,7 @@
     "username": "jroberts3",
     "password": "pGnQHwCVbQ",
     "email": "lgarza3@yahoo.co.jp",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -24,7 +24,7 @@
     "username": "wknight1",
     "password": "Jteohv3n",
     "email": "djones1@disqus.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -33,7 +33,7 @@
     "username": "twatson4",
     "password": "OxN78c9P3qx",
     "email": "jspencer4@surveymonkey.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -42,7 +42,7 @@
     "username": "bross6",
     "password": "dbo2u4nfVr",
     "email": "vbrooks6@theguardian.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -51,7 +51,7 @@
     "username": "bhunter5",
     "password": "pUJWnwSY6",
     "email": "estewart5@epa.gov",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -59,8 +59,8 @@
     },
     "username": "admin",
     "password": "admin",
-    "email": "admin@sistearth.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "email": "admin@alterrae.com",
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -69,7 +69,7 @@
     "username": "jtucker9",
     "password": "PypuMk6r1YAN",
     "email": "cmontgomery9@newyorker.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -78,7 +78,7 @@
     "username": "akelleya",
     "password": "MHxOIvfIlg",
     "email": "jruiza@spotify.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -87,7 +87,7 @@
     "username": "wmyersc",
     "password": "LSqYuepXZsaI",
     "email": "klopezc@archive.org",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -96,7 +96,7 @@
     "username": "bfisherb",
     "password": "ePmxZvl5R0u",
     "email": "bmontgomeryb@who.int",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -105,7 +105,7 @@
     "username": "mramosd",
     "password": "geYdrNrjflQV",
     "email": "jgardnerd@statcounter.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -114,7 +114,7 @@
     "username": "sdayg",
     "password": "XY3Npo2LoT",
     "email": "hramirezg@mayoclinic.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -123,7 +123,7 @@
     "username": "wromeroi",
     "password": "pkm2vMea",
     "email": "jperkinsi@scientificamerican.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -132,7 +132,7 @@
     "username": "lmatthewsj",
     "password": "xhWQMi0s",
     "email": "kriveraj@ovh.net",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -141,7 +141,7 @@
     "username": "csimsh",
     "password": "IJJpVrMf6Pp",
     "email": "lscotth@oaic.gov.au",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -150,7 +150,7 @@
     "username": "jgriffink",
     "password": "BC7SWgg8JAD",
     "email": "mshawk@disqus.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -159,7 +159,7 @@
     "username": "iolsonm",
     "password": "8u66AmnrNQ",
     "email": "jwillism@people.com.cn",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -168,7 +168,7 @@
     "username": "sdanielsn",
     "password": "CLANn0eR",
     "email": "wkennedyn@virginia.edu",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -177,7 +177,7 @@
     "username": "pruizo",
     "password": "XbHLlWTpI",
     "email": "kwarreno@ed.gov",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -186,7 +186,7 @@
     "username": "awilliamsont",
     "password": "d8XLAmYUl",
     "email": "egeorget@techcrunch.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -195,7 +195,7 @@
     "username": "pperezs",
     "password": "Sm4v3JNnf",
     "email": "mhills@sohu.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -204,7 +204,7 @@
     "username": "mromerov",
     "password": "7ty1DuYj",
     "email": "kgreenv@ehow.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -213,7 +213,7 @@
     "username": "pgriffinw",
     "password": "sEgUyAzknY",
     "email": "afrazierw@jigsy.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -222,7 +222,7 @@
     "username": "dhernandezx",
     "password": "AgvhBC5Br",
     "email": "dstewartx@engadget.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -231,7 +231,7 @@
     "username": "creynoldsy",
     "password": "1IHujU1vIJj1",
     "email": "gmorrisony@intel.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -240,7 +240,7 @@
     "username": "djohnston10",
     "password": "1WqbeWm01",
     "email": "lcoleman10@scribd.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -249,7 +249,7 @@
     "username": "jcollins12",
     "password": "JPfL9afz",
     "email": "ewebb12@creativecommons.org",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -258,7 +258,7 @@
     "username": "kferguson15",
     "password": "DVVhsG3Bk",
     "email": "egibson15@google.co.jp",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -267,7 +267,7 @@
     "username": "lfisher17",
     "password": "buzcKGjOYSJ",
     "email": "gsullivan17@businessinsider.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -276,7 +276,7 @@
     "username": "jlee1a",
     "password": "OL8VauZA",
     "email": "lrodriguez1a@admin.ch",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -285,7 +285,7 @@
     "username": "ledwards1c",
     "password": "8yBEro5c3c",
     "email": "dnguyen1c@icq.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -294,7 +294,7 @@
     "username": "kortiz1d",
     "password": "I7B7NRf2Lh",
     "email": "dhill1d@sina.com.cn",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -303,7 +303,7 @@
     "username": "myoung1e",
     "password": "yZGdiveZtzPo",
     "email": "tthompson1e@cmu.edu",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -312,7 +312,7 @@
     "username": "cchapman1f",
     "password": "Jamd6OOY0yS",
     "email": "amendoza1f@nbcnews.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -321,7 +321,7 @@
     "username": "salvarez1h",
     "password": "hDaQU4zq3nR",
     "email": "ctucker1h@t.co",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -330,7 +330,7 @@
     "username": "lkennedy1i",
     "password": "0wOd9ALokOky",
     "email": "chunter1i@nasa.gov",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -339,7 +339,7 @@
     "username": "jjackson1k",
     "password": "w2H9ri2ezS",
     "email": "bpeterson1k@baidu.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -348,7 +348,7 @@
     "username": "rparker1n",
     "password": "yyqCYWUEDvak",
     "email": "mrice1n@artisteer.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -357,7 +357,7 @@
     "username": "ewheeler1p",
     "password": "FlOqzHfrMj",
     "email": "jgonzales1p@independent.co.uk",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -366,7 +366,7 @@
     "username": "jgriffin1q",
     "password": "8W43QmWv3kaz",
     "email": "lolson1q@deviantart.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -375,7 +375,7 @@
     "username": "dalvarez1r",
     "password": "ow0bGKbU",
     "email": "cmeyer1r@ning.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -384,7 +384,7 @@
     "username": "kthomas1s",
     "password": "xK9uuNHHRJI",
     "email": "briley1s@tamu.edu",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -393,7 +393,7 @@
     "username": "hdean1t",
     "password": "rLcMoLt3YlxW",
     "email": "khunt1t@addthis.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -402,7 +402,7 @@
     "username": "sstone1u",
     "password": "f8fwpY4nqz8",
     "email": "jgreen1u@dailymotion.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -411,7 +411,7 @@
     "username": "bgarcia1v",
     "password": "vJHEFFta",
     "email": "pkennedy1v@ihg.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -420,7 +420,7 @@
     "username": "rmills1w",
     "password": "qOV4CY51nu",
     "email": "efields1w@bbb.org",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -429,7 +429,7 @@
     "username": "sstevens1x",
     "password": "kvkIGRjcim",
     "email": "jcarter1x@google.es",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {
@@ -438,7 +438,7 @@
     "username": "fhanson1z",
     "password": "uwRHJXOFcI4n",
     "email": "cjohnson1z@linkedin.com",
-    "className": "com.sistearth.db.api.entity.User"
+    "className": "com.alterrae.db.api.entity.User"
   },
   {
     "_id": {

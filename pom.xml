@@ -13,7 +13,6 @@
         <module>alterrae-game</module>
         <module>alterrae-view</module>
         <module>alterrae-view-json</module>
-        <module>alterrae-json-utils</module>
         <module>alterrae-test-utils</module>
         <module>alterrae-docker-server</module>
         <module>alterrae-integration-tests</module>
