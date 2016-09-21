@@ -1,10 +1,10 @@
-alterrae Backend
+Alterrae Backend
 =================
 
 [![Build Status](https://travis-ci.org/mbarberot/alterrae-backend.svg?branch=master)](https://travis-ci.org/mbarberot/alterrae-backend)
 [![Coverage Status](https://coveralls.io/repos/github/mbarberot/alterrae-backend/badge.svg?branch=master)](https://coveralls.io/github/mbarberot/alterrae-backend?branch=master)
 
-A RESTful API for alterrae v4 implemented in Java
+A RESTful API for Alterrae game, implemented in Java
 
 How to use
 ----------
