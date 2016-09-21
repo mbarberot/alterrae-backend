@@ -5,6 +5,7 @@ import com.alterrae.db.api.entity.User;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static com.google.common.collect.Lists.newArrayList;
@@ -24,12 +25,12 @@ public class JsonApiPostViewTest {
                         "}," +
                         "\"included\":[{\"attributes\":{\"email\":\"jon@snow.com\",\"username\":\"Jon\"},\"id\":\"57595f70fc13ae7c88001bec\",\"type\":\"users\"}]}",
                 new JsonApiPostView(
-                        new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), author),
+                        new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new Date(1444687200000L), author),
                         author
                 ).render(),
                 STRICT
         );
-    }   
+    }
 
     @Test
     public void testRenderMultiplePost() throws Exception {
@@ -54,8 +55,8 @@ public class JsonApiPostViewTest {
                         "]}",
                 new JsonApiPostView(
                         newArrayList(
-                                new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new GregorianCalendar(2015, 9, 13).getTime(), user1),
-                                new Post("57596105fc13ae0f3a001508", "Bar", "Dolor sit amet.", new GregorianCalendar(2015, 10, 15).getTime(), user2)
+                                new Post("57595f70fc13ae7c88001bed", "Foo", "Lorem ipsum.", new Date(1444687200000L), user1),
+                                new Post("57596105fc13ae0f3a001508", "Bar", "Dolor sit amet.", new Date(1447542000000L), user2)
                         ),
                         newArrayList(user1, user2)
                 ).render(),
