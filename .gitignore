@@ -5,4 +5,3 @@ app/*.jar
 target
 
 alterrae-integration-tests/**/ssl
-/alterrae-view-json/pom.xml

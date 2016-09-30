@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.github.mbarberot</groupId>
             <artifactId>java-jsonapi</artifactId>
-            <version>-SNAPSHOT</version>
+            <version>1.0b</version>
         </dependency>
         <dependency>
             <groupId>org.skyscreamer</groupId>
