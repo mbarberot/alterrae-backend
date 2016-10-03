@@ -7,7 +7,7 @@
         <groupId>com.alterrae</groupId>
         <version>1.0</version>
     </parent>
-            <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>alterrae-test-utils</artifactId>
     <name>alterrae-test-utils</name>
@@ -16,9 +16,7 @@
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-db</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
     </dependencies>
-
-
 </project>

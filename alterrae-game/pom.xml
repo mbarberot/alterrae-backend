@@ -16,17 +16,16 @@
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-db</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
-            <version>1.4.0</version>
         </dependency>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-test-utils</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

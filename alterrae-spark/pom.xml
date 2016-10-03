@@ -17,7 +17,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.5</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -42,7 +41,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
                 <executions>
                     <execution>
                         <id>copy-final-jar</id>
@@ -63,46 +61,34 @@
         </plugins>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.7.12</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-db</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-view</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-view-json</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-game</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
-            <version>2.3</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.5.1</version>
         </dependency>
     </dependencies>
 </project>

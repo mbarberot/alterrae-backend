@@ -16,42 +16,29 @@
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-view</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.mbarberot</groupId>
             <artifactId>java-jsonapi</artifactId>
-            <version>1.0b</version>
         </dependency>
         <dependency>
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
-            <version>1.2.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.alterrae</groupId>
             <artifactId>alterrae-test-utils</artifactId>
-            <version>1.0</version>
+            <version>${parent.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
 </project>
