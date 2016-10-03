@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Alterrae-backend by mbarberot</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/mbarberot/alterrae-backend">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/mbarberot/alterrae-backend/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/mbarberot/alterrae-backend/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Alterrae-backend</h1>
+          <p>A RESTful API for Sistearth v4 implemented in Java</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/mbarberot">mbarberot</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="alterrae-backend" class="anchor" href="#alterrae-backend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alterrae Backend</h1>
+
+<p><a href="https://travis-ci.org/mbarberot/alterrae-backend"><img src="https://travis-ci.org/mbarberot/alterrae-backend.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/mbarberot/alterrae-backend?branch=master"><img src="https://coveralls.io/repos/github/mbarberot/alterrae-backend/badge.svg?branch=master" alt="Coverage Status"></a></p>
+
+<p>A RESTful API for Alterrae game, implemented in Java</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<h3>
+<a id="what-you-need" class="anchor" href="#what-you-need" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What you need</h3>
+
+<ul>
+<li>Java 8</li>
+<li>Maven</li>
+<li>Docker &amp; docker-compose</li>
+<li>Source code</li>
+</ul>
+
+<h3>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h3>
+
+<p><code>mvn clean install</code></p>
+
+<p>This will build, test, package code and build docker image.</p>
+
+<h3>
+<a id="run" class="anchor" href="#run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run</h3>
+
+<p><code>docker-compose up</code> or <code>docker-compose start</code></p>
+
+<p>This will run both server and databse container + adminer to manage db</p>
+
+<h2>
+<a id="useful-tools" class="anchor" href="#useful-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Useful tools</h2>
+
+<h3>
+<a id="sonar" class="anchor" href="#sonar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sonar</h3>
+
+<p>Source code analysis tool.</p>
+
+<ol>
+<li>Run Sonarqube server with docker
+
+<ul>
+<li>The first time : <code>docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:5.1</code>
+</li>
+<li>Nex time : <code>docker start sonarqube</code>
+</li>
+</ul>
+</li>
+<li>Launch analysis with maven
+
+<ul>
+<li><code>mvn sonar:sonar</code></li>
+</ul>
+</li>
+</ol>
+
+<h3>
+<a id="adminer" class="anchor" href="#adminer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adminer</h3>
+
+<p>PHPMyAdmin-like, but lighter</p>
+
+<ol>
+<li>Run with docker : <code>docker run -d -p 8888:80 --link alterraebackend_database_1:database clue/adminer</code><br>
+</li>
+<li>Go to http://localhost:8888</li>
+<li>Login using db credential and host will be 'database'.</li>
+</ol>
+
+<h3>
+<a id="keytool-provided-by-java-jdk" class="anchor" href="#keytool-provided-by-java-jdk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Keytool (provided by java jdk)</h3>
+
+<p>Creating keystore (example for the test keystore) : </p>
+
+<ul>
+<li>run <code>keytool -keystore keystore -alias alterrae -genkey -keyalg RSA</code><br>
+</li>
+<li>use password : <code>alterrae</code>
+</li>
+<li>At question "What is your first and last name?" put your url (ie: api.alterrae.com)</li>
+</ul>
+
+<h2>
+<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a id="dev" class="anchor" href="#dev" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev</h3>
+
+<ul>
+<li>Java</li>
+<li>Spark framework (light, easy and simple)</li>
+<li>Guava</li>
+<li>Sql2o</li>
+<li>Jackson</li>
+<li>Lombok</li>
+<li>JUnit</li>
+</ul>
+
+<h3>
+<a id="deployment" class="anchor" href="#deployment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployment</h3>
+
+<ul>
+<li>Docker</li>
+<li>docker-compose</li>
+<li>MariaDB (+ official docker image)</li>
+</ul>
+
+<h2>
+<a id="reason-vs-php--symfony-backend" class="anchor" href="#reason-vs-php--symfony-backend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reason (vs PHP / Symfony backend)</h2>
+
+<ul>
+<li>KISS</li>
+<li>No more "magic" framework (thinking to you JEE and Symfony)</li>
+<li>Dev comfort : explicit types, easier to monitor/debug, maven </li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
