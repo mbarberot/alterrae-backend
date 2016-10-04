@@ -6,6 +6,7 @@ import org.apache.commons.logging.LogFactory;
 
 import static com.alterrae.db.core.Database.initDB;
 import static spark.Spark.*;
+import static spark.route.RouteOverview.enableRouteOverview;
 
 public class App {
 
@@ -25,6 +26,8 @@ public class App {
                 new LoginService(),
                 new PostsRestService()
         );
+
+        enableRouteOverview("/api/doc");
     }
 
     private static void setConfig() {
