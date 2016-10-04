@@ -1,5 +1,5 @@
 backend:
-    build: alterrae/backend
+    image: alterrae/backend
     ports:
         - "443:8080"
         - "8787:8787"
